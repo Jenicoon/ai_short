@@ -1,0 +1,210 @@
+{
+  "meta": {
+    "observed": "2026-11-09",
+    "method": "红果短剧 공식 웹 플레이어(hongguoduanju.com)에서 각 작품 1~5화를 여러 지점에서 직접 확인",
+    "time_basis": "first_conflict_sec, first_reversal_sec는 1화 시작부터의 누적 초 (红果 공식 플레이어 기준). 장면 프레임 이미지의 시간은 YouTube 합본 기준으로 10~20초 이름",
+    "caution": "반전 횟수, 钩子 유형, 얼굴 유사도는 팀의 관찰 판단 (측정값 아님). 시청자 반응은 보조 근거로만 사용",
+    "title_ko": "title_ko는 팀의 한국어 의역 (공식 한국어 제목 아님)"
+  },
+  "works": [
+    {
+      "id": "yishuangshou",
+      "title": "一双手闯出一片天",
+      "title_ko": "두 손으로 일군 세상 (기준작)",
+      "production": "AI",
+      "role": "기준작",
+      "url": "https://hongguoduanju.com/detail?series_id=7696903115634658329",
+      "episodes_total": 126,
+      "metrics_2026_11_09": {
+        "heat": "4,873만",
+        "rating": 7.5,
+        "likes": "187.7만",
+        "saves": "51.4만"
+      },
+      "metrics_2026_11_02": {
+        "rank": "AI剧热播榜 9위",
+        "heat": "5,915만",
+        "rating": 7.1,
+        "likes": "156.5만",
+        "saves": "41.9만"
+      },
+      "premise": "공장 선반공, 양보만 하다 죽음 → 회귀 → 수리점 창업",
+      "first_conflict_sec": 18,
+      "first_conflict_note": "0:04 미래 장면 예고 뒤 0:18 \"이 밧줄은 못 써\"",
+      "first_reversal_sec": 150,
+      "first_reversal_note": "2화, 누적 약 2분 30초 (\"이제야 내 차례야\"), 1화 끝 1:49에 회귀",
+      "reversals_ep1_5": 3,
+      "reversals_note": "회귀, 추천 자리 양보 거부, 파혼 선언",
+      "ending_hooks_ep1_5": [
+        "회귀",
+        "대결",
+        "대결",
+        "대결",
+        "대결"
+      ],
+      "ending_hooks_note": "5화 마지막 대사 \"这个婚到此为止\"",
+      "oppressor": "아내(약혼녀), 친구",
+      "device": "회귀(重生)",
+      "reward": "기술 인정, 창업",
+      "ep_len_sec_ep1_5": [
+        115.5,
+        86.4,
+        114.4,
+        61.4,
+        57.7
+      ],
+      "face_similarity": "상",
+      "face_note": "매끈한 미남미녀형, 같은 인물도 장면마다 얼굴이 바뀜",
+      "hard_to_film_scenes": "1 (크레인 낙하 사고)",
+      "ep_len_avg_sec": 87.1
+    },
+    {
+      "id": "guancheng",
+      "title": "莞城往事：八十五块闯出亿万身家",
+      "title_ko": "둥관 이야기: 85위안으로 억만장자 (AI 비교작)",
+      "production": "AI",
+      "role": "같은 공식의 AI 작품",
+      "url": "https://hongguoduanju.com/detail?series_id=7698351941423729689",
+      "episodes_total": "150화 이상",
+      "metrics_2026_11_09": {
+        "rank": "AI剧热播榜 18위",
+        "heat": "5,456만",
+        "rating": 8.7
+      },
+      "premise": "여자친구에게 돈을 뜯기고 85위안으로 둥관행 → 세탁기 수리 기술로 라인 노동자에서 휴대폰 업계 거물로 (배경 2005년)",
+      "first_conflict_sec": 5,
+      "first_conflict_note": "내레이션 \"여자친구에게 돈을 뜯김\"",
+      "first_reversal_sec": 236,
+      "first_reversal_note": "2화 0:53 무렵, 누적 약 4분 (세탁기 수리로 실력 인정)",
+      "reversals_ep1_5": 2,
+      "reversals_note": "세탁기 수리, 공장 회로 진단",
+      "ending_hooks_ep1_5": [
+        "위기",
+        "만남(귀인)",
+        "위기",
+        "폭로",
+        "대결"
+      ],
+      "oppressor": "여자친구, 고향 사람, 직장 상사",
+      "device": "없음 (기술 + 귀인인 집주인)",
+      "reward": "기술 인정, 창업, 사랑",
+      "ep_len_sec_ep1_5": [
+        183.2,
+        106.4,
+        104.4,
+        76.0,
+        73.8
+      ],
+      "face_similarity": "중상",
+      "face_note": "주인공은 개성 있는 장발, 조연 얼굴이 장면마다 흔들림",
+      "hard_to_film_scenes": "1~2 (2005년 기차역 군중)",
+      "ep_len_avg_sec": 108.8
+    },
+    {
+      "id": "xiaozhen",
+      "title": "小镇是非多之同床异梦",
+      "title_ko": "작은 마을의 시비: 동상이몽 (실사 비교작)",
+      "production": "실사",
+      "role": "같은 정서의 실사 작품",
+      "url": "https://hongguoduanju.com/detail?series_id=7703408432757361688",
+      "metrics_2026_11_09": {
+        "rank": "真人剧热播榜 2위",
+        "heat": "5,982만",
+        "rating": 7.9
+      },
+      "premise": "아내가 투자 사기로 집을 날림 → 굴착기 기사인 남편이 성실한 노동으로 재기",
+      "first_conflict_sec": 56,
+      "first_conflict_note": "느린 도입 뒤 아내의 외도 암시",
+      "first_reversal_sec": null,
+      "observed_until_sec": 656,
+      "first_reversal_note": "1~5화(누적 약 11분, 10:56) 안에 없음",
+      "reversals_ep1_5": 0,
+      "reversals_note": "억압이 쌓이는 단계",
+      "ending_hooks_ep1_5": [
+        "폭로 암시",
+        "위기",
+        "여운",
+        "폭로 위기",
+        "여운"
+      ],
+      "oppressor": "아내 (외도, 거짓말)",
+      "device": "없음 (현실극)",
+      "reward": "성실한 재기 (5화까지 미도달)",
+      "ep_len_sec_ep1_5": [
+        112.4,
+        171.8,
+        165.8,
+        67.3,
+        138.6
+      ],
+      "face_similarity": "하",
+      "face_note": "실제 배우, 평범한 생활형 외모 (사진 미수록)",
+      "hard_to_film_scenes": "0",
+      "ep_len_avg_sec": 131.2
+    },
+    {
+      "id": "chixie",
+      "title": "持械入宋 第一季",
+      "title_ko": "무기를 들고 송나라로 시즌1 (AI 비교작)",
+      "production": "AI",
+      "role": "다른 장르의 AI 작품 (볼거리 축)",
+      "url": "https://hongguoduanju.com/detail?series_id=7671966197985856536",
+      "metrics_2026_11_09": {
+        "rank": "AI剧热播榜 6위",
+        "rating": 9.5,
+        "saves": "444.9만"
+      },
+      "premise": "현대 특수부대 5명이 무기를 들고 송나라로 시간여행",
+      "first_conflict_sec": 0,
+      "first_conflict_note": "장갑차 절벽 추락으로 시작",
+      "first_reversal_sec": 510,
+      "first_reversal_note": "5화 무렵, 누적 약 8분 30초 (맹수 제압)",
+      "reversals_ep1_5": 1,
+      "reversals_note": "맹수 제압",
+      "ending_hooks_ep1_5": [
+        "미스터리",
+        "위기",
+        "탐색",
+        "위기",
+        "다음 날 예고"
+      ],
+      "oppressor": "외부의 적 (맹수, 약탈자)",
+      "device": "시간여행 + 현대 무기",
+      "reward": "무력, 기술 우위",
+      "ep_len_sec_ep1_5": [
+        135.7,
+        105.3,
+        115.3,
+        118.6,
+        108.4
+      ],
+      "face_similarity": "상",
+      "face_note": "대원들의 이목구비가 서로 비슷한 미남형",
+      "hard_to_film_scenes": "4 이상 (장갑차 추락, 시간이동, 맹수, 활 공격)",
+      "ep_len_avg_sec": 116.7
+    },
+    {
+      "id": "tainainai",
+      "title": "十八岁太奶奶驾到 5",
+      "title_ko": "열여덟 살 증조할머니가 왔다 5 (실사 대조군)",
+      "production": "실사",
+      "role": "실사 최상위 대조군",
+      "url": "https://hongguoduanju.com/detail?series_id=7701935931787316286",
+      "metrics_2026_11_09": {
+        "rank": "真人剧热播榜 1위",
+        "heat": "6,901만",
+        "rating": 9.6
+      },
+      "premise": "가문 부흥 가족극, 타임슬립 할머니",
+      "ep_len_sec_ep1_5": [
+        173.3,
+        103.4,
+        157.4,
+        89.8,
+        123.7
+      ],
+      "note": "장면 분석은 하지 않음. 회차 길이만 비교. 최근 반년 红果 총 열도 상위 10위에 든 유일한 실사작이라는 보도 (澎湃, 2026.11.9)",
+      "ep_len_avg_sec": 129.5
+    }
+  ]
+}

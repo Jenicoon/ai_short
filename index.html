@@ -1,0 +1,1062 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>AI 숏드라마 온라인 전시</title>
+  <meta name="description" content="사람들은 왜 AI 숏드라마에 열광하는가? 중국 AI 숏드라마의 인기 요인과 문화적 의미. 한양대학교 중국미디어문화의이해 3조 「본 조는 AI로 생성되었습니다」의 온라인 전시.">
+  <meta property="og:title" content="사람들은 왜 AI 숏드라마에 열광하는가?">
+  <meta property="og:description" content="중국 AI 숏드라마의 인기 요인과 문화적 의미 · 3조 온라인 전시">
+  <meta property="og:image" content="assets/posters/yishuangshou.jpg">
+  <meta name="theme-color" content="#13324D">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2313324D'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='900' font-size='26' text-anchor='middle' fill='%23ffffff'%3EAI%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    // 테마: 저장된 선택이 있으면 먼저 적용 (깜빡임 방지)
+    (function () {
+      document.documentElement.classList.add('js');
+      try { var t = localStorage.getItem('theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="topbar" id="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="전시 처음으로">
+      <span class="brand-mark">AI</span>
+      <span class="brand-text">본 조는 AI로 생성되었습니다<small>3조 온라인 전시</small></span>
+    </a>
+    <div class="top-actions">
+      <span class="room-now" id="roomNow" aria-live="polite"></span>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="화면 테마 바꾸기">
+        <svg class="theme-ico-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="theme-ico-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn" id="guideBtn" type="button" aria-expanded="false" aria-controls="guide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+        <span>안내도</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="guide" id="guide" aria-label="전시 안내도">
+  <div class="guide-inner">
+    <div class="guide-head">
+      <h2>전시 안내도</h2>
+      <button class="icon-btn" id="guideClose" type="button" aria-label="안내도 닫기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <ol class="guide-list" id="guideList"></ol>
+  </div>
+</nav>
+
+<nav class="rail" aria-label="전시실 바로가기"><ol id="railList"></ol></nav>
+
+<main id="main">
+
+<!-- ===================== 0. 입구 ===================== -->
+<section class="hero" id="top" data-room="입구" data-short="입구">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">온라인 전시 · 중국미디어문화의이해 3조</p>
+      <h1><span class="ph">사람들은 왜</span> <span class="ph"><em>AI 숏드라마</em>에</span> <span class="ph">열광하는가?</span></h1>
+      <p class="hero-sub">중국 AI 숏드라마의 인기 요인과 문화적 의미</p>
+      <div class="team-line">
+        <span class="pill">3조 · 본 조는 AI로 생성되었습니다</span>
+        <span><b>최아령</b> · <b>위명현</b> · <b>이승하</b> · <b>김민경</b></span>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#phenomenon">전시 입장하기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+        <a class="btn btn-ghost" href="#quiz">나에게 맞는 숏드라마 찾기</a>
+      </div>
+    </div>
+    <figure class="hero-stage" aria-label="전시 대표 작품 화면">
+      <div class="phone p1"><div class="screen"><img src="assets/frames/chixie/cx_08m00s.jpg" alt="持械入宋 표범 습격 장면. 화면 상단에 AI制作，无真实动物受伤 표기" loading="eager"></div></div>
+      <div class="phone p2"><div class="screen"><img src="assets/posters/yishuangshou.jpg" alt="一双手闯出一片天 공식 포스터" loading="eager"></div></div>
+      <div class="phone p3"><div class="screen"><img src="assets/frames/chixie/cx_12m00s.jpg" alt="持械入宋 약탈자 기병이 마을을 습격하는 장면" loading="eager"></div></div>
+      <figcaption class="xs muted">출처: 红果短剧 / <span class="zh">一双手闯出一片天</span> 포스터, <span class="zh">持械入宋</span> 장면(YouTube 합본 기준 8:00, 12:00)</figcaption>
+    </figure>
+  </div>
+  <div class="ai-strip" aria-label="작품 하단 고정 문구">
+    <div class="wrap">
+      <span class="zh-line" lang="zh-CN">作品由AI生成，虚构演绎，仅供娱乐，请勿代入现实</span>
+      <span class="ko">AI 생성, 허구, 오락용 · 이 전시가 다루는 AI 작품의 모든 화면 하단에 고정된 문구입니다</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 1. 현상 ===================== -->
+<section class="room" id="phenomenon" data-room="현상" data-short="01 현상" data-desc="AI 표시가 붙어도 많은 사람이 본다">
+  <div class="wrap">
+    <header class="room-head reveal">
+      <div class="room-no">전시실 01 <span class="tag">현상</span></div>
+      <h2 class="title"><span class="ph">‘AI 생성’ 표시가 붙어 있어도,</span> <span class="ph">사람들은 본다</span></h2>
+      <p class="lead">화면 아래에는 늘 ‘作品由AI生成(AI로 생성된 작품)’이 떠 있고, 등장인물의 얼굴도 서로 비슷해 보입니다. 그런데도 AI 숏드라마는 많은 시청자를 모읍니다. 우리 조는 이 현상에서 출발했습니다.</p>
+    </header>
+
+    <div class="grid-2 reveal">
+      <div class="card">
+        <span class="k">주목한 현상 ①</span>
+        <h3>표시가 있어도, 얼굴이 닮아도 본다</h3>
+        <p>‘AI 생성(<span class="zh">作品由AI生成</span>)’ 표시가 붙어 있고 등장인물의 얼굴도 서로 비슷해 보이지만, AI 숏드라마는 여전히 많은 시청자를 모읍니다.</p>
+      </div>
+      <div class="card">
+        <span class="k">주목한 현상 ②</span>
+        <h3>실사와 같은 순위표에서 경쟁한다</h3>
+        <p>실사 숏드라마와 AI 숏드라마가 같은 플랫폼(<span class="zh">红果短剧</span>) 순위에서 경쟁하고, AI 작품이 상위권을 차지합니다.</p>
+      </div>
+    </div>
+
+    <div class="block-sm reveal">
+      <h4 class="mini">숫자로 본 규모</h4>
+      <div class="grid-3">
+        <div class="stat accent"><span class="v">1.68<small>억 명</small></span><span class="l"><span class="zh">红果</span> 일간 이용자(2026.7, 전년 대비 +107%). 아이치이, 텐센트비디오, 유쿠, 망고TV를 합친 것보다 많음</span><span class="s">출처: <a href="https://m.21jingji.com/article/20261108/herald/e92734e339efb6456f4ccdf3e5c6575a.html" target="_blank" rel="noopener">中新社/21财经, 2026.11.8</a> (QuestMobile 인용)</span></div>
+        <div class="stat"><span class="v">3.57<small>억 명</small></span><span class="l"><span class="zh">红果</span> 월간 이용자</span><span class="s">출처: <a href="https://data.eastmoney.com/report/info/AP202610131830417291.html" target="_blank" rel="noopener">西南证券 2026 Q4 전략</a></span></div>
+        <div class="stat"><span class="v">151<small>분</small></span><span class="l"><span class="zh">红果</span> 1인 하루 이용 시간 (2026 3분기)</span><span class="s">출처: <a href="https://m.21jingji.com/article/20261108/herald/e92734e339efb6456f4ccdf3e5c6575a.html" target="_blank" rel="noopener">21财经, 2026.11.8</a></span></div>
+        <div class="stat"><span class="v">95%<small>이상</small></span><span class="l">2026년 1분기 신규 숏드라마 약 12.8만 편 중 AI 작품 비중 (2분기는 64%)</span><span class="s">출처: <a href="https://www.sixthtone.com/news/1018902/china%E2%80%99s-short-drama-boom-was-built-on-speed.-then-ai-got-faster" target="_blank" rel="noopener">Sixth Tone, 2026.8.24</a> (중국네트워크시청협회 자료)</span></div>
+        <div class="stat"><span class="v">0.1%<small>미만</small></span><span class="l">2026년 1분기 히트율. 만들어지는 작품은 많지만 뜨는 작품은 극소수</span><span class="s">출처: <a href="https://m.21jingji.com/article/20261108/herald/e92734e339efb6456f4ccdf3e5c6575a.html" target="_blank" rel="noopener">21财经, 2026.11.8</a></span></div>
+        <div class="stat"><span class="v">8.51<small>억 명</small></span><span class="l">중국 숏드라마 이용자 (2026.5)</span><span class="s">출처: <a href="https://www.sixthtone.com/news/1018902/china%E2%80%99s-short-drama-boom-was-built-on-speed.-then-ai-got-faster" target="_blank" rel="noopener">Sixth Tone</a>, 西南证券</span></div>
+      </div>
+    </div>
+
+    <div class="block grid-2 reveal" style="align-items:start">
+      <div>
+        <h3 class="sub">순위표에서 직접 확인한 것</h3>
+        <ul class="dots">
+          <li>2026년 4월 <span class="zh">红果</span>는 실사와 AI 작품을 같은 순위표에 올렸고, 직후 AI작 《<span class="zh">菩提临世真人AI版</span>》이 1위에 올랐습니다. <span class="src">(<a href="https://www.lanjinger.com/d/1780314071245200063" target="_blank" rel="noopener">蓝鲸财经</a>)</span></li>
+          <li><span class="zh">红果</span> 웹 통합 热播榜(10월 23일 갱신본)에서 기준작 《<span class="zh">一双手闯出一片天</span>》은 <b>18위(열도 5,942만)</b>였고, 같은 표 상위 20편 안에 <span class="zh">持械入宋</span>, <span class="zh">大唐憨婿</span> 같은 AI작이 실사작과 섞여 있었습니다. <span class="src">(<a href="https://hongguoduanju.com/rank/hot-drama" target="_blank" rel="noopener">红果热播榜</a>)</span></li>
+          <li>최근 반년 동안 <span class="zh">红果</span> 총 열도 상위 10위에 들어간 실사작은 《<span class="zh">十八岁太奶奶驾到 5</span>》 하나뿐이었다는 보도가 있습니다. <span class="src">(<a href="https://thepaper.cn/newsDetail_forward_34431765" target="_blank" rel="noopener">澎湃, 2026.11.9</a>)</span></li>
+        </ul>
+        <p class="small muted">열도(热度)는 조회수가 아니고 날마다 바뀌는 값이라, 이 전시의 모든 지표는 조회 날짜를 함께 적었습니다.</p>
+      </div>
+      <figure class="fig">
+        <img src="assets/photos/beijing_subway_phone.jpg" alt="베이징 지하철 승강장에서 스마트폰을 보는 승객" loading="lazy" data-zoom>
+        <figcaption>세로 화면, 한 화 1~2분. 이동 중에 한 손으로 보는 드라마입니다.<span class="cr">사진: N509FZ, Wikimedia Commons, CC BY-SA 4.0</span></figcaption>
+      </figure>
+    </div>
+
+    <figure class="fig block-sm reveal">
+      <img src="assets/slides/task2/p-05.png" alt="2주차 발표자료 5쪽: 红果热播榜과 AI剧推荐榜 앱 화면 캡처" loading="lazy" data-zoom>
+      <figcaption>2주차 발표에서 보인 <span class="zh">红果热播榜</span>(전체 인기 순위)과 <span class="zh">AI剧推荐榜</span>(AI 작품 추천 순위) 앱 화면. AI 작품과 실사 작품이 같은 순위에서 경쟁합니다.<span class="cr">조원 캡처 (팀 발표자료 Task 2, 5쪽) · 출처: 红果短剧</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===================== 2. 질문 ===================== -->
+<section class="room soft" id="question" data-room="질문" data-short="02 질문" data-desc="연구 문제 두 가지와 잠정적 주장">
+  <div class="wrap">
+    <header class="room-head reveal">
+      <div class="room-no">전시실 02 <span class="tag">질문</span></div>
+      <h2 class="title"><span class="ph">인기 AI 숏드라마의 매력은</span> <span class="ph">어디에 있을까?</span></h2>
+      <p class="lead"><b>연구 주제:</b> 사람들은 왜 AI 숏드라마에 열광하는가? <span class="ph">중국 AI 숏드라마의 인기 요인과 문화적 의미</span></p>
+    </header>
+
+    <div class="grid-2 reveal">
+      <div class="card">
+        <span class="k">연구 문제 ① 현상 분석</span>
+        <h3>인기 AI 숏드라마의 서사, 시각적 특징은 어떻게 나타나며 실사와 무엇이 다른가?</h3>
+      </div>
+      <div class="card">
+        <span class="k">연구 문제 ② 의미 해석</span>
+        <h3>그 특징은 시청자의 정서적 만족과 새로운 관람 경험에 어떤 의미인가?</h3>
+      </div>
+    </div>
+
+    <div class="band block-sm reveal">
+      <span class="k">잠정적 주장</span>
+      <p class="claim">인기 AI 숏드라마는 기존 숏폼의 <span class="hl">정서적 만족</span>을 계승하면서, <span class="ph">AI가 구현하는 <span class="hl">새로운 시각적 경험</span>을 결합한다.</span></p>
+    </div>
+
+    <div class="block reveal">
+      <h3 class="sub">지난 발표의 한계를 어떻게 보완했는가?</h3>
+      <div class="grid-2" style="margin-top:20px">
+        <div class="card">
+          <span class="k" style="color:var(--muted)">MISSION 2 · 지난 발표</span>
+          <h3>빠른 갈등 + 즉각적 보상</h3>
+          <ul class="dots">
+            <li>인기 요인을 넓게 나열</li>
+            <li>실사 숏드라마와 공통된 특징</li>
+            <li>실제 작품, 시청 근거가 부족</li>
+          </ul>
+        </div>
+        <div class="card" style="border-color:var(--accent)">
+          <span class="k">MISSION 3 · 이번 발표</span>
+          <h3>구체적 작품 + 비교 + 해석</h3>
+          <ul class="dots">
+            <li>《<span class="zh">一双手闯出一片天</span>》 중심 분석</li>
+            <li>《<span class="zh">莞城往事</span>》, 실사작과 비교</li>
+            <li>《<span class="zh">持械入宋</span>》으로 AI 볼거리 검토</li>
+          </ul>
+        </div>
+      </div>
+      <div class="interp">
+        <span class="k">핵심 보완</span>
+        <p>막연한 인기 설명 → <span class="ph">장면과 자료가 뒷받침하는 하나의 주장</span></p>
+      </div>
+      <div class="grid-2 block-sm" style="align-items:start">
+        <blockquote class="quote">
+          <p>지금까지는 흔하게 결론 및 생각해 볼 수 있는 정도이고 결론이 넓게 나올 가능성이 있다. 구체적인 작품을 선정해서 보충할 필요가 있다.</p>
+          <cite>2주차(Task 2) 교수님 피드백 · 3주차 연구의 출발점</cite>
+        </blockquote>
+        <div>
+          <h4 class="mini">연구의 흐름 (발표 3회)</h4>
+          <ol class="ol-clean">
+            <li><b>1주차 (11.2) Mission 1 주제 발표</b><br><span class="small muted">질문 설정, 연구 중점 3가지 (획일화, AI의 변화, 시청 이유)</span></li>
+            <li><b>2주차 (11.9) Task 2 연구 구상</b><br><span class="small muted">연구 문제 2개와 잠정적 주장 확정</span></li>
+            <li><b>3주차 (11.16) Mission 3 연구의 논거</b><br><span class="small muted">기준작 + 비교작으로 근거 ①②③ 연결</span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="block reveal">
+      <h3 class="sub">이 전시를 읽는 방법</h3>
+      <p class="prose muted" style="margin-top:0">교수님의 논증 형식은 <b style="color:var(--ink)">자료 → 해석 → 논거 → 주장</b>입니다. 근거는 세 갈래로 찾고 서로 연결합니다. 장면을 캡처하거나 논문을 찾은 것은 아직 자료이고, 그것이 주장을 어떻게 받치는지 설명해야 논거가 됩니다.</p>
+      <div class="grid-3" style="margin-top:22px">
+        <div class="card"><span class="k">근거 ① 작품 내부</span><p>장면, 대사, 인물 관계, 공간, 서사 구조, 이미지</p><p class="small"><a href="#base">전시실 03~07 →</a></p></div>
+        <div class="card"><span class="k">근거 ② 작품 외부</span><p>학술 논문, 작가와 제작진 인터뷰, 기사, 제작 유통 자료</p><p class="small"><a href="#external">전시실 09 →</a></p></div>
+        <div class="card"><span class="k">근거 ③ 사회문화적 맥락</span><p>플랫폼 변화, 이용자, 산업, 사회 현상</p><p class="small"><a href="#context">전시실 10 →</a></p></div>
+      </div>
+      <h4 class="mini block-sm">분석 축 4개 (연구 문제 ①)</h4>
+      <div class="grid-4">
+        <a class="card hover" href="#compare" style="color:inherit;text-decoration:none"><span class="k">축 ①</span><h3>서사 구조</h3><p class="small muted">갈등 제시 속도, 억압에서 역전으로</p></a>
+        <a class="card hover" href="#theme" style="color:inherit;text-decoration:none"><span class="k">축 ②</span><h3>소재와 배경</h3><p class="small muted">시대 기억과 평범한 직업</p></a>
+        <a class="card hover" href="#face" style="color:inherit;text-decoration:none"><span class="k">축 ③</span><h3>인물 이미지</h3><p class="small muted">서로 닮아 가는 AI 얼굴</p></a>
+        <a class="card hover" href="#spectacle" style="color:inherit;text-decoration:none"><span class="k">축 ④</span><h3>볼거리</h3><p class="small muted">실사로는 비싼 장면</p></a>
+      </div>
+    </div>
+    <div class="src-foot">출처: 팀 발표자료 Mission 3 (2026.11.16) 1~3쪽, Task 2 연구 구상 (2026.11.9)</div>
+  </div>
+</section>
+
+<!-- ===================== 3. 기준작 ===================== -->
+<section class="room" id="base" data-room="기준작 전시실" data-short="03 기준작" data-desc="一双手闯出一片天: 2분 안에 갈등을 압축하다">
+  <div class="wrap">
+    <header class="room-head reveal">
+      <div class="room-no">전시실 03 <span class="tag">기준작 · 근거 ① 작품 내부</span></div>
+      <h2 class="title"><span class="ph zh">《一双手闯出一片天》:</span> <span class="ph">2분 안에 갈등을 압축하다</span></h2>
+      <p class="lead">교수님 피드백대로 작품 하나를 <b>기준점</b>으로 고정했습니다. 다른 작품과 자료는 모두 이 작품을 설명하거나 비교하는 근거로 씁니다.</p>
+    </header>
+
+    <div class="base-grid reveal">
+      <div class="phone-col">
+        <figure>
+          <div class="phone"><div class="screen">
+            <video src="assets/video/yishuangshou_ep1_intro_30s.mp4" poster="assets/frames/yishuangshou/ys_00m03s.jpg" muted playsinline controls preload="metadata" aria-label="一双手闯出一片天 1화 도입부 30초 영상"></video>
+          </div></div>
+          <figcaption class="phone-cap"><b>1화 도입부 30초</b> (소리 끔으로 시작)<br>첫 30초 안에: 끊어지기 직전의 와이어와 곧바로 터지는 갈등, 이름과 직함 자막으로 끝내는 인물 소개, 화면 하단 고정 문구 ‘<span class="zh">作品由AI生成</span>’.<span class="cr" style="display:block;margin-top:6px">출처: 红果短剧 / <span class="zh">一双手闯出一片天</span> · 영상: <a href="https://www.youtube.com/watch?v=3F80jCzxyj4" target="_blank" rel="noopener">YouTube 합본(KK爱看)</a> 도입부 30초 클립</span></figcaption>
+        </figure>
+      </div>
+      <div>
+        <p class="work-title" lang="zh-CN">一双手闯出一片天</p>
+        <p class="work-sub">두 손으로 일군 세상 (팀의 한국어 의역) · <span class="zh">红果短剧</span> · AI 실사풍(<span class="zh">仿真人</span>) · 126화</p>
+        <div class="tags"><span class="zh">逆袭</span><span class="zh">都市</span><span class="zh">剧情</span><span class="zh">重生</span><span>AI 제작</span></div>
+        <p><b>줄거리.</b> 하이청 제1기계공장의 고급 선반공(<span class="zh">钳工</span>) 왕톄주(<span class="zh">王铁柱</span>)는 남을 챙기다 기회를 번번이 양보합니다. 회귀 후 더는 기다리지 않고 허름한 수리점에서 창업합니다.</p>
+        <p class="small muted">선정 이유: 선정 당시 <span class="zh">红果</span> AI剧 인기 1위, 전체 숏드라마 5위 무렵 (조원 캡처 기준). 1화(115초) 안에 갈등, 사고, 죽음, 회귀가 모두 나오고 2화에서 첫 반격이 시작됩니다.</p>
+        <table class="kv" style="margin-top:18px">
+          <thead><tr><th>기본 정보</th><th>2026.11.2 조회</th><th>2026.11.9 조회</th></tr></thead>
+          <tbody>
+            <tr><th>순위 표기</th><td>AI剧热播榜 9위</td><td>표기 없음</td></tr>
+            <tr><th>열도(热度)</th><td>5,915만</td><td>4,873만</td></tr>
+            <tr><th>평점</th><td>7.1</td><td>7.5</td></tr>
+            <tr><th>좋아요</th><td>156.5만</td><td>187.7만</td></tr>
+            <tr><th>저장</th><td>41.9만</td><td>51.4만</td></tr>
+            <tr><th>회차</th><td>126화</td><td>126화</td></tr>
+          </tbody>
+        </table>
+        <p class="src">출처: <a href="https://hongguoduanju.com/detail?series_id=7696903115634658329" target="_blank" rel="noopener">红果短剧 작품 페이지</a>. 수치는 조회일마다 바뀝니다.</p>
+        <ul class="dots small" style="margin-top:14px">
+          <li><b>AI 표기:</b> 모든 화면 하단에 “<span class="zh">作品由AI生成，虚构演绎，仅供娱乐，请勿代入现实</span>”(AI 생성, 허구, 오락용)이 고정돼 있습니다.</li>
+          <li><b>시대 배경:</b> 직급 추천 명단(<span class="zh">晋升推荐名额</span>), 고급 선반공 같은 국영 공장 체제가 나옵니다. 정확한 연도는 화면에 나오지 않습니다.</li>
+          <li><b>분량:</b> <span class="zh">红果</span> 공식 플레이어 기준 1~5화 길이는 116, 86, 114, 61, 58초(평균 약 87초)입니다. YouTube 합본은 회차마다 앞뒤를 잘라 이어 붙여 실제보다 짧으므로 길이 근거로 쓰지 않습니다.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-3 block reveal">
+      <div class="stat accent"><span class="v">약 18<small>초</small></span><span class="l">1화 첫 갈등</span><span class="s">0:04 미래 장면 예고 뒤 0:18 “이 밧줄은 못 써”</span></div>
+      <div class="stat accent"><span class="v">1화 말미</span><span class="l">죽음, 회귀</span><span class="s">1화 끝 1:49에 회귀</span></div>
+      <div class="stat accent"><span class="v">누적 2:30</span><span class="l">첫 반격</span><span class="s">2화, “이제야 내 차례야”</span></div>
+    </div>
+    <p class="small muted" style="margin-top:10px">세 수치 모두 <span class="zh">红果</span> 공식 플레이어 기준 (2026.11.9 팀 확인).</p>
+
+    <div class="block reveal">
+      <h3 class="sub">1화 첫 2분 30초: 억압에서 회귀, 반격까지</h3>
+      <div class="hs-ctrl">
+        <div class="legend hint">
+          <span><i style="background:var(--k-bg)"></i>배경</span>
+          <span><i style="background:var(--k-oppress)"></i>억압·사고</span>
+          <span><i style="background:var(--k-turn)"></i>전환(회귀)</span>
+          <span><i style="background:var(--k-strike)"></i>반격</span>
+        </div>
+        <button class="icon-btn" type="button" data-hs="prev" data-target="ysTimeline" aria-label="이전 장면"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button class="icon-btn" type="button" data-hs="next" data-target="ysTimeline" aria-label="다음 장면"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="hs" id="ysTimeline" tabindex="0" aria-label="1화 장면 타임라인 (가로로 넘기기)"></div>
+      <p class="small muted">장면 시간은 <b>YouTube 합본 기준</b>입니다 (<span class="zh">红果</span> 공식 플레이어보다 10~20초 이릅니다. 예: 회귀 장면은 <span class="zh">红果</span> 1:49, YouTube 1:30). 출처: 红果短剧 / <span class="zh">一双手闯出一片天</span>, YouTube 합본 화면 캡처.</p>
+
+      <div class="interp">
+        <span class="k">해석</span>
+        <p>배신 → 회귀 → 기회를 되찾는 선택. <span class="ph">“노동, 기술로 인정받고 싶은 욕망”을</span> <span class="ph">짧은 서사에 응축합니다.</span></p>
+      </div>
+      <p class="prose" style="margin-top:16px">설명 없이 2분 안에 억압, 전환, 반격의 한 바퀴가 완결됩니다. 시청자는 짧은 시간에 정서적 보상 한 단위를 받습니다. 억압의 가해자가 아내와 친구, 곧 가장 가까운 사람이라는 점도 눈에 띕니다. 아내는 가슴을 다친 남편보다 다리를 다친 친구를 먼저 챙깁니다.</p>
+
+      <details class="more">
+        <summary>1화 초반 3분 장면 기록 전체 보기 (YouTube 합본 시간 기준)</summary>
+        <div class="in">
+          <div class="table-wrap">
+            <table class="data" style="min-width:560px">
+              <thead><tr><th>시간</th><th>장면과 자막</th><th>서사 기능</th></tr></thead>
+              <tbody>
+                <tr><th>0:00</th><td>공장, 크레인에 매달린 감속기</td><td>배경 제시(설명 없음)</td></tr>
+                <tr><th>0:08</th><td>마즈창(<span class="zh">马志强</span>) 이름 자막, “일단 감속기부터 옮기고 교체하자”</td><td>갈등 발생</td></tr>
+                <tr><th>0:16</th><td>스승 류서우이(<span class="zh">刘守义</span>) “톄주가 쓸 수 없다고 했어”</td><td>주인공의 전문성 제시</td></tr>
+                <tr><th>0:20~0:24</th><td>“작업 반 시간 늦어져도 안 죽어” / “사고 나면 내가 책임진다”</td><td>갈등 심화</td></tr>
+                <tr><th>0:36~0:40</th><td>와이어가 끊어짐, “조심해!”</td><td>사고</td></tr>
+                <tr><th>0:48~0:56</th><td>아내 쉬시우쥐안(<span class="zh">许秀娟</span>)이 다리 다친 마즈창을 돌봄, 피 흘리는 톄주는 “시우쥐안”을 부름</td><td>주인공 억압(배신)</td></tr>
+                <tr><th>1:04~1:20</th><td>“톄주는 가슴을 다쳤어” / “즈창은 다리잖아”, 마즈창을 먼저 차에 태움</td><td>억압 극대화</td></tr>
+                <tr><th>1:28~1:32</th><td>톄주의 죽음, “<span class="zh">十五年前</span>(15년 전)”, 약혼 식사 자리</td><td>회귀(전환)</td></tr>
+                <tr><th>1:41~1:46</th><td>시우쥐안 “네 진급 추천 자리 말인데”</td><td>전생의 양보 상황 재현</td></tr>
+                <tr><th>2:01~2:40</th><td>“어차피 고급 선반공이잖아” → 톄주 “지금 내게 가장 필요한 건 기회야”, “이제야 내 차례야”</td><td>첫 반격(양보 거부)</td></tr>
+                <tr><th>2:46</th><td>“고작 조장 자리잖아”</td><td>다음 갈등 예고</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">4~6초 간격으로 직접 확인한 기록입니다. 이 표의 시간은 YouTube 합본 기준이라 위의 수치 카드(<span class="zh">红果</span> 기준)와 10~20초 차이가 납니다.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="block reveal">
+      <h3 class="sub">공간의 변화: 공장과 가정에서 수리점으로</h3>
+      <div class="flow" style="margin:18px 0 22px">
+        <div class="step"><b>국영 공장</b><span>진급 추천을 양보하는 조직의 공간</span></div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="step"><b>약혼 식사 자리</b><span>양보를 거부하는 공간</span></div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="step"><b>허름한 수리점</b><span>자기 기술로 서는 공간</span></div>
+      </div>
+      <div class="hs-ctrl">
+        <span class="hint">합본 시간대별 장면 (가로로 넘기기)</span>
+        <button class="icon-btn" type="button" data-hs="prev" data-target="ysSpace" aria-label="이전 장면"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button class="icon-btn" type="button" data-hs="next" data-target="ysSpace" aria-label="다음 장면"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="hs" id="ysSpace" tabindex="0" aria-label="공간 변화 장면 (가로로 넘기기)"></div>
+      <p class="small muted">시간은 YouTube 합본 기준. 출처: 红果短剧 / <span class="zh">一双手闯出一片天</span>, YouTube 합본 화면 캡처.</p>
+      <div class="interp">
+        <span class="k">해석</span>
+        <p>공장에서 수리점으로의 공간 이동은 <span class="ph">“남을 위해 양보하던 사람”이</span> <span class="ph">“자기 기술로 서는 사람”으로</span> <span class="ph">바뀌는 보상을 눈에 보이게 합니다.</span></p>
+      </div>
+    </div>
+
+    <div class="block grid-2 reveal" style="align-items:start">
+      <div>
+        <h3 class="sub">전체 흐름</h3>
+        <p class="small muted" style="margin-top:-6px">합본 시간대별 표본 확인 (YouTube 합본 기준)</p>
+        <ol class="ol-clean">
+          <li><b>0~5분</b> 전생의 죽음과 회귀, 양보 거부</li>
+          <li><b>5~20분</b> 마즈창, 아내와의 갈등이 공장과 가정에서 반복</li>
+          <li><b>20분 무렵</b> 공장을 떠남</li>
+          <li><b>40분 이후</b> 수리점(<span class="zh">修配铺</span>)에서 부품 가공, 도면 검토 등 기술로 인정받는 과정</li>
+        </ol>
+      </div>
+      <div>
+        <h3 class="sub">이 작품만의 특징</h3>
+        <ul class="dots">
+          <li><b>보상의 종류가 “복수”보다 “기술과 성실”입니다.</b> 자막에 “내가 기술이 좋으니까”, “자기가 만든 건 끝까지 봐야지” 같은 대사가 반복됩니다.</li>
+          <li><b>억압의 가해자가 가족과 친구입니다.</b> <span class="zh">南方都市报</span>가 인기 AI 만화극 100편에서 찾은 “절반 가까이가 가까운 사람에게 상처받으며 시작”과 같은 패턴입니다.</li>
+          <li><b>사이다가 절제돼 있습니다.</b> 시청자 댓글에 “주인공이 다 용서한다”, “돈을 성실하게 번다”, “주인공을 버린 연인이 벌을 안 받는다”는 반응이 있습니다. 극단적 복수극과 다른 지점입니다. <span class="badge aux">시청자 반응 · 보조 근거</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="src-foot">출처: <a href="https://hongguoduanju.com/detail?series_id=7696903115634658329" target="_blank" rel="noopener">红果短剧 《一双手闯出一片天》 작품 페이지</a> · <a href="https://www.youtube.com/watch?v=3F80jCzxyj4" target="_blank" rel="noopener">YouTube 1~126화 합본 (KK爱看)</a> · <a href="https://news.qq.com/rain/a/20260428A01UPT00" target="_blank" rel="noopener">南方都市报, 2026.4.28</a> · 팀 관찰 기록 (2026.11.9)</div>
+  </div>
+</section>
+
+<!-- ===================== 4. 비교 / 축① 서사 ===================== -->
+<section class="room soft" id="compare" data-room="비교 전시실 · 서사 구조" data-short="04 비교" data-desc="서사는 반복된다. 반격의 배치는 어떻게 다른가?">
+  <div class="wrap">
+    <header class="room-head reveal">
+      <div class="room-no">전시실 04 <span class="tag">비교 · 분석 축 ① 서사 구조</span></div>
+      <h2 class="title"><span class="ph">서사는 반복된다.</span> <span class="ph">반격의 배치는</span> <span class="ph">어떻게 다른가?</span></h2>
+      <p class="lead">비교작은 기준작과 <b>제작 방식(AI/실사)과 소재 중 하나만 다른</b> 작품으로 골랐습니다. 모두 <span class="zh">红果</span> 순위에 오른 작품입니다. 무엇을 비교하려는지 분명해야 결론이 좁아집니다.</p>
+    </header>
+
+    <div class="works reveal" id="works"></div>
+    <p class="small muted" style="margin-top:12px">지표는 2026.11.9 조회. 실사 작품(<span class="zh">小镇是非多</span>, <span class="zh">十八岁太奶奶驾到</span>)은 실존 배우가 나오므로 얼굴 사진을 싣지 않고 텍스트와 데이터로만 비교합니다. 작품명의 한국어는 팀의 의역입니다.</p>
+
+    <div class="block-sm reveal">
+      <h3 class="sub">왜 이 조합인가</h3>
+      <div class="grid-2">
+        <div class="card"><span class="k">기준 vs <span class="zh">莞城往事</span></span><p>제작 방식과 장르가 같고, 주인공이 “배신당한 기술자”라는 점도 같습니다. 두 작품이 닮아 있을수록 “AI가 검증된 공식을 반복 생산한다”는 주장이 구체화됩니다.</p></div>
+        <div class="card"><span class="k">기준 vs <span class="zh">小镇是非多</span></span><p>소재와 정서(배신, 성실한 재기)가 같고 제작 방식만 다릅니다. 여기서 나오는 차이가 곧 “AI 숏드라마만의 특징”입니다. 교수님 피드백에 가장 직접적으로 답하는 비교입니다.</p></div>
+        <div class="card"><span class="k"><span class="zh">持械入宋</span></span><p>AI가 공식을 반복할 뿐 아니라 새로운 볼거리도 만든다는 반대 방향의 근거입니다. 주장을 균형 있게 만들어 줍니다.</p></div>
+        <div class="card"><span class="k"><span class="zh">十八岁太奶奶驾到 5</span></span><p>최근 반년 동안 <span class="zh">红果</span> 총 열도 상위 10위에 들어간 유일한 실사작이라는 보도가 있습니다. 실사가 경쟁력을 갖는 조건을 보여 줍니다. <span class="src">(<a href="https://thepaper.cn/newsDetail_forward_34431765" target="_blank" rel="noopener">澎湃, 2026.11.9</a>)</span></p></div>
+      </div>
+    </div>
+
+    <div class="block reveal">
+      <div class="grid-2" style="align-items:center">
+        <div>
+          <span class="badge ai">AI 비교작</span>
+          <h3 class="sub" style="margin-top:10px">《<span class="zh">莞城往事</span>》: 배신 → 기회 → 기술로 인정</h3>
+          <p>2005년 둥관 기차역에 맨몸으로 도착한 주인공 천환. 여자친구에게 돈을 뜯기고 85위안만 남았습니다. 고향 사람마저 외면하지만, 집주인의 시험(“지금 세탁기 고쳐 봐”)을 통과하며 기술로 인정받기 시작합니다.</p>
+          <div class="band" style="padding:24px 26px">
+            <span class="k">《一双手》 · 《莞城往事》 공통점</span>
+            <p class="claim" style="font-size:clamp(18px,2.2vw,23px)">“배신당한 기술자가 <span class="ph">자신의 능력으로 다시 일어선다”</span></p>
+          </div>
+          <p class="small muted" style="margin-top:12px">다른 점은 회귀 대신 귀인(집주인)이 전환 장치라는 것입니다.</p>
+        </div>
+        <figure class="fig">
+          <img src="assets/visuals/07_guancheng_first5min.jpg" alt="자료 7. 莞城往事 첫 5분 장면 모음: 3:12 억압, 5:10 전환, 5:22 반격" loading="lazy" data-zoom>
+          <figcaption>자료 7. <span class="zh">莞城往事</span>(AI) 첫 5분. “배신당한 기술자가 바닥에서 기술로 인정받는” 구조가 기준작과 같습니다. (시간은 YouTube 합본 기준)<span class="cr">출처: 红果短剧 / <span class="zh">莞城往事：八十五块闯出亿万身家</span> · 팀 제작(작품 화면 캡처 조합)</span></figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- 차트 1 -->
+    <div class="chart-card block reveal" id="chartReversalCard">
+      <h3>첫 반격이 나오는 시점: <span class="ph">AI 3편은 9분 안,</span> <span class="ph">실사는 11분까지 없음</span></h3>
+      <p class="cs">1~5화 초반부 관찰 결과 · <span class="zh">红果</span> 공식 플레이어 1화 시작부터의 누적 시간 · 2026.11.9 팀 확인</p>
+      <div class="chart-legend" id="legendReversal"></div>
+      <div class="chart" id="chartReversal" role="img" aria-label="첫 갈등과 첫 반격 시점 비교 차트. 一双手闯出一片天 첫 갈등 18초, 첫 반격 2분 30초. 莞城往事 첫 갈등 5초, 첫 반격 3분 56초. 持械入宋 첫 갈등 0초, 첫 반격 8분 30초. 小镇是非多 첫 갈등 56초, 10분 56초까지 반격 없음."></div>
+      <p class="table-note">점에 마우스를 올리거나 눌러 보면 장면 설명이 나옵니다. 같은 데이터는 아래 비교 기록표에 있습니다.</p>
+    </div>
+
+    <!-- 차트 2 -->
+    <div class="chart-card block-sm reveal">
+      <h3>길이는 차이가 아니다: <span class="ph">AI 87~117초,</span> <span class="ph">실사 129~131초</span></h3>
+      <p class="cs">1~5화 한 화 길이(초) · 점 하나가 한 회차, 세로 막대가 평균 · <span class="zh">红果</span> 공식 플레이어 기준</p>
+      <div class="chart-legend" id="legendLength"></div>
+      <div class="chart" id="chartLength" role="img" aria-label="1~5화 회차 길이 비교. 평균 一双手 87초, 莞城往事 109초, 持械入宋 117초, 小镇是非多 131초, 十八岁太奶奶驾到5 130초."></div>
+      <p class="table-note">차이는 “짧아서”보다 “갈등과 보상을 어디에 놓느냐”에서 나옵니다.</p>
+    </div>
+
+    <!-- 차트 3 -->
+    <div class="chart-card block-sm reveal">
+      <h3>회차 끝 갈고리(<span class="zh">钩子</span>): <span class="ph">AI는 대결·위기로,</span> <span class="ph">실사는 여운으로</span></h3>
+      <p class="cs">1~5화 마지막 장면의 유형 · <span class="badge obs">관찰 결과</span></p>
+      <div class="chart-legend">
+        <span class="sw"><span class="chip strong" style="padding:1px 8px">대결 · 위기</span> 다음 화로 끊어 넘김</span>
+        <span class="sw"><span class="chip soft" style="padding:1px 8px">여운</span> 인물의 표정과 여운으로 끊음</span>
+        <span class="sw"><span class="chip" style="padding:1px 8px">그 밖</span></span>
+      </div>
+      <div class="hooks" id="hooks"></div>
+    </div>
+
+    <!-- 비교 기록표 -->
+    <div class="block reveal">
+      <h3 class="sub">비교 기록표</h3>
+      <p class="small muted" style="margin-top:-4px">각 작품 1~5화를 <span class="zh">红果</span> 공식 플레이어에서 직접 확인 (2026.11.9). 표가 넓으면 옆으로 밀어 보세요.</p>
+      <div class="table-wrap"><table class="data" id="compareTable"></table></div>
+      <p class="table-note">반전 횟수, <span class="zh">钩子</span> 유형, 얼굴 유사도, 실사로 찍기 어려운 장면 수는 각 화를 여러 지점에서 확인한 <b>팀의 관찰 결과</b>이며 측정값이 아닙니다. 시간은 <span class="zh">红果</span> 공식 플레이어 기준입니다. YouTube 합본은 회차마다 앞뒤가 잘려 있어 시간이 10~20초씩 앞당겨집니다(예: <span class="zh">一双手</span>의 회귀 장면은 <span class="zh">红果</span> 1:49, YouTube 1:30).</p>
+    </div>
+
+    <div class="block-sm reveal">
+      <h3 class="sub">표에서 읽히는 점</h3>
+      <div class="grid-2">
+        <div class="card"><span class="k">갈등 제시 속도</span><p>AI 3편은 첫 갈등이 0~18초 안에 나오고, 첫 반격이 누적 2분 30초~8분 30초 안에 옵니다. 같은 배신 서사의 실사작 <span class="zh">小镇是非多</span>는 첫 갈등이 약 56초이고 5화(약 11분)까지 반격이 없습니다.</p></div>
+        <div class="card"><span class="k">길이는 차이가 아님</span><p>한 화 길이는 AI 작품(평균 87~117초)과 실사(131초)가 크게 다르지 않습니다. 실사 1위 <span class="zh">十八岁太奶奶驾到 5</span>도 1~5화 평균 약 130초(173, 103, 157, 90, 124초)입니다.</p></div>
+        <div class="card"><span class="k">엔딩 방식</span><p>AI 작품은 회차 끝을 대결이나 위기로 끊고, 실사작은 인물의 표정과 여운으로 끊는 경우가 많습니다.</p></div>
+        <div class="card"><span class="k">AI 안의 두 갈래</span><p><span class="zh">一双手</span>와 <span class="zh">莞城往事</span>는 “배신당한 기술자의 창업 역전”이라는 같은 공식을 반복하고, <span class="zh">持械入宋</span>은 실사로 찍기 어려운 볼거리를 넓힙니다.</p></div>
+      </div>
+    </div>
+
+    <div class="block reveal">
+      <h3 class="sub">업계와 연구가 이미 확인한 서사 공식</h3>
+      <div class="grid-3">
+        <div class="card"><span class="k">3단 구조 90% 이상</span><p><span class="zh">南方都市报</span> 빅데이터연구원이 2026년 4월 <span class="zh">红果</span> 인기 AI 만화극 100편을 분석한 결과, 90% 이상이 “<span class="zh">压抑-开挂-打脸</span>(억압, 치트키, 복수)” 3단 구조였습니다. 회귀와 타임슬립이 가장 흔한 출발 장치였습니다.</p><p class="src"><a href="https://news.qq.com/rain/a/20260428A01UPT00" target="_blank" rel="noopener">南方都市报, 2026.4.28</a> · <a href="#external">자세히 →</a></p></div>
+        <div class="card"><span class="k">작법 규칙</span><p>숏드라마 대본은 회당 약 500자, 매 회가 한 단락을 끝내고 다음 화로 넘기는 <span class="zh">钩子</span>(갈고리)를 남기는 것이 기본입니다. 유료 결제 지점은 보통 10, 20, 30화입니다.</p><p class="src"><a href="https://www.tmtpost.com/6955421.html" target="_blank" rel="noopener">新榜/钛媒体, 2024.2</a></p></div>
+        <div class="card"><span class="k"><span class="zh">爽点</span>의 인플레이션</span><p>한 편이 뜨면 따라 만든 작품 수십 편이 나오며 시청자의 “사이다 내성”이 올라갑니다. 그 결과 “10초마다 반전”이 강제되고 1.5배속, 2배속 시청이 일상이 됐다는 분석입니다.</p><p class="src"><a href="https://www.yzwb.net/news/wy/202511/t20251126_293847.html" target="_blank" rel="noopener">扬子晚报, 2025.11</a></p></div>
+      </div>
+    </div>
+
+    <figure class="fig block reveal wide-scroll">
+      <div class="scroll-x"><img src="assets/visuals/09_first_reversal_chart.png" alt="팀 발표자료의 첫 반격 시점 차트 이미지" loading="lazy" data-zoom></div>
+      <p class="swipe-hint">← 옆으로 밀어 보기 →</p>
+      <figcaption>참고: 3주차 발표에 쓴 차트 이미지 버전. 위의 차트는 같은 데이터(<code>data/comparison.json</code>)로 다시 그린 것입니다.<span class="cr">팀 제작</span></figcaption>
+    </figure>
+    <div class="src-foot">출처: 팀 관찰 기록 (<span class="zh">红果</span> 공식 플레이어, 2026.11.9) · 작품 페이지: <a href="https://hongguoduanju.com/detail?series_id=7696903115634658329" target="_blank" rel="noopener">一双手闯出一片天</a>, <a href="https://hongguoduanju.com/detail?series_id=7698351941423729689" target="_blank" rel="noopener">莞城往事</a>, <a href="https://hongguoduanju.com/detail?series_id=7703408432757361688" target="_blank" rel="noopener">小镇是非多之同床异梦</a>, <a href="https://hongguoduanju.com/detail?series_id=7671966197985856536" target="_blank" rel="noopener">持械入宋</a>, <a href="https://hongguoduanju.com/detail?series_id=7701935931787316286" target="_blank" rel="noopener">十八岁太奶奶驾到 5</a></div>
+  </div>
+</section>
+
+<!-- ===================== 5. 축② 소재와 배경 ===================== -->
+<section class="room" id="theme" data-room="소재와 배경" data-short="05 소재" data-desc="재벌도 신선도 아닌, 공장의 선반공">
+  <div class="wrap">
+    <header class="room-head reveal">
+      <div class="room-no">전시실 05 <span class="tag">분석 축 ② 소재와 배경</span></div>
+      <h2 class="title"><span class="ph">재벌도 신선도 아닌,</span> <span class="ph">공장의 선반공</span></h2>
+      <p class="lead">기준작의 무대는 국영 기계공장, 주인공은 선반공입니다. 진급 추천, 수리점 창업처럼 평범한 노동자의 이야기입니다. 이런 소재는 기준작만의 것일까요?</p>
+    </header>
+
+    <div class="grid-2 reveal" style="align-items:start">
+      <div>
+        <ul class="dots">
+          <li><b>AI 실사풍 드라마의 주력 소재.</b> 2026년 9월 <span class="zh">红果</span> AI真人剧榜 상위 20편을 보면, 현대 도시, 1980~90년대, 농촌이 주력이고 중장년 시청자를 겨냥합니다. 남성향 작품은 《<span class="zh">1992，我不做养子了</span>》, 《<span class="zh">重回82</span>》, 《<span class="zh">重回98</span>》처럼 “그 시대로 회귀해 가족을 부자로 만드는” 이야기가 많습니다. <span class="src">(<a href="https://www.tahou.com/article/216743922749182981" target="_blank" rel="noopener">塔猴, 2026.9.8</a>)</span></li>
+          <li><b>연대극의 정서.</b> 연대극은 윗세대에게는 집단 기억, 중간 세대에게는 정서적 치유와 현실 반영으로 소비된다는 제작사 인터뷰가 있습니다. <span class="src">(<a href="https://m.gmw.cn/2026-03/20/content_38658979.htm" target="_blank" rel="noopener">人民日报海外版/光明网, 2026.3.20</a>)</span></li>
+          <li><b>평범한 직업 주인공.</b> 수도전기 기사, 직장인, 창업자가 주인공인 “현실 직업극”이 늘고 있으며, <span class="zh">红果</span> AI 창작 프로그램이 어떤 소재든 최소 수익을 보장해 틈새 소재 제작을 부추긴다는 분석입니다. <span class="src">(<a href="https://sina.cn/detail/nixryuh6194868" target="_blank" rel="noopener">新浪, 2026.11.5</a>)</span></li>
+          <li><b>같은 계열이 순위에 반복된다.</b> 11.9 AI剧 상위 20편만 봐도 《<span class="zh">莞城往事</span>》, 《<span class="zh">猎王的养家路</span>》, 《<span class="zh">破产返乡：我靠赶山养女逆袭</span>》 등이 “회귀 + 연대 + 남성 노동자/가장” 계열입니다. <span class="src">(<a href="https://hongguoduanju.com/rank/hot-ai-drama" target="_blank" rel="noopener">红果 AI剧热播榜</a>)</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="mini">누가 보는가: <span class="zh">红果</span> 이용자 연령</h4>
+        <div class="grid-2" style="gap:12px">
+          <div class="stat accent"><span class="v">28%</span><span class="l">45~54세 (가장 많음)</span></div>
+          <div class="stat accent"><span class="v">25.4%</span><span class="l">55세 이상</span></div>
+        </div>
+        <p class="src">출처: CSM 분석, <a href="https://m.163.com/dy/article/KV76LOMA0556EWZH.html" target="_blank" rel="noopener">网易</a>. 이용자 절반 이상이 45세 이상입니다.</p>
+        <p class="small" style="margin-top:14px">하위 도시 시청자는 대부분 40대 이상이며 감정적 울림을 가장 중시한다는 업계 인터뷰도 있습니다. <span class="src">(<a href="https://www.caixinglobal.com/2026-06-01/cover-story-how-ai-took-over-chinas-micro-drama-industry-in-90-days-102449814.html" target="_blank" rel="noopener">Caixin, 2026.6.1</a>)</span></p>
+      </div>
+    </div>
+
+    <figure class="fig block reveal">
+      <img src="assets/visuals/06_ai_chart_posters.jpg" alt="자료 6. 红果 AI剧热播榜 작품 포스터 12편" loading="lazy" data-zoom>
+      <figcaption>자료 6. <span class="zh">红果 AI剧热播榜</span>에 오른 작품들 (2026.11.9 조회). “돌아온 실력자”, “가난한 척한 부자”, “시간이동” 같은 설정이 제목에서부터 반복됩니다. 초록 테두리는 이번 비교작입니다.<span class="cr">출처: 红果短剧 / 각 작품 공식 포스터 · 팀 제작(작품 화면 캡처 조합)</span></figcaption>
+    </figure>
+
+    <div class="interp reveal">
+      <span class="k">해석</span>
+      <p>기준작이 주는 보상은 막연한 “사이다”가 아니라 <span class="ph">노동, 기술, 세대 기억,</span> <span class="ph">다시 사는 인생이라는</span> <span class="ph">구체적인 종류입니다.</span> 중장년 이용자가 많은 플랫폼에서 이 소재는 공감의 통로가 됩니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 6. 축③ 인물 이미지 ===================== -->
+<section class="room soft" id="face" data-room="얼굴 전시실" data-short="06 얼굴" data-desc="서로 닮아 가는 AI 얼굴">
+  <div class="wrap">
+    <header class="room-head reveal">
+      <div class="room-no">전시실 06 <span class="tag">분석 축 ③ 인물 이미지</span></div>
+      <h2 class="title"><span class="ph">비슷한 얼굴,</span> <span class="ph">그래도 본다</span></h2>
+      <p class="lead">기준작의 남녀 주인공은 모두 전형적인 미형 얼굴입니다. 다른 AI 작품의 주인공들과 나란히 놓으면 매끈한 피부, 또렷한 이목구비의 비슷한 얼굴로 모입니다.</p>
+    </header>
+
+    <figure class="fig reveal">
+      <img src="assets/visuals/03_ai_face_comparison.jpg" alt="자료 3. AI 실사풍 인물 얼굴 비교: 기준작, 비교작, 红果 AI 인기작의 남녀 주인공 얼굴" loading="lazy" data-zoom>
+      <figcaption>자료 3. AI 실사풍 인물 얼굴 비교. 기준작(파란 테두리), 비교작 <span class="zh">莞城往事</span>와 <span class="zh">持械入宋</span>(초록), <span class="zh">红果 AI剧热播榜</span> 작품 포스터(회색, 2026.11.9)의 인물이 매끈한 피부, 또렷한 이목구비의 비슷한 미남미녀형으로 모입니다. 실사 비교작은 실존 배우라 얼굴 사진을 싣지 않고 비교 기록표의 관찰 결과로 대신합니다.<span class="cr">출처: 红果短剧 / <span class="zh">一双手闯出一片天</span>, <span class="zh">莞城往事</span>, <span class="zh">持械入宋</span> 장면 및 AI剧热播榜 작품 포스터 · 팀 제작(작품 화면 캡처 조합)</span></figcaption>
+    </figure>
+
+    <div class="grid-2 block-sm reveal" style="align-items:start">
+      <figure class="fig">
+        <img src="assets/visuals/04_same_character_face_drift.jpg" alt="자료 4. 같은 주인공 왕톄주가 장면마다 다른 얼굴로 보이는 비교" loading="lazy" data-zoom>
+        <figcaption>자료 4. 같은 인물(옷차림 기준)인데도 장면마다 얼굴이 조금씩 달라집니다. 포스터 얼굴은 다른 AI 작품의 남자 주인공(자료 3)과 더 닮아 있습니다. “고빈도 AI 얼굴”과 “인물 일관성” 문제를 한 번에 보여 줍니다.<span class="cr">출처: 红果短剧 / <span class="zh">一双手闯出一片天</span> · 팀 제작(작품 화면 캡처 조합)</span></figcaption>
+      </figure>
+      <div>
+        <h4 class="mini">얼굴 유사도 <span class="badge obs">관찰 결과 · 팀 판단</span></h4>
+        <div class="table-wrap">
+          <table class="data" style="min-width:0">
+            <tbody>
+              <tr><th class="zh">一双手 <span class="badge ai">AI</span></th><td><b>상</b><span class="sub">매끈한 미남미녀형, 같은 인물도 장면마다 얼굴이 바뀜</span></td></tr>
+              <tr><th class="zh">莞城往事 <span class="badge ai">AI</span></th><td><b>중상</b><span class="sub">주인공은 개성 있는 장발, 조연 얼굴이 장면마다 흔들림</span></td></tr>
+              <tr><th class="zh">持械入宋 <span class="badge ai">AI</span></th><td><b>상</b><span class="sub">대원들의 이목구비가 서로 비슷한 미남형</span></td></tr>
+              <tr><th class="zh">小镇是非多 <span class="badge real">실사</span></th><td><b>하</b><span class="sub">실제 배우, 평범한 생활형 외모 (사진 미수록)</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="block reveal">
+      <div class="grid-2" style="align-items:start">
+        <div>
+          <span class="badge base">플랫폼이 직접 인정한 문제</span>
+          <h3 class="sub" style="margin-top:12px"><span class="zh">红果</span>, AI 인물 창작 규범 공고 (2026.7.22)</h3>
+          <blockquote class="quote">
+            <p>서로 다른 작품, 다른 인물에 고도로 비슷한 외모를 쓰지 말라.</p>
+            <cite>「<span class="zh">关于规范AI剧角色创作的公告</span>」(AI극 인물 창작 규범에 관한 공고) 취지 · 사용자의 심미적 피로를 막기 위해 “고빈도 AI 얼굴” 재사용을 특별 단속 · <a href="https://www.ithome.com/0/980/822.htm" target="_blank" rel="noopener">IT之家, 2026.7.23</a></cite>
+          </blockquote>
+          <p class="small" style="margin-top:16px"><b>기술적 원인.</b> 바이트댄스 모델팀 관계자는 “모호한 프롬프트는 표준화된, 서로 비슷한 결과물을 낸다”고 말합니다. <span class="src">(<a href="https://www.caixinglobal.com/2026-06-01/cover-story-how-ai-took-over-chinas-micro-drama-industry-in-90-days-102449814.html" target="_blank" rel="noopener">Caixin, 2026.6.1</a>)</span></p>
+        </div>
+        <div>
+          <h4 class="mini">시청자 반응의 양면 <span class="badge aux">보조 근거</span></h4>
+          <div class="grid-2" style="gap:10px">
+            <div class="card" style="padding:18px"><p style="font-weight:600">“배우보다 예쁘다, 실사 웹드라마보다 낫다”</p></div>
+            <div class="card" style="padding:18px"><p style="font-weight:600">“얼굴이 다 똑같다, 눈빛이 비었다”</p></div>
+          </div>
+          <p class="src">출처: <a href="https://ent.sina.cn/2026-07-11/detail-inihkyif8281652.d.html" target="_blank" rel="noopener">新浪娱乐, 2026.7.11</a>. 기준작 비교작 <span class="zh">莞城往事</span> 댓글에는 후반부에 주인공 얼굴이 바뀐다는 지적도 있습니다.</p>
+          <div class="interp">
+            <span class="k">해석</span>
+            <p>인간과 거의 같은 인공 얼굴은 오히려 거부감을 준다는 “불쾌한 골짜기”(Mori, 1970)가 있는데도 상위권을 유지한다면, <span class="ph">시청자가 얼굴의 어색함보다</span> <span class="ph">이야기 보상을 더 크게 여긴다는</span> <span class="ph">해석이 가능합니다.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 7. 축④ 볼거리 ===================== -->
+<section class="room" id="spectacle" data-room="볼거리 전시실" data-short="07 볼거리" data-desc="持械入宋: 실사에서 부담 큰 장면을 AI로">
+  <div class="wrap">
+    <header class="room-head reveal">
+      <div class="room-no">전시실 07 <span class="tag">분석 축 ④ 볼거리 · 근거 ① 작품 내부</span></div>
+      <h2 class="title"><span class="ph zh">《持械入宋》:</span> <span class="ph">실사에서 부담 큰 장면을</span> <span class="ph">AI로 구현</span></h2>
+      <p class="lead">현대 특수부대 5명이 무기를 들고 송나라로 시간여행을 떠나는 이야기. 첫 장면부터 장갑차가 절벽으로 떨어집니다.</p>
+    </header>
+
+    <div class="grid-4 reveal" id="chixieFrames"></div>
+    <p class="small muted" style="margin-top:12px">시간은 YouTube 합본 기준. 출처: 红果短剧 / <span class="zh">持械入宋 第一季</span>, YouTube 합본 화면 캡처.</p>
+
+    <figure class="fig block-sm reveal wide-scroll">
+      <div class="scroll-x"><img src="assets/visuals/08_chixie_first13min.jpg" alt="자료 8. 持械入宋 첫 13분 장면 모음" loading="lazy" data-zoom></div>
+      <p class="swipe-hint">← 옆으로 밀어 보기 →</p>
+      <figcaption>자료 8. <span class="zh">持械入宋</span>(AI) 첫 13분. 장갑차 추락, 표범, 기병 습격처럼 실사로는 제작비가 큰 장면이 연달아 나옵니다. 8:00 장면의 “<span class="zh">AI制作，无真实动物受伤</span>”(AI 제작, 실제 동물 피해 없음) 표기는 볼거리 축의 직접 근거입니다. (시간은 YouTube 합본 기준)<span class="cr">출처: 红果短剧 / <span class="zh">持械入宋 第一季</span> · 팀 제작(작품 화면 캡처 조합)</span></figcaption>
+    </figure>
+
+    <div class="block grid-2 reveal" style="align-items:start">
+      <div>
+        <h4 class="mini">실사로 찍기 어려운 장면 수 (1~5화) <span class="badge obs">관찰 결과</span></h4>
+        <div class="table-wrap">
+          <table class="data" style="min-width:0">
+            <tbody>
+              <tr><th class="zh">持械入宋 <span class="badge ai">AI</span></th><td><b>4 이상</b><span class="sub">장갑차 추락, 시간이동, 맹수, 활 공격</span></td></tr>
+              <tr><th class="zh">莞城往事 <span class="badge ai">AI</span></th><td><b>1~2</b><span class="sub">2005년 기차역 군중</span></td></tr>
+              <tr><th class="zh">一双手 <span class="badge ai">AI</span></th><td><b>1</b><span class="sub">크레인 낙하 사고</span></td></tr>
+              <tr><th class="zh">小镇是非多 <span class="badge real">실사</span></th><td><b>0</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small" style="margin-top:14px">기준작도 크레인 와이어가 끊어지는 사고, 대규모 공장 세트, 피 흘리는 부상 장면을 첫 1분에 넣었습니다. 실사라면 세트와 특수효과 비용이 드는 장면입니다.</p>
+      </div>
+      <div>
+        <blockquote class="quote">
+          <p>AI의 강점은 하늘에서 신선 둘이 싸우는 장면이지, 농촌 집 앞에서 사람들이 싸우는 장면이 아니다.</p>
+          <cite>왕환(<span class="zh">王欢</span>), <span class="zh">周图文化</span> 대표 · <a href="https://www.sixthtone.com/news/1018902/china%E2%80%99s-short-drama-boom-was-built-on-speed.-then-ai-got-faster" target="_blank" rel="noopener">Sixth Tone, 2026.8.24</a></cite>
+        </blockquote>
+        <ul class="dots small" style="margin-top:18px">
+          <li>AI 오프닝 한 컷은 30분 이내였고, 와이어 액션은 최소 반나절이 걸렸다는 감독 증언이 있습니다. <span class="src">(Sixth Tone, 2026.8.24)</span></li>
+          <li>AI는 현환, SF, 선협, 말세처럼 실사로는 비용과 위험이 큰 장르를 채웠습니다. <span class="src">(<a href="https://news.qq.com/rain/a/20260804A0CW0100" target="_blank" rel="noopener">爱范儿/腾讯新闻, 2026.8.4</a>)</span></li>
+          <li><span class="zh">持械入宋</span>은 대규모 전투 장면으로 “AI 숏드라마의 천장”이라는 평을 듣습니다. <span class="src">(<a href="https://www.huxiu.com/article/4901031.html" target="_blank" rel="noopener">新榜/虎嗅, 2026.10.28</a>)</span></li>
+          <li><span class="zh">持械入宋</span> 총감독 허시우산(<span class="zh">何秀山</span>): AI 배우의 입모양과 표정은 실사보다 조금 부족하지만, 시청자가 공감하면 받아들여진다. <span class="src">(<a href="https://m.21jingji.com/article/20261108/herald/e92734e339efb6456f4ccdf3e5c6575a.html" target="_blank" rel="noopener">21财经, 2026.11.8</a>)</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="band block-sm reveal">
+      <span class="k">해석</span>
+      <p class="claim">AI의 차별성은 “더 빠른 전개”뿐 아니라, <span class="ph">저예산으로도 표현 가능한</span> <span class="ph">장면의 범위를 넓히는 데 있다.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 8. 상영관 ===================== -->
+<section class="room soft" id="theater" data-room="상영관" data-short="08 상영관" data-desc="작품 장면을 직접 보기">
+  <div class="wrap">
+    <header class="room-head reveal">
+      <div class="room-no">전시실 08 <span class="tag">상영관</span></div>
+      <h2 class="title"><span class="ph">직접 보기:</span> <span class="ph">장면 클립</span></h2>
+      <p class="lead">앞에서 본 장면을 영상으로 확인해 보세요. 기준작은 YouTube 합본의 해당 구간만 골라 재생하고, 비교작은 장면 스틸과 <span class="zh">红果</span> 공식 페이지로 연결합니다.</p>
+    </header>
+    <div class="tabs reveal" role="tablist" id="theaterTabs" aria-label="작품 선택"></div>
+    <div class="theater reveal">
+      <div class="stage" id="stage"></div>
+      <div id="playlistWrap"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 9. 외부 근거 ===================== -->
+<section class="room" id="external" data-room="외부 근거" data-short="09 외부 근거" data-desc="연구, 설문, 업계 분석, 제작자 인터뷰">
+  <div class="wrap">
+    <header class="room-head reveal">
+      <div class="room-no">전시실 09 <span class="tag">근거 ② 작품 외부</span></div>
+      <h2 class="title"><span class="ph">시청 동기와 서사적 만족을</span> <span class="ph">외부 자료로 검증</span></h2>
+      <p class="lead">작품에서 본 특징이 우리의 개인적 감상이 아님을 보여 주는 자료입니다.</p>
+    </header>
+
+    <div class="grid-2 reveal" style="align-items:stretch">
+      <div class="card">
+        <span class="k">학술 연구</span>
+        <h3 style="font-size:26px">‘소원 성취(<span class="zh">遂愿</span>)’</h3>
+        <p><b>司若, 高祎伟 (2026)</b>, 인기 숏드라마 100편의 내용 분석. 고밀도 갈등, 갑작스러운 반전이 정서적 보상과 현실 보상의 욕망을 자극합니다.</p>
+        <p class="small muted">사건 6유형과 인물 7유형의 조합이 “소원 성취” 중심의 정서적 만족을 만든다. 급반전, 촘촘한 갈등, 극단적 인물, 파편적 시청이 특징이고, 카타르시스, 집중, 자아실현, 현실 결핍의 보상 욕구를 채운다.</p>
+        <p class="src">「<span class="zh">微短剧如何生产情绪价值: 基于"遂愿"机制的原型叙事研究</span>」. 《<span class="zh">全球传媒学刊</span>》 13(3), 3–19, 2026.6.11 · <a href="https://qqcm.cbpt.cnki.net/portal/journal/portal/client/paper/24c911704acc37fa9d46e75972f33ba4" target="_blank" rel="noopener">초록</a></p>
+      </div>
+      <div class="card" id="surveyCard">
+        <span class="k">시청 행태 조사</span>
+        <h3 style="font-size:26px">308명 <span class="small muted" style="font-weight:500">AI 숏드라마 시청 설문</span></h3>
+        <div class="meter"><div class="top"><span>빠른 전개, 반전, 해소감</span><b>51.3%</b></div><div class="bar"><i data-w="51.3"></i></div></div>
+        <div class="meter"><div class="top"><span>AI 영상에 대한 호기심</span><b>40.0%</b></div><div class="bar"><i data-w="40"></i></div></div>
+        <p class="src">출처: 《<span class="zh">半岛晨报</span>》, 다롄외국어대 2026.5.25 (n=308, 비확률표본)</p>
+      </div>
+    </div>
+    <div class="interp reveal">
+      <span class="k">해석</span>
+      <p>기존 서사의 정서적 보상과 <span class="ph">AI 기술에 대한 새로운 호기심이</span> <span class="ph">동시에 작용할 수 있다.</span></p>
+    </div>
+
+    <div class="block grid-2 reveal" style="align-items:stretch">
+      <div class="card">
+        <span class="k">AI 만화극 서사 분석</span>
+        <div class="stat" style="border:0;padding:0;margin:4px 0 10px"><span class="v">90%<small>이상</small></span></div>
+        <p>인기 AI 만화극 100편 중 <b>억압 → 기회, 능력 획득 → 반격</b> 구조가 반복됨. 절반 가까이는 가까운 가족이나 친구에게 상처받으며 시작했고, 기사는 이를 “이름과 직업만 바꾸면 되는 빈칸 채우기”라고 표현합니다.</p>
+        <p class="small muted">같은 날 인기 순위 1위와 9위가 줄거리가 거의 같은 두 편(《<span class="zh">菩提临世</span>》 계열)이었고, 인물 이름까지 같은 작품도 10편 이상 발견됐습니다.</p>
+        <p class="src"><a href="https://news.qq.com/rain/a/20260428A01UPT00" target="_blank" rel="noopener">南方都市报, 2026.4.28</a></p>
+      </div>
+      <div class="card">
+        <span class="k">제작자 인터뷰</span>
+        <h3 style="font-size:22px">비현실적 장면의 구현</h3>
+        <p>일상적인 대화보다 신선들의 전투처럼 실사 촬영의 제약이 큰 장면에서 AI의 강점이 두드러진다는 설명. 검증된 히트작의 저예산 리메이크에 집중한다고 밝혔습니다.</p>
+        <p class="src"><span class="zh">周图文化</span> 왕환 · <a href="https://www.sixthtone.com/news/1018902/china%E2%80%99s-short-drama-boom-was-built-on-speed.-then-ai-got-faster" target="_blank" rel="noopener">Sixth Tone, 2026.8.24</a></p>
+      </div>
+    </div>
+    <div class="interp reveal">
+      <span class="k">해석</span>
+      <p>기존 이야기 공식의 반복 + <span class="ph">AI가 확장한 표현 가능성</span></p>
+    </div>
+
+    <div class="block reveal">
+      <h3 class="sub">이론과 전문가 논거</h3>
+      <p class="prose muted" style="margin-top:0">해석(연구 문제 ②)의 뼈대는 司若 외(2026)의 “소원 성취” 메커니즘입니다. 이 밖의 이론은 반복이 쾌락이자 표준화라는 양면을 읽는 데 씁니다.</p>
+      <div class="table-wrap" style="margin-top:16px">
+        <table class="data">
+          <thead><tr><th>근거</th><th>핵심 내용</th><th>받쳐 주는 주장</th></tr></thead>
+          <tbody>
+            <tr><th>司若, 高祎伟 (2026). 《全球传媒学刊》 13(3)</th><td>인기 숏드라마 100편 내용분석. 사건 6유형과 인물 7유형의 조합이 “소원 성취” 중심의 정서적 만족을 만든다</td><td>연구 문제 ①②. 주장의 학술적 뼈대</td></tr>
+            <tr><th>Hu, R. &amp; Li, Y. (2026). <i>Bingeing on daydreams</i>. Global Media and China</th><td>셴양시(<span class="zh">咸阳</span>) 시청자 24명 경험표집, 인터뷰, 댓글 4,189개 분석. 시청자는 “상향 이동을 꿈꾸는 드리머”, “쾌락 추구자” 등 4유형. 숏드라마를 “매운 과자”처럼 싸고 가벼운 스트레스 해소로 쓴다</td><td>정서적 대리만족 (시청자 쪽 보조 근거)</td></tr>
+            <tr><th>김윤희 (2026). 《대중서사연구》 32(3)</th><td>회귀 서사의 관습(선악 구도, 유능한 주인공, 성공만 보여 주는 닫힌 결말)은 대리만족을 주지만 사회적 모순을 가릴 수 있다. 에코의 “위안의 장치” 개념</td><td>기준작의 회귀 구조 해석</td></tr>
+            <tr><th>Cawelti (1976). <i>Adventure, Mystery, and Romance</i></th><td>공식 서사는 예측 가능성에서 오는 안정감과 현실 도피를 동시에 준다. 표준화와 약간의 변주가 함께 있어야 사랑받는다</td><td>“검증된 공식”이 지루함이 아니라 쾌락이 되는 이유</td></tr>
+            <tr><th>Adorno &amp; Horkheimer (1947). 「문화산업」</th><td>문화산업은 표준화된 상품을 대량 생산하고, 제목과 얼굴만 바꾼 “사이비 개성”으로 차이를 연출한다</td><td>AI가 획일화를 심화한다는 비판적 해석</td></tr>
+            <tr><th>Zillmann (1988). Mood management theory</th><td>사람들은 지루함과 스트레스를 해소하도록 미디어를 선택한다</td><td>즉각적 자극의 기능</td></tr>
+            <tr><th>Katz, Blumler &amp; Gurevitch (1974). Uses and gratifications</th><td>수용자는 목적을 갖고 매체를 골라 욕구를 채운다</td><td>“왜 보는가”를 설명하는 기본 틀</td></tr>
+            <tr><th>간헐적 강화(Skinner), 자이가르닉 효과(1927)</th><td>불확실한 보상과 끝나지 않은 이야기가 다음 화를 보게 만든다. 중국 언론이 심리상담사를 인용해 AI 숏드라마 중독성을 이렇게 설명</td><td>회차 끝 <span class="zh">钩子</span>와 1~2분 단위 보상</td></tr>
+            <tr><th>Mori (1970). 불쾌한 골짜기</th><td>인간과 거의 같은 인공 얼굴은 오히려 거부감을 준다</td><td>반론: 그런데도 본다는 것은 얼굴보다 이야기 보상이 크다는 뜻</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="mini block-sm">전문가와 업계 발언</h4>
+      <div class="grid-3">
+        <blockquote class="quote"><p style="font-size:16px">AI 배우의 입모양과 표정은 실사보다 조금 부족하지만, 시청자가 공감하면 받아들여진다.</p><cite>허시우산(<span class="zh">何秀山</span>), <span class="zh">持械入宋</span> 총감독 · 21财经 2026.11.8</cite></blockquote>
+        <blockquote class="quote"><p style="font-size:16px">AI가 제작비를 낮출수록 좋은 이야기와 연출 아이디어가 결정적이 된다.</p><cite>탕지리(<span class="zh">唐季礼</span>), 홍콩 감독, 베이징국제영화제 AIGC 심사위원장 · 21财经 2026.11.8</cite></blockquote>
+        <blockquote class="quote"><p style="font-size:16px">정품화가 숏드라마의 존립 기반이다.</p><cite>허비아오(<span class="zh">何飚</span>), 국가광보총국 부국장 (2026.11.5 포럼) · 21财经 2026.11.8</cite></blockquote>
+        <blockquote class="quote"><p style="font-size:16px">AI의 강점은 하늘의 신선 싸움이지 농촌 집 앞 다툼이 아니다.</p><cite>왕환(<span class="zh">王欢</span>), <span class="zh">周图文化</span> 대표 · Sixth Tone 2026.8.24</cite></blockquote>
+        <blockquote class="quote"><p style="font-size:16px">숏드라마는 빠르고 감정적으로 퍼지기 때문에 진심이 담길수록 넓게 전해진다.</p><cite>탕융화(<span class="zh">汤拥华</span>), 화둥사범대 중문과 교수 · <a href="https://paper.people.com.cn/zgcsb/pc/content/202604/27/content_30153450.html" target="_blank" rel="noopener">中国城市报 2026.4.27</a></cite></blockquote>
+        <blockquote class="quote"><p style="font-size:16px">갈고리와 <span class="zh">爽点</span>이 약하면 대본을 거의 다시 쓴다.</p><cite>원루(<span class="zh">温儒</span>), 숏드라마 작가 · <a href="https://www.tmtpost.com/6955421.html" target="_blank" rel="noopener">新榜/钛媒体</a></cite></blockquote>
+      </div>
+      <p class="small muted" style="margin-top:12px">발언은 출처 기사의 취지를 옮긴 것입니다. 고전 이론(Cawelti, Adorno와 Horkheimer, Zillmann, Katz 외, Mori)은 원전 서지 정보만 적었습니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 10. 맥락과 반론 ===================== -->
+<section class="room soft" id="context" data-room="맥락과 반론" data-short="10 맥락" data-desc="AI는 제작을 확장하지만 흥행을 보장하지는 않는다">
+  <div class="wrap">
+    <header class="room-head reveal">
+      <div class="room-no">전시실 10 <span class="tag">근거 ③ 사회문화적 맥락 · 반론</span></div>
+      <h2 class="title"><span class="ph">AI는 제작을 확장하지만</span> <span class="ph">흥행을 보장하지는 않는다</span></h2>
+    </header>
+
+    <div class="grid-3 reveal">
+      <div class="card">
+        <span class="k">생산의 변화</span>
+        <h3 style="font-size:24px">제작 문턱 하락</h3>
+        <p>제작비와 시간이 줄어들어 다양한 장르를 시도할 여지가 커졌습니다.</p>
+        <ul class="dots small">
+          <li>제작비: 실사 30~40만 위안, 스태프 약 40명 → AI 10만 위안 미만(2만 위안 미만도), 10명 미만 <span class="src">(Caixin)</span></li>
+          <li>제작 기간: 수개월 → 7~15일 <span class="src">(21财经)</span> / 실사 1~3개월 → AI 20~30일 <span class="src">(蓝鲸财经)</span></li>
+          <li>외주 단가: 분당 800~1,000위안 → 약 200위안 <span class="src">(Caixin)</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="k">선별적 흥행</span>
+        <h3 style="font-size:24px">대량 생산 ≠ 인기</h3>
+        <p>일부 흥행작의 성과만으로 전체 시청 선호를 판단하긴 어렵습니다.</p>
+        <ul class="dots small">
+          <li>2026년 1분기 히트율 0.1% 미만 <span class="src">(21财经 2026.11.8)</span></li>
+          <li>2025년 만화극 6만 편 중 1억 뷰 돌파 96편(0.16%) <span class="src">(蓝鲸财经, DataEye)</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="k">작품 완성도</span>
+        <h3 style="font-size:24px">“속도보다 품질”</h3>
+        <p>제작 편수를 줄이고 대본과 영상 완성도에 집중하는 흐름입니다.</p>
+        <ul class="dots small">
+          <li>“정품화가 숏드라마의 존립 기반” (허비아오, 국가광보총국 부국장)</li>
+          <li>“제작비가 낮을수록 좋은 이야기와 연출 아이디어가 결정적” (탕지리 감독)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="band block-sm reveal">
+      <span class="k">질문의 방향</span>
+      <p class="claim">“AI가 실사보다 인기”가 아니라 <span class="ph"><span class="hl">“어떤 AI 작품이 왜 선택받는가”</span>를 묻는다.</span></p>
+    </div>
+
+    <div class="block reveal">
+      <h3 class="sub">플랫폼과 산업 데이터</h3>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>항목</th><th>수치</th><th>출처</th></tr></thead>
+          <tbody>
+            <tr><th><span class="zh">红果</span> 일간 이용자(DAU)</th><td>1.68억 명 (2026.7, 전년 대비 +107%), 아이치이, 텐센트비디오, 유쿠, 망고TV 합보다 많음</td><td><a href="https://m.21jingji.com/article/20261108/herald/e92734e339efb6456f4ccdf3e5c6575a.html" target="_blank" rel="noopener">中新社/21财经, 2026.11.8</a> (QuestMobile 인용)</td></tr>
+            <tr><th><span class="zh">红果</span> 월간 이용자(MAU)</th><td>3.57억 명</td><td><a href="https://data.eastmoney.com/report/info/AP202610131830417291.html" target="_blank" rel="noopener">西南证券 2026 Q4 전략</a></td></tr>
+            <tr><th><span class="zh">红果</span> 1인 하루 이용 시간</th><td>151분 (2026 3분기)</td><td>21财经, 2026.11.8</td></tr>
+            <tr><th>중국 숏드라마 이용자</th><td>8.51억 명 (2026.5)</td><td>Sixth Tone, 西南证券</td></tr>
+            <tr><th>시장 규모 전망 (2026)</th><td>숏드라마 전체 1,210억 위안, 그중 AI 드라마와 만화극 400억 위안 이상</td><td>西南证券</td></tr>
+            <tr><th>신규 작품 수와 AI 비중</th><td>2026 1분기 약 12.8만 편 중 95% 이상 AI, 2분기는 64%</td><td><a href="https://www.sixthtone.com/news/1018902/china%E2%80%99s-short-drama-boom-was-built-on-speed.-then-ai-got-faster" target="_blank" rel="noopener">Sixth Tone, 2026.8.24</a> (중국네트워크시청협회 자료)</td></tr>
+            <tr><th>히트율</th><td>2026 1분기 0.1% 미만 / 2025년 만화극 6만 편 중 1억 뷰 돌파 96편(0.16%)</td><td>21财经 2026.11.8 / <a href="https://www.lanjinger.com/d/1780314071245200063" target="_blank" rel="noopener">蓝鲸财经</a> (DataEye)</td></tr>
+            <tr><th>제작비</th><td>실사 30~40만 위안, 스태프 약 40명 → AI 10만 위안 미만(2만 위안 미만도), 10명 미만</td><td><a href="https://www.caixinglobal.com/2026-06-01/cover-story-how-ai-took-over-chinas-micro-drama-industry-in-90-days-102449814.html" target="_blank" rel="noopener">Caixin, 2026.6.1</a></td></tr>
+            <tr><th>제작 기간</th><td>수개월 → 7~15일 / 실사 1~3개월 → AI 20~30일</td><td>21财经 2026.11.8 / 蓝鲸财经</td></tr>
+            <tr><th>외주 단가</th><td>분당 800~1,000위안 → 약 200위안 (연산비 수준)</td><td>Caixin</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note"><span class="zh">红果</span>는 실사극, AI극, 만화극(<span class="zh">漫剧</span>)을 따로 분류하고, 시장 통계는 두 AI 유형을 합치는 경우가 많습니다. 수치는 원 출처가 밝혀진 것만 썼습니다.</p>
+    </div>
+
+    <div class="block grid-2 reveal" style="align-items:start">
+      <div>
+        <h3 class="sub">규제와 플랫폼 대응</h3>
+        <ol class="vtl">
+          <li><span class="d">2026.10.21</span><span class="c"><span class="zh">红果</span>, 휴식과 수면 알림 추가, 코인 기능 폐지 계획 발표</span><span class="s">21财经 2026.11.8</span></li>
+          <li class="key"><span class="d">2026.9.1</span><span class="c">《<span class="zh">微短剧发展管理办法</span>》 시행: AI로 만든 숏드라마는 매 회 잘 보이는 곳에 표시, 금지 내용 11개 항목</span><span class="s"><a href="https://m.gmw.cn/2026-08/02/content_1304541635.htm" target="_blank" rel="noopener">光明网, 2026.8.2</a></span></li>
+          <li class="key"><span class="d">2026.7.22</span><span class="c"><span class="zh">红果</span>, AI 인물 창작 규범 공고: 비슷한 ‘AI 얼굴’ 반복 단속</span><span class="s"><a href="https://www.ithome.com/0/980/822.htm" target="_blank" rel="noopener">IT之家</a></span></li>
+          <li><span class="d">2026.5 무렵</span><span class="c"><span class="zh">红果</span>, 실사작 최소수익 보장 15억 위안 이상으로 확대(편당 평균 약 60% 증가)</span><span class="s"><a href="https://en.jiemian.com/article/14417967.html" target="_blank" rel="noopener">界面 Global</a></span></li>
+          <li><span class="d">2026.4.7</span><span class="c"><span class="zh">红果</span>와 더우인, 심사 기준 강화</span><span class="s">南方都市报</span></li>
+          <li><span class="d">2026.4.1</span><span class="c">광전총국 규정 시행: AI 생성 숏드라마와 만화극 사전 등록, AI 표시 의무</span><span class="s">南方都市报</span></li>
+          <li><span class="d">2026.2</span><span class="c">바이트댄스 Seedance 2.0 출시(초당 약 1위안), <span class="zh">红果</span> 중소 실사작 보장 축소</span><span class="s">Sixth Tone, Caixin</span></li>
+          <li><span class="d">2025.9.1</span><span class="c">《<span class="zh">人工智能生成合成内容标识办法</span>》 시행: AI 생성물 표시 의무화</span><span class="s"><a href="https://www.stdaily.com/web/gdxw/2025-09/01/content_393211.html" target="_blank" rel="noopener">科技日报</a></span></li>
+        </ol>
+        <p class="small">기준작 화면 하단의 “<span class="zh">作品由AI生成</span>” 문구는 이 표시 의무에 따른 것입니다. 즉 <b>“AI인 줄 알고도 본다”</b>는 우리 현상은 법적 표시로 보장된 사실입니다.</p>
+      </div>
+      <div>
+        <figure class="fig">
+          <img src="assets/visuals/05_hongguo_recommended_posters.jpg" alt="자료 5. 红果 작품 페이지에서 기준작과 함께 추천되는 작품 포스터들" loading="lazy" data-zoom>
+          <figcaption>자료 5. <span class="zh">红果</span>가 기준작과 함께 추천한 AI 작품 포스터 (2026.11.2 조회). 장르는 다르지만 금빛 큰 제목, 정면을 응시하는 미형 얼굴, 회귀와 역습 키워드라는 문법이 같습니다. 추천 알고리즘이 같은 공식의 작품을 묶어 보여 준다는 플랫폼 맥락의 근거입니다.<span class="cr">출처: 红果短剧 / 각 작품 공식 포스터 · 팀 제작(작품 화면 캡처 조합)</span></figcaption>
+        </figure>
+        <figure class="fig block-sm">
+          <img src="assets/photos/hengdian_film_studio.jpg" alt="헝뎬 영화촬영소의 드라마 촬영 현장" loading="lazy" data-zoom>
+          <figcaption>헝뎬 영화촬영소의 드라마 촬영 현장. 사람이 직접 찍던 중국 숏드라마 제작의 중심입니다. AI 제작이 늘며 이런 현장의 일감과 초상권, 저작권 문제가 함께 논의됩니다.<span class="cr">사진: Whisper of the heart, Wikimedia Commons, CC BY-SA 4.0</span></figcaption>
+        </figure>
+        <div class="card block-sm">
+          <span class="k">이용자 반응과 담론 <span class="badge aux">보조 근거</span></span>
+          <p class="small">기준작 댓글의 “전개가 빠르고 그 시대답다”, “성실하게 돈을 번다”. 한편 “보다 보면 뇌가 멍해진다”는 시청자 담론과 중독성 비판도 함께 나타납니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="interp reveal">
+      <span class="k">해석</span>
+      <p>이 구조는 한 작품이 아니라 <span class="ph">플랫폼 전체에서 대량으로</span> <span class="ph">생산되고 소비되는 흐름입니다.</span> 동시에 획일화에 대한 피로와 규제도 함께 나타나고 있습니다.</p>
+    </div>
+
+    <div class="block reveal">
+      <h3 class="sub">예상 반론과 대응</h3>
+      <div class="acc">
+        <details><summary><span class="q">반론 1</span>“빠른 갈등과 보상은 실사 숏드라마도 똑같다”</summary><div class="ans"><p>맞습니다. 그래서 주장을 “AI가 공식을 만들었다”가 아니라 <b>“AI가 기존 공식을 더 싸고, 더 많이, 더 촘촘하게 찍어 낸다”</b>로 좁힙니다. 중국 언론도 “AI가 사이다 우선 작법을 만든 게 아니라 그 길을 넓혔다”고 봅니다. <span class="zh">小镇是非多</span>와의 1:1 비교가 이 차이를 보여 주는 근거입니다.</p><p class="src"><a href="https://m.21jingji.com/article/20261108/herald/e92734e339efb6456f4ccdf3e5c6575a.html" target="_blank" rel="noopener">21财经</a></p></div></details>
+        <details><summary><span class="q">반론 2</span>“사람들이 보는 건 내용이 아니라 무료, 자동재생, 추천 알고리즘 때문이다”</summary><div class="ans"><p>플랫폼 설계가 시청을 늘리는 것은 사실입니다(자동재생, 맞춤 추천, 출석 보상). 다만 같은 플랫폼에서도 히트율은 0.1% 미만입니다. 즉 플랫폼은 조건이고, 어떤 작품이 뜨는지는 내용이 가릅니다. 플랫폼은 배경으로 두고 분석 대상은 작품 텍스트로 한정합니다.</p></div></details>
+        <details><summary><span class="q">반론 3</span>“열도(热度)는 조회수도 아니고 매일 바뀐다”</summary><div class="ans"><p>맞습니다. 기준작도 11.2에 5,915만, 11.9에 4,873만으로 변했습니다. 수치는 날짜별 스냅샷으로만 쓰고, “순위에 올랐다”는 사실(통합 热播榜 18위, AI剧热播榜 9위)을 주된 근거로 씁니다.</p></div></details>
+        <details><summary><span class="q">반론 4</span>“AI 숏드라마 대부분은 망하는데 열광이라 할 수 있나”</summary><div class="ans"><p>히트율 0.1% 미만은 오히려 우리 질문을 날카롭게 합니다. “왜 AI 숏드라마인가”보다 “살아남은 AI 숏드라마는 무엇을 더 잘하는가”를 묻는 것이고, 기준작은 그 살아남은 사례입니다.</p></div></details>
+        <details><summary><span class="q">반론 5</span>“실사도 아직 1위를 한다(太奶奶 5)”</summary><div class="ans"><p>반대 사례로 인정합니다. 실사는 배우에 대한 애착, 시리즈 IP, 연기의 뉘앙스로 이긴다는 분석이 있습니다. 우리 주장의 범위는 “AI가 실사를 대체한다”가 아니라 “AI는 공식형 보상 구조에 특화돼 있다”입니다.</p><p class="src"><a href="https://thepaper.cn/newsDetail_forward_34431765" target="_blank" rel="noopener">澎湃, 2026.11.9</a></p></div></details>
+        <details><summary><span class="q">반론 6</span>“AI 얼굴이 불편하다는 사람도 많다”</summary><div class="ans"><p><span class="zh">红果</span>가 직접 “고빈도 AI 얼굴”을 단속한 것은 이 피로감이 실제로 있다는 뜻입니다. 그런데도 상위권을 유지한다면, 시청자가 얼굴의 어색함보다 이야기 보상을 더 크게 가치 매긴다는 해석이 가능합니다.</p></div></details>
+      </div>
+    </div>
+
+    <div class="block reveal">
+      <h3 class="sub">연구의 범위와 한계</h3>
+      <div class="grid-2">
+        <div class="card"><span class="k">용어 구분</span><p>우리가 다루는 것은 AI 실사풍 드라마(<span class="zh">AI仿真人剧</span>)입니다. <span class="zh">红果</span>는 실사극, AI극, 만화극(<span class="zh">漫剧</span>)을 따로 분류하고, 시장 통계는 두 AI 유형을 합치는 경우가 많습니다.</p></div>
+        <div class="card"><span class="k">표본</span><p>기준작 1편과 비교작 4편입니다. 중국 AI 숏드라마 전체로 일반화하지 않고, <span class="zh">南方都市报</span> 100편 분석과 司若 외 100편 분석으로 보완합니다.</p></div>
+        <div class="card"><span class="k">자료 신뢰도</span><p>중국 보도 중에는 AI가 쓴 기사도 있습니다(예: 新浪 BigNews). 수치는 원 출처(QuestMobile, DataEye, 중국네트워크시청협회)가 밝혀진 것만 씁니다.</p></div>
+        <div class="card"><span class="k">언어</span><p>자막과 댓글은 중국어 원문을 번역해 쓴 것입니다. 장면 시간, 반전 횟수, 얼굴 유사도 같은 기록은 팀의 관찰 결과입니다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 11. 결론 ===================== -->
+<section class="room" id="conclusion" data-room="결론" data-short="11 결론" data-desc="익숙한 정서적 보상 + 새로운 시각적 경험">
+  <div class="wrap">
+    <header class="room-head reveal">
+      <div class="room-no">전시실 11 <span class="tag">논거 종합</span></div>
+      <h2 class="title"><span class="ph">자료 → 해석 →</span> <span class="ph">논거 → 주장</span></h2>
+    </header>
+
+    <div class="chain reveal">
+      <div><span class="n">STEP 1</span><b>자료</b><span>장면 캡처, 기록표, 논문, 기사, 통계</span></div>
+      <div><span class="n">STEP 2</span><b>해석</b><span>그 자료가 무엇을 보여 주는가</span></div>
+      <div><span class="n">STEP 3</span><b>논거</b><span>해석이 주장을 어떻게 받치는가</span></div>
+      <div><span class="n">STEP 4</span><b>주장</b><span>세 갈래 근거가 함께 가리키는 한 문장</span></div>
+    </div>
+
+    <div class="pillars block-sm reveal">
+      <div class="pillar"><span class="k">근거 ①</span><h3>작품 내부</h3><ul><li>《<span class="zh">一双手</span>》: 압축된 갈등, 반격</li><li>《<span class="zh">持械入宋</span>》: AI가 확장한 볼거리</li></ul></div>
+      <div class="pillar"><span class="k">근거 ②</span><h3>작품 외부</h3><ul><li>‘소원 성취’ 서사 연구</li><li>시청 동기 조사, 제작진 인터뷰</li></ul></div>
+      <div class="pillar"><span class="k">근거 ③</span><h3>사회문화적 맥락</h3><ul><li>AI 제작의 진입장벽 감소</li><li>흥행 편중과 완성도 경쟁</li></ul></div>
+    </div>
+
+    <div class="down" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 4v16M6 14l6 6 6-6"/></svg></div>
+
+    <div class="band reveal" style="padding:clamp(36px,5vw,64px) clamp(24px,5vw,64px)">
+      <span class="k">이 근거들이 뒷받침하는 주장</span>
+      <p class="claim" style="font-size:clamp(23px,3.4vw,38px)">AI 숏드라마의 매력은 <span class="ph"><span class="hl">“익숙한 정서적 보상”</span>과</span> <span class="ph"><span class="hl">“새로운 시각적 경험”</span>의</span> <span class="ph">결합에서 찾을 수 있다.</span></p>
+      <p class="note">“AI가 실사보다 인기”가 아니라 “어떤 AI 작품이 왜 선택받는가”를 묻습니다.</p>
+    </div>
+    <div class="src-foot">출처: 팀 발표자료 Mission 3 (2026.11.16) 9쪽 · 각 근거의 출처는 해당 전시실과 아래 출처 목록에 있습니다.</div>
+  </div>
+</section>
+
+<!-- ===================== 12. 심리테스트 ===================== -->
+<section class="room soft" id="quiz" data-room="나의 숏드라마 찾기" data-short="12 테스트" data-desc="6문항으로 나에게 맞는 작품 추천">
+  <div class="wrap">
+    <header class="room-head reveal" style="text-align:center">
+      <div class="room-no" style="justify-content:center">전시실 12 <span class="tag">체험</span></div>
+      <h2 class="title" style="margin-left:auto;margin-right:auto"><span class="ph">나에게 어울리는</span> <span class="ph">숏드라마는?</span></h2>
+      <p class="lead" style="margin:0 auto">여섯 가지 질문에 답하면, 이 전시에서 다룬 다섯 작품 중 당신의 취향에 맞는 한 편을 골라 드립니다.</p>
+    </header>
+    <div class="quiz-shell reveal" id="quizShell" aria-live="polite"></div>
+    <p class="small muted" style="text-align:center;margin-top:16px">재미로 보는 테스트입니다. 결과 설명과 수치는 이 전시의 관찰 결과와 작품 페이지(2026.11.9 조회)를 바탕으로 합니다.</p>
+  </div>
+</section>
+
+<!-- ===================== 13. 아카이브 ===================== -->
+<section class="room" id="archive" data-room="연구 과정 아카이브" data-short="13 아카이브" data-desc="1~3주차 발표 넘겨 보기">
+  <div class="wrap">
+    <header class="room-head reveal">
+      <div class="room-no">전시실 13 <span class="tag">연구 과정 아카이브</span></div>
+      <h2 class="title"><span class="ph">세 번의 발표,</span> <span class="ph">좁혀진 질문</span></h2>
+      <p class="lead">넓은 질문에서 시작해, 피드백을 받아 작품 하나로 좁히고, 근거를 세 갈래로 연결하기까지의 기록입니다.</p>
+    </header>
+    <div class="tabs reveal" role="tablist" id="archiveTabs" aria-label="발표 주차 선택">
+      <button class="tab" role="tab" aria-selected="false" data-week="w1">1주차 · 주제 발표</button>
+      <button class="tab" role="tab" aria-selected="false" data-week="w2">2주차 · 연구 구상</button>
+      <button class="tab" role="tab" aria-selected="true" data-week="w3">3주차 · 연구의 논거</button>
+    </div>
+    <div class="reveal">
+      <div class="viewer week" id="w1" hidden>
+        <div class="week-text">
+          <span class="badge base">MISSION 1 · 2026.11.2</span>
+          <h3 class="sub" style="margin-top:14px">사람들이 AI 숏드라마에 열광하는 이유</h3>
+          <p class="muted" style="margin-top:-6px">《<span class="zh">一双手闯出一片天</span>》으로 본 숏폼 서사의 획일화와 AI 시대의 변화</p>
+          <div class="grid-3" style="margin-top:20px">
+            <div class="card"><span class="k">연구 중점 01</span><p>기존 숏폼 드라마의 서사와 소재 획일화 양상. 선행 자료가 지적한 3단 공식: 억압(무시와 배신) → 전환(신분 공개, 회귀, 치트키) → 반격(복수와 ‘사이다’ 역전)</p></div>
+            <div class="card"><span class="k">연구 중점 02</span><p>AI 숏드라마에서의 획일화 심화 또는 변화. 제작, 서사 구조, 인물, 장르, 제작 방식의 다섯 축으로 비교</p></div>
+            <div class="card"><span class="k">연구 중점 03</span><p>AI 숏드라마 시청 이유. 정서적 보상, 접근성, 볼거리, 세대와 소재. “사람들은 ‘AI라서’ 보는가, 익숙한 이야기 때문에 보는가?”</p></div>
+          </div>
+          <div class="interp"><span class="k">당시의 질문</span><p>AI 숏드라마는 숏폼의 공식을 <span class="ph">반복하는가, 바꾸는가?</span> <span class="ph">그리고 사람들은 그 안에서</span> <span class="ph">무엇을 소비하는가?</span></p></div>
+          <p class="small muted" style="margin-top:18px">1주차 발표는 별도 슬라이드 도구로 만들어 이미지 원본이 없어 텍스트로 정리했습니다. 당시 인용한 수치 중 원 출처가 확인되지 않은 일부는 이후 검증을 거쳐 이 전시에서 제외했습니다.</p>
+        </div>
+      </div>
+      <div class="viewer week" id="w2" hidden data-slides="assets/slides/task2/p-{n}.png" data-count="16" data-label="Task 2 연구 구상 발표자료"></div>
+      <div class="viewer week" id="w3" data-slides="assets/slides/mission3/p-{n}.png" data-count="11" data-label="Mission 3 발표자료"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 14. 만든 사람들 · 출처 ===================== -->
+<section class="room soft" id="credits" data-room="만든 사람들 · 출처" data-short="14 출처" data-desc="팀 역할 분담과 출처 전체 목록">
+  <div class="wrap">
+    <header class="room-head reveal">
+      <div class="room-no">전시실 14 <span class="tag">만든 사람들 · 출처</span></div>
+      <h2 class="title">본 조는 AI로 생성되었습니다</h2>
+      <p class="lead">한양대학교 「중국미디어문화의이해」 3조. 연구 문제와 핵심 주장은 함께 정했습니다.</p>
+    </header>
+    <div class="team reveal">
+      <div class="member"><div class="av">최</div><b>최아령</b><span>조장 · A4 연구 원고</span></div>
+      <div class="member"><div class="av">위</div><b>위명현</b><span>근거 수집</span></div>
+      <div class="member me"><div class="av">이</div><b>이승하</b><span>온라인 전시 (이 사이트)</span></div>
+      <div class="member"><div class="av">김</div><b>김민경</b><span>1분 콘텐츠</span></div>
+    </div>
+    <p class="small muted reveal" style="margin-top:12px">함께 진행: 연구 문제 및 핵심 주장 선정</p>
+
+    <div class="block reveal">
+      <h3 class="sub">출처</h3>
+      <div class="sources">
+        <section>
+          <h4>작품과 플랫폼 (1차 자료)</h4>
+          <ol>
+            <li><a href="https://hongguoduanju.com/detail?series_id=7696903115634658329" target="_blank" rel="noopener">红果短剧 《一双手闯出一片天》 작품 페이지</a></li>
+            <li><a href="https://www.youtube.com/watch?v=3F80jCzxyj4" target="_blank" rel="noopener">YouTube 《一双手闯出一片天》 1~126화 합본 (KK爱看)</a></li>
+            <li><a href="https://hongguoduanju.com/detail?series_id=7698351941423729689" target="_blank" rel="noopener">红果 《莞城往事：八十五块闯出亿万身家》</a></li>
+            <li><a href="https://hongguoduanju.com/detail?series_id=7703408432757361688" target="_blank" rel="noopener">红果 《小镇是非多之同床异梦》</a></li>
+            <li><a href="https://hongguoduanju.com/detail?series_id=7671966197985856536" target="_blank" rel="noopener">红果 《持械入宋：第一季》</a></li>
+            <li><a href="https://hongguoduanju.com/detail?series_id=7701935931787316286" target="_blank" rel="noopener">红果 《十八岁太奶奶驾到，重整家族荣耀第五部》</a></li>
+            <li><a href="https://hongguoduanju.com/rank/hot-drama" target="_blank" rel="noopener">红果热播榜</a>, <a href="https://hongguoduanju.com/rank/hot-ai-drama" target="_blank" rel="noopener">AI剧热播榜</a>, <a href="https://hongguoduanju.com/rank/hot-real-drama" target="_blank" rel="noopener">真人剧热播榜</a></li>
+          </ol>
+        </section>
+        <section>
+          <h4>학술 논문</h4>
+          <ol>
+            <li><a href="https://qqcm.cbpt.cnki.net/portal/journal/portal/client/paper/24c911704acc37fa9d46e75972f33ba4" target="_blank" rel="noopener">司若, 高祎伟 (2026). 微短剧如何生产情绪价值. 全球传媒学刊 13(3)</a></li>
+            <li><a href="https://journals.sagepub.com/doi/10.1177/20594364261487524" target="_blank" rel="noopener">Hu &amp; Li (2026). Bingeing on daydreams. Global Media and China</a></li>
+            <li><a href="https://journal.kci.go.kr/djnar/archive/articlePdf?artiId=ART003401356" target="_blank" rel="noopener">김윤희 (2026). 웹소설 회귀 구조의 ‘위안의 장치’ 비틀기. 대중서사연구 32(3)</a></li>
+            <li><a href="https://www.tsjc.tsinghua.edu.cn/__local/8/D6/97/132DD9412D51B2149856A62508D_F2416130_13574.pdf" target="_blank" rel="noopener">全球传媒学刊 13(3) 목차</a></li>
+            <li>Cawelti, J. G. (1976). <i>Adventure, Mystery, and Romance</i>. Univ. of Chicago Press</li>
+            <li>Adorno &amp; Horkheimer (1947). 「문화산업: 대중 기만으로서의 계몽」, 《계몽의 변증법》</li>
+            <li>Zillmann (1988). Mood management theory · Katz, Blumler &amp; Gurevitch (1974). Uses and gratifications · Mori (1970). 불쾌한 골짜기 · Zeigarnik (1927)</li>
+          </ol>
+        </section>
+        <section>
+          <h4>기사와 보고서</h4>
+          <ol>
+            <li><a href="https://news.qq.com/rain/a/20260428A01UPT00" target="_blank" rel="noopener">南方都市报, 百部漫剧题材相似 (2026.4.28)</a></li>
+            <li><a href="https://m.21jingji.com/article/20261108/herald/e92734e339efb6456f4ccdf3e5c6575a.html" target="_blank" rel="noopener">中新社/21财经, AI短剧“勾”住你了吗 (2026.11.8)</a></li>
+            <li><a href="https://m.21jingji.com/article/20260715/herald/2918781b1a6278de1575a91dee227582.html" target="_blank" rel="noopener">21财经, 从“真人”到“漫人” (2026.7.15)</a></li>
+            <li><a href="https://www.sixthtone.com/news/1018902/china%E2%80%99s-short-drama-boom-was-built-on-speed.-then-ai-got-faster" target="_blank" rel="noopener">Sixth Tone, China's Short-Drama Boom Was Built on Speed (2026.8.24)</a></li>
+            <li><a href="https://www.caixinglobal.com/2026-06-01/cover-story-how-ai-took-over-chinas-micro-drama-industry-in-90-days-102449814.html" target="_blank" rel="noopener">Caixin Global, How AI Took Over China's Micro-Drama Industry in 90 Days (2026.6.1)</a></li>
+            <li><a href="https://en.jiemian.com/article/14417967.html" target="_blank" rel="noopener">Jiemian Global, China's short-video apps want more real people</a></li>
+            <li><a href="https://thepaper.cn/newsDetail_forward_34431765" target="_blank" rel="noopener">澎湃, 真人短剧，不必画地为牢 (2026.11.9)</a></li>
+            <li><a href="https://www.huxiu.com/article/4901031.html" target="_blank" rel="noopener">新榜/虎嗅, 持械入宋 분석 (2026.10.28)</a></li>
+            <li><a href="https://www.tahou.com/article/216743922749182981" target="_blank" rel="noopener">塔猴, 2026年9月红果三大榜单TOP20 (2026.9.8)</a></li>
+            <li><a href="https://data.eastmoney.com/report/info/AP202610131830417291.html" target="_blank" rel="noopener">西南证券, 传媒行业2026年Q4投资策略</a></li>
+            <li><a href="https://www.lanjinger.com/d/1780314071245200063" target="_blank" rel="noopener">蓝鲸财经, AI短剧 히트율과 순위 통합</a></li>
+            <li><a href="https://sina.cn/detail/nixryuh6194868" target="_blank" rel="noopener">新浪, 从水电工到修仙者 (2026.11.5)</a></li>
+            <li><a href="https://ent.sina.cn/2026-07-11/detail-inihkyif8281652.d.html" target="_blank" rel="noopener">新浪娱乐, 观众对AI短剧和真人剧的情感体验 (2026.7.11)</a></li>
+            <li><a href="https://news.qq.com/rain/a/20260804A0CW0100" target="_blank" rel="noopener">爱范儿/腾讯新闻, AI短剧女主接广 (2026.8.4)</a></li>
+            <li><a href="https://www.tmtpost.com/6955421.html" target="_blank" rel="noopener">新榜/钛媒体, 短剧编剧 작법 (2024.2.28)</a></li>
+            <li><a href="https://www.yzwb.net/news/wy/202511/t20251126_293847.html" target="_blank" rel="noopener">扬子晚报, 倍速播放与爽点内卷 (2025.11)</a></li>
+            <li><a href="https://m.163.com/dy/article/KV76LOMA0556EWZH.html" target="_blank" rel="noopener">网易, 十八岁太奶奶와 红果 이용자 연령</a></li>
+            <li><a href="https://m.gmw.cn/2026-03/20/content_38658979.htm" target="_blank" rel="noopener">光明网, 年代剧何以打动老中青三代人 (2026.3.20)</a></li>
+            <li><a href="https://paper.people.com.cn/zgcsb/pc/content/202604/27/content_30153450.html" target="_blank" rel="noopener">中国城市报, 家里家外 (2026.4.27)</a></li>
+            <li><a href="https://www.ithome.com/0/980/822.htm" target="_blank" rel="noopener">IT之家, 红果 高频AI脸 治理 (2026.7.23)</a></li>
+            <li><a href="https://m.gmw.cn/2026-08/02/content_1304541635.htm" target="_blank" rel="noopener">光明网, 微短剧发展管理办法 (2026.8.2)</a></li>
+            <li><a href="https://www.stdaily.com/web/gdxw/2025-09/01/content_393211.html" target="_blank" rel="noopener">科技日报, AI生成合成内容标识办法 시행 (2025.9.1)</a></li>
+            <li>《半岛晨报》, 다롄외국어대 AI 숏드라마 시청 설문 (2026.5.25, n=308, 비확률표본)</li>
+          </ol>
+        </section>
+        <section>
+          <h4>이미지와 영상</h4>
+          <ol>
+            <li>작품 화면과 포스터: 출처 红果短剧 / 각 작품명 (포스터는 작품 페이지 공식 포스터, 2026.11.2 및 11.9 조회)</li>
+            <li>장면 프레임: 각 작품 YouTube 합본 영상의 해당 시간 캡처. 시간은 YouTube 합본 기준(红果 공식 플레이어보다 10~20초 이름)</li>
+            <li>기준작 30초 영상: YouTube 합본 도입부 30초 클립 · 상영관의 영상 클립은 같은 YouTube 합본(KK爱看)의 해당 구간을 임베드 재생</li>
+            <li>자료 1~9: 팀 제작 (작품 화면 캡처를 조합)</li>
+            <li>헝뎬 영화촬영소 사진: Whisper of the heart, Wikimedia Commons, CC BY-SA 4.0</li>
+            <li>베이징 지하철 사진: N509FZ, Wikimedia Commons, CC BY-SA 4.0</li>
+            <li>발표 슬라이드: 3조 팀 발표자료 (Task 2, Mission 3)</li>
+          </ol>
+        </section>
+      </div>
+      <p class="small muted">차트 원본 데이터: <a href="data/comparison.json">data/comparison.json</a> (<span class="zh">红果</span> 공식 웹 플레이어에서 각 작품 1~5화를 직접 확인, 2026.11.9). 시청자 댓글과 반응은 보조 근거로만 썼습니다.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 3조 「본 조는 AI로 생성되었습니다」 · 한양대학교 중국미디어문화의이해</span>
+    <span>모든 수치와 인용에는 출처를 표기했습니다 · <a href="#credits">출처 목록</a></span>
+  </div>
+</footer>
+
+<dialog class="lightbox" id="lightbox" aria-label="이미지 크게 보기">
+  <button class="lb-close" type="button" aria-label="닫기">×</button>
+  <img alt="">
+  <p class="lb-cap"></p>
+</dialog>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/quiz.js"></script>
+</body>
+</html>
