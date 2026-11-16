@@ -8,7 +8,7 @@
     ['works.html', '작품', '기준작과 상영관'],
     ['analysis.html', '분석', '비교와 분석 축 4개'],
     ['evidence.html', '근거', '외부 근거, 맥락, 결론'],
-    ['quiz.html', '테스트', '나에게 맞는 숏드라마'],
+    ['quiz.html', '나에게 어울리는 숏드라마', '6문항 심리테스트'],
     ['about.html', '소개', '아카이브와 출처']
   ];
   var page = document.body.getAttribute('data-page') || 'index.html';
@@ -59,5 +59,75 @@
       '<a href="https://github.com/Jenicoon/ai_short" target="_blank" rel="noopener">GitHub</a></nav>' +
       '<span>3조 「본 조는 AI로 생성되었습니다」 · 한양대학교 중국미디어문화의이해 · 2026</span></div>';
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', footer); else footer();
+  /* ---------- 자연스러운 줄바꿈 ----------
+     CSS(keep-all, balance)에 더해, 끊기면 어색한 곳을 줄바꿈 없는 공백으로 묶는다.
+     - "약 18초", "누적 2:30", "2분 30초"처럼 수와 단위가 갈라지지 않게
+     - 문단 마지막 단어가 혼자 다음 줄로 떨어지지 않게 */
+  var NB = ' ';
+  var BLOCKS = 'p, li, h1, h2, h3, h4, figcaption, td, th, cite, dd, .l, .s, .et, .em, .txt, .tt, .dd, .stage-cap, .premise, .purpose, .metric, .opt span:last-child';
+  function tidyNode(t) {
+    var v = t.nodeValue, o = v;
+    v = v.replace(/(^|[\s(（])(약|누적|평균|총|각|최근|매) (?=[\d一-鿿《“‘])/g, '$1$2' + NB);
+    v = v.replace(/(\d[\d.,:]*\s?(?:분|초|화|위|편|명|만|억|년|월|일|%|배)?) (?=\d[\d.,:]*\s?(?:분|초|화|위|편|명|만|억|%))/g, '$1' + NB);
+    v = v.replace(/([가-힣A-Za-z0-9]) (→|·|~) /g, '$1' + NB + '$2 ');
+    v = v.replace(/榜 (?=\d+위)/g, '榜' + NB);
+    // "(AI 비교작)"처럼 짧은 괄호 안은 한 덩어리로
+    v = v.replace(/\(([^()]{1,12})\)/g, function (m, inner) { return '(' + inner.replace(/ /g, NB) + ')'; });
+    // 닫는 따옴표·괄호와 뒤따르는 조사(’과, 》을, ”는)가 갈라지지 않게
+    v = v.replace(/([’”」』》〉)）\]])(?=[가-힣])/g, '$1⁠');
+    if (v !== o) t.nodeValue = v;
+  }
+  function lastText(el) {
+    for (var n = el.lastChild; n; n = n.previousSibling) {
+      if (n.nodeType === 3) { if (/\S/.test(n.nodeValue)) return n; continue; }
+      if (n.nodeType === 1) { if (/^(SCRIPT|STYLE|SVG|BR)$/i.test(n.nodeName) || n.matches('.badge, .ph')) return null; var d = lastText(n); if (d) return d; return null; }
+    }
+    return null;
+  }
+  function noOrphan(el) {
+    if ((el.textContent || '').length < 24) return;
+    var t = lastText(el); if (!t) return;
+    var v = t.nodeValue.replace(/\s+$/, ''), i = v.lastIndexOf(' ');
+    if (i < 0) return;
+    var tail = v.slice(i + 1);
+    if (tail.length <= 6) t.nodeValue = v.slice(0, i) + NB + tail + t.nodeValue.slice(v.length);
+  }
+  function tidy(root) {
+    if (!root || root.nodeType !== 1) return;
+    var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: function (n) { return n.parentNode && /^(SCRIPT|STYLE|TEXTAREA)$/i.test(n.parentNode.nodeName) ? 2 : 1; } });
+    var n; while ((n = w.nextNode())) tidyNode(n);
+    var blocks = root.matches && root.matches(BLOCKS) ? [root] : [];
+    blocks = blocks.concat(Array.prototype.slice.call(root.querySelectorAll(BLOCKS)));
+    blocks.forEach(noOrphan);
+  }
+  window.tidyText = tidy;
+
+  /* ---------- 홈: 심리테스트 알림 ---------- */
+  function promoToast() {
+    if (page !== 'index.html') return;
+    try { if (sessionStorage.getItem('quizToastClosed')) return; } catch (e) {}
+    var t = document.createElement('div');
+    t.className = 'quiz-toast';
+    t.setAttribute('role', 'status');
+    t.innerHTML = '<a href="quiz.html"><span class="qt-k">30초 심리테스트</span><b>나에게 어울리는 숏드라마는?</b><span class="qt-go">해 보기 →</span></a>' +
+      '<button type="button" aria-label="알림 닫기">×</button>';
+    t.querySelector('button').addEventListener('click', function () {
+      t.classList.remove('show');
+      try { sessionStorage.setItem('quizToastClosed', '1'); } catch (e) {}
+    });
+    document.body.appendChild(t);
+    setTimeout(function () { t.classList.add('show'); }, 1600);
+  }
+
+  function ready() {
+    footer();
+    tidy(document.body);
+    promoToast();
+    if ('MutationObserver' in window) {
+      new MutationObserver(function (ms) {
+        ms.forEach(function (m) { Array.prototype.forEach.call(m.addedNodes, function (n) { if (n.nodeType === 1) tidy(n); }); });
+      }).observe(document.body, { childList: true, subtree: true });
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ready); else ready();
 })();

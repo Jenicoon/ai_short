@@ -126,9 +126,9 @@
   var cardInfo = {
     yishuangshou: { poster: 'assets/posters/yishuangshou.jpg', purpose: '<b>기준점.</b> 모든 비교의 출발점', metric: '열도 4,873만 · 평점 7.5 · 126화' },
     guancheng: { poster: 'assets/posters/guancheng.jpg', purpose: '<b>같은 공식의 AI 작품.</b> “기술 있는 노동자의 창업 역전”이 AI 작품 사이에서 반복되는지 확인', metric: 'AI剧热播榜 18위 · 열도 5,456만 · 평점 8.7 · 150화 이상' },
-    xiaozhen: { poster: null, purpose: '<b>같은 정서의 실사 작품.</b> “아내의 배신 + 성실한 남자의 재기”를 실사는 어떤 속도와 연기로 풀어내는지 비교', metric: '真人剧热播榜 2위 · 열도 5,982만 · 평점 7.9' },
+    xiaozhen: { poster: "assets/posters/xiaozhen.jpg", purpose: '<b>같은 정서의 실사 작품.</b> “아내의 배신 + 성실한 남자의 재기”를 실사는 어떤 속도와 연기로 풀어내는지 비교', metric: '真人剧热播榜 2위 · 열도 5,982만 · 평점 7.9' },
     chixie: { poster: 'assets/posters/chixie.jpg', purpose: '<b>다른 장르의 AI 작품.</b> 실사로는 비싼 전투, 사극 스케일을 AI가 얼마나 넓혔는지(볼거리 축)', metric: 'AI剧热播榜 6위 · 평점 9.5 · 저장 444.9만' },
-    tainainai: { poster: null, purpose: '<b>실사 최상위 대조군.</b> 실사가 아직 이기는 지점(배우, 시리즈 IP)을 보여 주는 반대 사례', metric: '真人剧热播榜 1위 · 열도 6,901만 · 평점 9.6' }
+    tainainai: { poster: "assets/posters/tainainai.jpg", purpose: '<b>실사 최상위 대조군.</b> 실사가 아직 이기는 지점(배우, 시리즈 IP)을 보여 주는 반대 사례', metric: '真人剧热播榜 1위 · 열도 6,901만 · 평점 9.6' }
   };
   var worksBox = $('#works');
   if (worksBox) ['yishuangshou', 'guancheng', 'xiaozhen', 'chixie', 'tainainai'].forEach(function (id) {
@@ -433,12 +433,12 @@
     plWrap.innerHTML = '';
     if (cfg.real) {
       var xz = byId.xiaozhen, tn = byId.tainainai;
-      stage.innerHTML = '<div class="real-box"><span class="badge real">실사</span><h3 class="sub" style="margin-top:12px">실사 작품은 텍스트와 데이터로만</h3><p class="small">두 작품 모두 실존 배우가 출연합니다. 이 전시는 실존 배우의 얼굴 사진과 영상을 싣지 않고, 비교 기록표의 관찰 결과로 비교합니다. 작품은 <span class="zh">红果</span> 공식 페이지에서 볼 수 있습니다.</p></div>';
+      stage.innerHTML = '<div class="real-box"><span class="badge real">실사</span><h3 class="sub" style="margin-top:12px">실사 작품은 포스터와 데이터로</h3><p class="small">두 실사 작품은 장면 캡처와 영상 클립 없이, 공식 포스터와 비교 기록표의 관찰 결과로 비교합니다. 작품은 <span class="zh">红果</span> 공식 페이지에서 볼 수 있습니다.</p></div>';
       plWrap.innerHTML = [xz, tn].filter(Boolean).map(function (w) {
-        return '<div class="card" style="margin-bottom:12px"><span class="k">' + esc(w.role) + '</span><h3 class="zh">' + esc(w.title) + '</h3><p class="small muted" style="margin-top:-6px">' + esc(w.title_ko) + '</p><p>' + zh(w.premise) + '</p>' +
+        return '<div class="card real-card"><img class="real-poster" src="assets/posters/' + w.id + '.jpg" alt="' + esc(w.title) + ' 공식 포스터" loading="lazy" data-zoom data-cap="' + esc('출처: 红果短剧 / ' + w.title + ' 공식 포스터') + '"><div><span class="k">' + esc(w.role) + '</span><h3 class="zh">' + esc(w.title) + '</h3><p class="small muted" style="margin-top:-6px">' + esc(w.title_ko) + '</p><p>' + zh(w.premise) + '</p>' +
           (w.first_conflict_sec != null ? '<p class="small">첫 갈등 약 ' + w.first_conflict_sec + '초 · ' + zh(w.first_reversal_note) + ' <span class="badge obs">관찰 결과</span></p>' : '<p class="small">1~5화 평균 회차 길이 약 ' + Math.round(w.ep_len_avg_sec) + '초 · 장면 분석은 하지 않음</p>') +
           '<p class="small muted">' + zh((w.metrics_2026_11_09.rank || '') + ' · 열도 ' + w.metrics_2026_11_09.heat + ' · 평점 ' + w.metrics_2026_11_09.rating) + ' (2026.11.9)</p>' +
-          '<a href="' + w.url + '" target="_blank" rel="noopener">红果에서 보기 ↗</a></div>';
+          '<a href="' + w.url + '" target="_blank" rel="noopener">红果에서 보기 ↗</a><p class="xs muted" style="margin-top:6px">포스터 출처: 红果短剧 / ' + esc(SHORT[w.id]) + '</p></div></div>';
       }).join('');
       return;
     }

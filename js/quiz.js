@@ -60,10 +60,10 @@
     cx: { id: 'chixie', type: '스펙터클 모험형', name: '이걸 어떻게 찍었지?', poster: 'assets/posters/chixie.jpg', room: 'analysis.html#spectacle',
       body: '이야기 속도보다 <b>눈앞에 펼쳐지는 장면</b>이 더 궁금한 사람. 《<span class="zh">持械入宋</span>》에서는 현대 특수부대 5명이 무기를 들고 송나라로 떨어집니다. 장갑차 추락, 표범 습격, 기병 습격처럼 실사로는 부담이 큰 장면이 연달아 나옵니다.',
       facts: [['0초', '첫 장면부터 갈등'], ['누적 8:30', '첫 반격 (관찰 결과)'], ['평점 9.5', 'AI剧热播榜 6위 (11.9)'], ['444.9만', '저장 수 (11.9)']] },
-    xz: { id: 'xiaozhen', type: '현실 공감형', name: '느린 호흡의 감정선', poster: null, room: 'analysis.html#compare',
+    xz: { id: 'xiaozhen', type: '현실 공감형', name: '느린 호흡의 감정선', poster: 'assets/posters/xiaozhen.jpg', room: 'analysis.html#compare',
       body: '빠른 사이다보다 <b>쌓여 가는 감정과 배우의 표정</b>을 따라가는 사람. 《<span class="zh">小镇是非多之同床异梦</span>》은 아내가 투자 사기로 집을 날리고, 굴착기 기사인 남편이 성실한 노동으로 재기하는 실사극입니다. 우리 관찰에서는 5화(약 11분)까지 반격 없이 억압이 쌓이고, 회차 끝을 여운으로 끊는 경우가 많았습니다.',
       facts: [['약 56초', '1화 첫 갈등'], ['10:56까지', '반격 없음 (관찰 결과)'], ['약 131초', '1~5화 평균 길이'], ['평점 7.9', '真人剧热播榜 2위 (11.9)']] },
-    tn: { id: 'tainainai', type: '가족극 정주행형', name: '시리즈와 함께 자란 팬', poster: null, room: 'analysis.html#compare',
+    tn: { id: 'tainainai', type: '가족극 정주행형', name: '시리즈와 함께 자란 팬', poster: 'assets/posters/tainainai.jpg', room: 'analysis.html#compare',
       body: '익숙한 인물들과 <b>오래 함께하는 즐거움</b>을 아는 사람. 《<span class="zh">十八岁太奶奶驾到 5</span>》는 타임슬립한 할머니가 등장하는 가문 부흥 가족극의 다섯 번째 시리즈입니다. 배우에 대한 애착과 시리즈 IP처럼, 실사가 아직 이기는 지점을 보여 주는 작품입니다.',
       facts: [['1위', '真人剧热播榜 (11.9)'], ['6,901만', '열도 (11.9)'], ['평점 9.6', '(11.9)'], ['약 130초', '1~5화 평균 길이']] }
   };
