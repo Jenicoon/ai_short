@@ -519,6 +519,26 @@
       soundBtn.hidden = true;
     });
     intro.addEventListener('volumechange', function () { if (soundBtn && !intro.muted) soundBtn.hidden = true; });
+
+    // 전체화면: 휴대폰에서는 세로 방향으로 고정 (지원하는 브라우저에서만)
+    var onFs = function () {
+      var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+      var o = screen.orientation;
+      if (!o) return;
+      if (fsEl === intro && o.lock) { var r = o.lock('portrait'); if (r && r.catch) r.catch(function () {}); }
+      else if (!fsEl && o.unlock) { try { o.unlock(); } catch (e) {} }
+    };
+    document.addEventListener('fullscreenchange', onFs);
+    document.addEventListener('webkitfullscreenchange', onFs);
+
+    // 작은 화면에서는 기본 조작부에 전체화면 버튼이 숨으므로 직접 버튼을 둔다
+    var fsBtn = $('#fsBtn');
+    if (fsBtn) fsBtn.addEventListener('click', function () {
+      var go = function () { var q = intro.play(); if (q && q.catch) q.catch(function () {}); };
+      if (intro.requestFullscreen) { var r = intro.requestFullscreen(); if (r && r.then) r.then(go, function () {}); else go(); }
+      else if (intro.webkitRequestFullscreen) { intro.webkitRequestFullscreen(); go(); }
+      else if (intro.webkitEnterFullscreen) { intro.webkitEnterFullscreen(); go(); } // iPhone: 기본 플레이어가 세로 영상 비율 그대로 연다
+    });
   }
 
   /* ---------- 반전 장면: 해당 구간만 재생 ---------- */

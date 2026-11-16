@@ -793,7 +793,7 @@ dialog.lightbox .lb-close { position: fixed; top: 14px; right: 14px; width: 40px
 /* ---------- 홈: 1분 소개 영상 ---------- */
 .home { max-width: calc(940px + var(--gutter) * 2); }
 .home ~ .site-foot { max-width: calc(940px + var(--gutter) * 2); }
-.home-hero { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 64px; align-items: center; }
+.home-hero { display: grid; grid-template-columns: minmax(0, 1fr) 180px; gap: 72px; align-items: center; }
 .home-hero-text { min-width: 0; }
 .home-sec, .home > .promo { max-width: 640px; }
 .intro-video { margin: 0; }
@@ -812,7 +812,19 @@ dialog.lightbox .lb-close { position: fixed; top: 14px; right: 14px; width: 40px
   .home-hero-text > .label { order: 1; }
   .home-hero-text > h1 { order: 2; }
   .home-hero-text > .zh-sub { order: 3; }
-  .intro-video { order: 4; max-width: 190px; width: 100%; margin: 22px auto 0; }
+  .intro-video { order: 4; max-width: 160px; width: 100%; margin: 22px auto 0; }
   .home-hero-text > .claim { order: 5; }
   .home-hero-text > .also { order: 6; }
 }
+
+/* 전체화면: 프레임용 잘라 내기(cover)를 풀고 세로 영상을 그대로 */
+.intro-video .phone { border-radius: 24px; padding: 5px; }
+.intro-video .phone .screen { border-radius: 19px; }
+.intro-video .sound-btn { top: 10px; padding: 6px 10px; font-size: 12px; gap: 5px; }
+.intro-video .sound-btn svg { width: 14px; height: 14px; }
+video:fullscreen { object-fit: contain !important; background: #000; width: 100%; height: 100%; border-radius: 0; }
+video:-webkit-full-screen { object-fit: contain !important; background: #000; width: 100%; height: 100%; border-radius: 0; }
+.fs-btn { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 12px auto 0; appearance: none; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer; }
+.fs-btn:hover { border-color: var(--ink-2); }
+.fs-btn svg { width: 14px; height: 14px; flex: none; max-width: none; }
+.intro-video .phone-cap { margin-top: 8px; }
