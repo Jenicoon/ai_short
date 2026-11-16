@@ -665,3 +665,52 @@ dialog.lightbox .lb-close { position: fixed; top: 14px; right: 14px; width: 40px
 /* 상영관: 실사 작품 포스터 카드 */
 .real-card { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; margin-bottom: 22px; }
 .real-poster { width: 96px; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 8px; cursor: zoom-in; }
+
+/* ---------- 연구 문제 ① → ② 흐름 ---------- */
+.qflow { display: grid; grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr); align-items: stretch; margin-top: 18px; }
+.qstep { border-top: 2px solid var(--ink); padding-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+.qstep .k { font-size: 12.5px; font-weight: 600; letter-spacing: .04em; color: var(--accent); }
+.qstep h3 { font-size: 18px; line-height: 1.5; margin: 0; letter-spacing: -0.015em; }
+.qstep p { margin: 0; color: var(--ink-2); font-size: 15px; }
+.qstep .arrow-link { margin-top: auto; padding-top: 6px; font-size: 14px; color: var(--accent); }
+.qarrow { display: grid; place-items: center; color: var(--accent); }
+.qarrow svg { width: 26px; height: 26px; }
+@media (max-width: 680px) {
+  .qflow { grid-template-columns: 1fr; }
+  .qarrow { height: 44px; } .qarrow svg { transform: rotate(90deg); }
+}
+
+/* ---------- 인물 관계도 ---------- */
+.rel { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-areas: ". teacher ." "wife hero friend"; gap: 44px 28px; margin-top: 22px; position: relative; }
+.rel-teacher { grid-area: teacher; } .rel-wife { grid-area: wife; } .rel-hero { grid-area: hero; } .rel-friend { grid-area: friend; }
+.rel-node { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2px; }
+.rel-node img { width: 76px; height: 76px; border-radius: 50%; object-fit: cover; object-position: 50% 22%; cursor: zoom-in; border: 2px solid var(--line-strong); margin-bottom: 8px; background: var(--bg-soft); }
+.rel-node b { font-size: 16px; }
+.rel-node b .zh { font-weight: 500; color: var(--muted); font-size: 14px; }
+.rel-node .role { font-size: 12.5px; color: var(--muted); }
+.rel-node p { margin: 8px 0 0; font-size: 14px; color: var(--ink-2); line-height: 1.65; max-width: 280px; }
+.rel-node.oppress img { border-color: var(--k-oppress); }
+.rel-node.oppress .role { color: var(--k-oppress); }
+.rel-hero img { width: 92px; height: 92px; border: 3px solid var(--accent); }
+.rel-hero b { font-size: 18px; }
+.rel-edge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--ink-2); background: var(--bg-soft); border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; margin-bottom: 10px; white-space: nowrap; }
+.rel-edge i { font-style: normal; font-weight: 500; color: var(--muted); }
+.oppress .rel-edge { color: var(--k-oppress); }
+/* 넓은 화면: 주인공을 향한 연결선 */
+@media (min-width: 761px) {
+  .rel-hero::before { content: ""; position: absolute; left: -28px; right: -28px; top: 46px; height: 1px; background: var(--line-strong); z-index: -1; }
+  .rel-teacher::after { content: ""; position: absolute; left: 50%; bottom: -44px; height: 44px; width: 1px; background: var(--line-strong); }
+}
+@media (max-width: 760px) {
+  .rel { grid-template-columns: 1fr; grid-template-areas: "hero" "teacher" "wife" "friend"; gap: 30px; }
+  .rel-node { flex-direction: column; }
+}
+
+/* ---------- 우리가 발견한 것 ---------- */
+.finds { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); max-width: 860px; }
+.finds li { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 8px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+.finds .fn { font-size: 22px; font-weight: 750; color: var(--accent); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; line-height: 1.3; }
+.finds h3 { margin: 0 0 6px; font-size: 18px; letter-spacing: -0.015em; line-height: 1.45; }
+.finds p { margin: 0 0 8px; color: var(--ink-2); }
+.finds .arrow-link { font-size: 13.5px; color: var(--accent); }
+@media (max-width: 620px) { .finds li { grid-template-columns: 40px minmax(0, 1fr); } .finds .fn { font-size: 18px; } }
