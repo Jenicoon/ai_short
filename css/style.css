@@ -793,14 +793,14 @@ dialog.lightbox .lb-close { position: fixed; top: 14px; right: 14px; width: 40px
 /* ---------- 홈: 1분 소개 영상 ---------- */
 .home { max-width: calc(940px + var(--gutter) * 2); }
 .home ~ .site-foot { max-width: calc(940px + var(--gutter) * 2); }
-.home-hero { display: grid; grid-template-columns: minmax(0, 1fr) 290px; gap: 56px; align-items: center; }
+.home-hero { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 64px; align-items: center; }
 .home-hero-text { min-width: 0; }
 .home-sec, .home > .promo { max-width: 640px; }
 .intro-video { margin: 0; }
 .intro-video .phone { width: 100%; }
 .intro-video video { background: #000; }
-.sound-btn { position: absolute; left: 50%; top: 14px; transform: translateX(-50%); z-index: 4; display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;
-  appearance: none; border: 0; border-radius: 999px; padding: 8px 14px; background: rgba(17, 20, 24, .82); color: #fff; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+.sound-btn { position: absolute; left: 50%; top: 12px; transform: translateX(-50%); z-index: 4; display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;
+  appearance: none; border: 0; border-radius: 999px; padding: 7px 12px; background: rgba(17, 20, 24, .82); color: #fff; font: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer;
   -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); box-shadow: 0 4px 16px rgba(0,0,0,.25); transition: background .15s, transform .15s; }
 .sound-btn:hover { background: rgba(17, 20, 24, .95); transform: translateX(-50%) translateY(-1px); }
 .sound-btn svg { width: 16px; height: 16px; flex: none; max-width: none; }
@@ -812,7 +812,7 @@ dialog.lightbox .lb-close { position: fixed; top: 14px; right: 14px; width: 40px
   .home-hero-text > .label { order: 1; }
   .home-hero-text > h1 { order: 2; }
   .home-hero-text > .zh-sub { order: 3; }
-  .intro-video { order: 4; max-width: 260px; width: 100%; margin: 24px auto 0; }
+  .intro-video { order: 4; max-width: 190px; width: 100%; margin: 22px auto 0; }
   .home-hero-text > .claim { order: 5; }
   .home-hero-text > .also { order: 6; }
 }
