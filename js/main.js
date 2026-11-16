@@ -508,6 +508,19 @@
     openTab('yishuangshou');
   }
 
+  /* ---------- 홈: 1분 소개 영상 ---------- */
+  var intro = $('#introVideo'), soundBtn = $('#soundBtn');
+  if (intro) {
+    // 들어오자마자 소리 없이 재생 (브라우저는 소리 없는 자동 재생만 허용)
+    if (!reduceMotion) { var p = intro.play(); if (p && p.catch) p.catch(function () {}); }
+    if (soundBtn) soundBtn.addEventListener('click', function () {
+      intro.muted = false; intro.loop = false; intro.currentTime = 0;
+      var q = intro.play(); if (q && q.catch) q.catch(function () {});
+      soundBtn.hidden = true;
+    });
+    intro.addEventListener('volumechange', function () { if (soundBtn && !intro.muted) soundBtn.hidden = true; });
+  }
+
   /* ---------- 반전 장면: 해당 구간만 재생 ---------- */
   $$('.clips').forEach(function (box) {
     var player = $('.clip-player', box);

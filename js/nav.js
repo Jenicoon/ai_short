@@ -116,7 +116,18 @@
       try { sessionStorage.setItem('quizToastClosed', '1'); } catch (e) {}
     });
     document.body.appendChild(t);
-    setTimeout(function () { t.classList.add('show'); }, 1600);
+    var closed = false;
+    t.querySelector('button').addEventListener('click', function () { closed = true; });
+    var video = document.querySelector('.intro-video');
+    if (video && 'IntersectionObserver' in window) {
+      // 1분 소개 영상이 화면에 보이는 동안에는 알림을 숨겨 영상 조작부를 가리지 않게 한다
+      new IntersectionObserver(function (es) {
+        var visible = es[0].intersectionRatio > 0.15;
+        if (!closed) t.classList.toggle('show', !visible);
+      }, { threshold: [0, 0.15, 0.5] }).observe(video);
+    } else {
+      setTimeout(function () { t.classList.add('show'); }, 1600);
+    }
   }
 
   function ready() {
