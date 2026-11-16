@@ -354,7 +354,14 @@
       ]
     },
     guancheng: {
-      tab: '<span class="zh">莞城往事</span> · 장면', wide: true, dir: 'guancheng', pre: 'gc_',
+      tab: '<span class="zh">莞城往事</span> · 영상', wide: true, dir: 'guancheng', pre: 'gc_',
+      clipCredit: '출처: 红果短剧 / 莞城往事 · 영상: YouTube 《莞城往事：我的房东叫红姐》 합본(KK爱看)',
+      clips: [
+        { type: 'yt', vid: '3PeNajvCJ0s', start: 0, end: 35, thumbSrc: 'assets/frames/guancheng/gc_00m03s.jpg', title: '도입: 둥관 기차역', desc: '2005년 둥관에 맨몸으로 도착, 이름 자막으로 인물 소개' },
+        { type: 'yt', vid: '3PeNajvCJ0s', start: 55, end: 80, thumbSrc: 'assets/frames/guancheng/gc_01m00s.jpg', title: '귀인 등장: 집주인 자오훙메이', desc: '회귀 대신 이 인물이 전환 장치가 된다' },
+        { type: 'yt', vid: '3PeNajvCJ0s', start: 180, end: 205, thumbSrc: 'assets/frames/guancheng/gc_03m00s.jpg', title: '억압: “내겐 85위안뿐”', desc: '고향 사람마저 외면한다' },
+        { type: 'yt', vid: '3PeNajvCJ0s', start: 305, end: 335, thumbSrc: 'assets/frames/guancheng/gc_05m22s.jpg', title: '반전: 세탁기 수리', desc: '집주인의 시험을 기술로 통과한다' }
+      ],
       credit: '출처: 红果短剧 / 莞城往事：八十五块闯出亿万身家 · YouTube 합본 화면 캡처',
       url: 'https://hongguoduanju.com/detail?series_id=7698351941423729689',
       items: [
@@ -371,7 +378,13 @@
       ]
     },
     chixie: {
-      tab: '<span class="zh">持械入宋</span> · 장면', wide: false, dir: 'chixie', pre: 'cx_',
+      tab: '<span class="zh">持械入宋</span> · 영상', wide: false, dir: 'chixie', pre: 'cx_',
+      clipCredit: '출처: 红果短剧 / 持械入宋 · 영상: YouTube 《持械入宋超长版：第一季》 합본(KK爱看). 장면 캡처와 다른 업로드라 시간이 캡처와 다릅니다',
+      clips: [
+        { type: 'yt', vid: 'OOpGiD7p_sk', start: 0, end: 40, thumbSrc: 'assets/frames/chixie/cx_00m01s.jpg', title: '도입: 장갑차 추락 직후', desc: '첫 장면부터 생존 위기' },
+        { type: 'yt', vid: 'OOpGiD7p_sk', start: 675, end: 720, thumbSrc: 'assets/frames/chixie/cx_08m00s.jpg', title: '첫 반격: 맹수 제압', desc: '표범과의 싸움, 실사로는 부담이 큰 장면' },
+        { type: 'yt', vid: 'OOpGiD7p_sk', start: 898, end: 958, thumbSrc: 'assets/frames/chixie/cx_13m00s.jpg', title: '현대 화기 반격과 기병', desc: '마을을 덮친 약탈자를 현대 무기로 압도한다' }
+      ],
       credit: '출처: 红果短剧 / 持械入宋 第一季 · YouTube 합본 화면 캡처',
       url: 'https://hongguoduanju.com/detail?series_id=7671966197985856536',
       items: [
@@ -391,8 +404,10 @@
   var icoL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg>';
   var icoR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>';
 
-  function playClip(it, autoplay) {
-    var phone = el('div', { class: 'phone' });
+  function playClip(it, autoplay, cfg) {
+    cfg = cfg || theater.yishuangshou;
+    var vid = it.vid || YT, thumb = it.thumbSrc || ('assets/frames/yishuangshou/' + it.thumb + '.jpg');
+    var phone = el('div', { class: 'phone' + (it.vid && it.vid !== YT ? ' wide' : '') });
     var scr = el('div', { class: 'screen' }); phone.appendChild(scr);
     var cap = el('div', { class: 'stage-cap' });
     var timeTxt = it.type === 'yt' ? 'YouTube 합본 ' + mmss(it.start) + '–' + mmss(it.end) : it.t;
@@ -400,14 +415,14 @@
       scr.innerHTML = '<video src="' + it.src + '" poster="assets/frames/yishuangshou/' + it.thumb + '.jpg" muted playsinline controls preload="metadata"' + (autoplay ? ' autoplay' : '') + '></video>';
     } else {
       var f = el('button', { class: 'facade', type: 'button', 'aria-label': it.title + ' 재생' },
-        '<img src="assets/frames/yishuangshou/' + it.thumb + '.jpg" alt=""><span class="play">' + icoPlay + '</span><span class="fl">' + zh(it.title) + '<br>' + timeTxt + '</span>');
+        '<img src="' + thumb + '" alt=""><span class="play">' + icoPlay + '</span><span class="fl">' + zh(it.title) + '<br>' + timeTxt + '</span>');
       f.addEventListener('click', function () {
-        scr.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + YT + '?start=' + it.start + '&end=' + it.end + '&autoplay=1&playsinline=1&rel=0&modestbranding=1" title="' + esc(it.title) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe>';
+        scr.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + vid + '?start=' + it.start + '&end=' + it.end + '&autoplay=1&playsinline=1&rel=0&modestbranding=1" title="' + esc(it.title) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe>';
       });
       scr.appendChild(f);
     }
     cap.innerHTML = '<b>' + zh(it.title) + '</b> · ' + timeTxt + '<br>' + zh(it.desc) +
-      '<span class="cr">' + zh(theater.yishuangshou.credit) + (it.type === 'yt' ? ' · <a href="https://www.youtube.com/watch?v=' + YT + '&t=' + it.start + 's" target="_blank" rel="noopener">YouTube에서 열기 ↗</a>' : '') + '</span>';
+      '<span class="cr">' + zh(cfg.clipCredit || cfg.credit) + (it.type === 'yt' ? ' · <a href="https://www.youtube.com/watch?v=' + vid + '&t=' + it.start + 's" target="_blank" rel="noopener">YouTube에서 열기 ↗</a>' : '') + '</span>';
     stage.innerHTML = ''; stage.appendChild(phone); stage.appendChild(cap);
   }
 
@@ -424,7 +439,17 @@
   }
   function selectStill(cfg, idx) {
     showStill(cfg, idx);
-    $$('.playlist button', plWrap).forEach(function (b, i) { b.setAttribute('aria-current', i === idx ? 'true' : 'false'); });
+    $('.playlist button', plWrap).forEach(function (b) { b.setAttribute('aria-current', b.getAttribute('data-still') === String(idx) ? 'true' : 'false'); });
+  }
+  function clipButton(it, cfg, ul, first) {
+    var b = el('button', { type: 'button', 'aria-current': first ? 'true' : 'false' },
+      '<span class="th"><img src="' + (it.thumbSrc || ('assets/frames/yishuangshou/' + it.thumb + '.jpg')) + '" alt="" loading="lazy"></span><span><span class="tt">' + zh(it.title) + '</span><span class="dd">' + zh(it.desc) + '</span></span><span class="tm"><span class="type">' + (it.type === 'yt' ? 'YouTube' : '영상 파일') + '</span>' + (it.type === 'yt' ? mmss(it.start) + '–' + mmss(it.end) : it.t) + '</span>');
+    b.addEventListener('click', function () {
+      $('button', ul).forEach(function (x) { x.setAttribute('aria-current', 'false'); });
+      b.setAttribute('aria-current', 'true'); playClip(it, true, cfg);
+      if (window.innerWidth < 800) stage.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    });
+    return b;
   }
 
   function openTab(key) {
@@ -443,6 +468,7 @@
       return;
     }
     var ul = el('ul', { class: 'playlist' });
+    (cfg.clips || []).forEach(function (it, i) { var li = el('li'); li.appendChild(clipButton(it, cfg, ul, i === 0)); ul.appendChild(li); });
     cfg.items.forEach(function (it, i) {
       var li = el('li');
       var b;
@@ -456,9 +482,9 @@
           if (window.innerWidth < 860) stage.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
         });
       } else {
-        b = el('button', { type: 'button', 'aria-current': i === 0 ? 'true' : 'false' },
+        b = el('button', { type: 'button', 'data-still': String(i), 'aria-current': 'false' },
           '<span class="th"><img src="assets/frames/' + cfg.dir + '/' + cfg.pre + it[0] + '.jpg" alt="" loading="lazy"></span><span><span class="tt">' + zh(it[2]) + '</span></span><span class="tm"><span class="type">장면</span>' + it[1] + '</span>');
-        b.addEventListener('click', function () { selectStill(cfg, i); });
+        b.addEventListener('click', function () { $('button', ul).forEach(function (x) { x.setAttribute('aria-current', 'false'); }); selectStill(cfg, i); });
       }
       li.appendChild(b); ul.appendChild(li);
     });
@@ -468,8 +494,8 @@
       note.innerHTML = '모든 시간은 <b>YouTube 합본 기준</b>입니다 (<span class="zh">红果</span> 공식 플레이어보다 10~20초 이릅니다). YouTube 클립은 업로더(KK爱看)의 합본에서 해당 구간만 재생하며, 영상이 내려가거나 지역에 따라 재생되지 않을 수 있습니다. <a href="https://hongguoduanju.com/detail?series_id=7696903115634658329" target="_blank" rel="noopener">红果에서 전편 보기 ↗</a>';
       playClip(cfg.items[0], false);
     } else {
-      note.innerHTML = '이 작품은 공개된 영상 클립을 찾지 못해, 팀이 확인한 장면 스틸로 보여 줍니다. 시간은 <b>YouTube 합본 기준</b>입니다. <a href="' + cfg.url + '" target="_blank" rel="noopener">红果에서 보기 ↗</a>';
-      showStill(cfg, 0);
+      note.innerHTML = '위의 영상 클립은 YouTube 합본(KK爱看)에서 해당 구간만 재생하고, 아래 “장면”은 팀이 확인한 화면 캡처입니다. 시간은 <b>YouTube 합본 기준</b>입니다.' + (key === 'chixie' ? ' 영상 클립은 캡처와 다른 업로드(超长版 第一季)라 시간이 캡처와 다릅니다.' : '') + ' <a href="' + cfg.url + '" target="_blank" rel="noopener">红果에서 보기 ↗</a>';
+      if (cfg.clips && cfg.clips.length) playClip(cfg.clips[0], false, cfg); else showStill(cfg, 0);
     }
     plWrap.appendChild(note);
   }
@@ -481,6 +507,28 @@
     });
     openTab('yishuangshou');
   }
+
+  /* ---------- 반전 장면: 해당 구간만 재생 ---------- */
+  $$('.clips').forEach(function (box) {
+    var player = $('.clip-player', box);
+    $$('.clip-btn', box).forEach(function (b) {
+      var s0 = +b.getAttribute('data-s'), e0 = +b.getAttribute('data-e');
+      var vid = b.getAttribute('data-vid'), title = b.getAttribute('data-t'), work = b.getAttribute('data-work');
+      var range = mmss(s0) + '–' + mmss(e0);
+      b.setAttribute('aria-pressed', 'false');
+      b.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>' + zh(title) + ' <span>' + (e0 - s0) + '초</span>';
+      b.addEventListener('click', function () {
+        var on = b.getAttribute('aria-pressed') === 'true';
+        $$('.clip-btn', box).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+        if (on) { player.hidden = true; player.innerHTML = ''; return; }
+        b.setAttribute('aria-pressed', 'true');
+        player.className = 'clip-player' + (b.getAttribute('data-wide') === '1' ? ' wide' : '');
+        player.hidden = false;
+        player.innerHTML = '<div class="cp-frame"><iframe src="https://www.youtube-nocookie.com/embed/' + vid + '?start=' + s0 + '&end=' + e0 + '&autoplay=1&playsinline=1&rel=0&modestbranding=1" title="' + esc(title) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>' +
+          '<p class="cp-cap"><b>' + zh(title) + '</b> · YouTube 합본 ' + range + '<br><span class="cr">출처: 红果短剧 / ' + zh(work) + ' · 영상: YouTube 합본(KK爱看) · <a href="https://www.youtube.com/watch?v=' + vid + '&t=' + s0 + 's" target="_blank" rel="noopener">YouTube에서 열기 ↗</a></span></p>';
+      });
+    });
+  });
 
   /* ---------- 아카이브 슬라이드 ---------- */
   function buildViewer(v) {
