@@ -714,3 +714,60 @@ dialog.lightbox .lb-close { position: fixed; top: 14px; right: 14px; width: 40px
 .finds p { margin: 0 0 8px; color: var(--ink-2); }
 .finds .arrow-link { font-size: 13.5px; color: var(--accent); }
 @media (max-width: 620px) { .finds li { grid-template-columns: 40px minmax(0, 1fr); } .finds .fn { font-size: 18px; } }
+
+/* ---------- 반전 ---------- */
+.rev-bars { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); max-width: 860px; }
+.rev-bars li { display: grid; grid-template-columns: 190px minmax(80px, 1fr) 44px minmax(0, 1.4fr); gap: 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; }
+.rev-bars .rn { font-weight: 600; }
+.rev-bars .rb { height: 10px; border-radius: 0 5px 5px 0; background: var(--bg-tint); overflow: hidden; }
+.rev-bars .rb i { display: block; height: 100%; background: var(--ai); border-radius: 0 5px 5px 0; }
+.rev-bars .rv { font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
+.rev-bars .rw { font-size: 13px; color: var(--muted); }
+.rev-bars li.none .rn, .rev-bars li.none .rv { color: var(--muted); }
+.rev-bars li.none .rb { background: transparent; border-bottom: 1px dashed var(--real); height: 0; border-radius: 0; }
+@media (max-width: 700px) {
+  .rev-bars li { grid-template-columns: minmax(0, 1fr) 44px; gap: 4px 12px; }
+  .rev-bars .rb { grid-column: 1 / -1; grid-row: 2; }
+  .rev-bars .rw { grid-column: 1 / -1; }
+}
+
+.rev-type { border-top: 1px solid var(--line-strong); padding: 26px 0 8px; margin-top: 30px; }
+.rev-head { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 8px; margin-bottom: 18px; }
+.rev-rank { font-size: 22px; font-weight: 750; color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1.3; }
+.rev-head h3 { margin: 0; font-size: 19px; letter-spacing: -0.02em; }
+.rev-head p { margin: 2px 0 0; font-size: 13.5px; color: var(--muted); }
+.rev-board { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px; padding-left: 64px; }
+.rev-frame { width: 150px; }
+.rev-frame.wide { width: 240px; }
+.rev-frame .ri { aspect-ratio: 9 / 16; border-radius: 10px; overflow: hidden; background: #000; border-top: 3px solid var(--k-bg); }
+.rev-frame.wide .ri { aspect-ratio: 16 / 9; }
+.rev-frame.k-oppress .ri { border-top-color: var(--k-oppress); }
+.rev-frame.k-turn .ri { border-top-color: var(--k-turn); }
+.rev-frame.k-strike .ri { border-top-color: var(--k-strike); }
+.rev-frame img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; }
+.rev-frame figcaption { padding-top: 8px; font-size: 13px; line-height: 1.55; color: var(--ink-2); }
+.rev-frame figcaption b { display: block; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.rev-frame.k-oppress figcaption b { color: var(--k-oppress); }
+.rev-frame.k-turn figcaption b { color: var(--k-turn); }
+.rev-frame.k-strike figcaption b { color: var(--k-strike); }
+.rev-arrow { align-self: center; color: var(--faint); font-size: 20px; margin-top: -40px; }
+.rev-frame.wide ~ .rev-arrow { margin-top: -30px; }
+.rev-note { flex: 1 1 220px; align-self: center; max-width: 320px; background: var(--bg-soft); border-radius: 12px; padding: 14px 16px; }
+.rev-note .k, .rev-sub .k { display: block; font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: .04em; margin-bottom: 4px; }
+.rev-note p { margin: 0; font-size: 14px; color: var(--ink-2); }
+.rev-sub { padding: 18px 0 0 64px; }
+.rev-sub .rev-board { padding-left: 0; }
+.rev-board.small .rev-frame { width: 110px; }
+.rev-read { padding-left: 64px; margin: 16px 0 0; color: var(--ink-2); max-width: calc(var(--col) + 64px); }
+.rev-none { padding-bottom: 20px; }
+.rev-none .rev-rank { color: var(--real); }
+@media (max-width: 620px) {
+  .rev-head { grid-template-columns: 40px minmax(0, 1fr); }
+  .rev-rank { font-size: 18px; }
+  .rev-board, .rev-read, .rev-sub { padding-left: 0; }
+  .rev-board { flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: var(--gutter); margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter) 10px; }
+  .rev-board > * { flex: none; scroll-snap-align: start; }
+  .rev-frame { width: 132px; } .rev-frame.wide { width: 220px; }
+  .rev-note { width: 220px; }
+  .rev-sub .rev-board { padding: 0 var(--gutter) 10px; }
+}
