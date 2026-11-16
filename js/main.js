@@ -36,66 +36,15 @@
   var SHORT = { yishuangshou: '一双手闯出一片天', guancheng: '莞城往事', xiaozhen: '小镇是非多', chixie: '持械入宋', tainainai: '十八岁太奶奶驾到 5' };
   window.EXHIBIT = { byId: byId, SHORT: SHORT, zh: zh, esc: esc, mmss: mmss };
 
-  /* ---------- 테마 ---------- */
-  var root = document.documentElement;
-  function currentTheme() {
-    var t = root.getAttribute('data-theme');
-    if (t) return t;
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
-  $('#themeBtn').addEventListener('click', function () {
-    var next = currentTheme() === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch (e) {}
-  });
-
-  /* ---------- 전시 안내도, 점 레일, 현재 전시실 ---------- */
-  var rooms = $$('main > section[data-room]');
-  var guideList = $('#guideList'), railList = $('#railList');
-  rooms.forEach(function (s, i) {
-    var short = s.getAttribute('data-short') || '';
-    var num = i === 0 ? '00' : short.slice(0, 2);
-    var name = s.getAttribute('data-room');
-    var desc = s.getAttribute('data-desc') || '';
-    var li = el('li', null, '<a href="#' + s.id + '"><span class="n">' + num + '</span><span><span class="t">' + esc(name) + '</span>' + (desc ? '<span class="d">' + zh(desc) + '</span>' : '') + '</span></a>');
-    guideList.appendChild(li);
-    railList.appendChild(el('li', null, '<a href="#' + s.id + '" data-id="' + s.id + '" aria-label="' + esc(name) + '"><span>' + esc(short || name) + '</span><i></i></a>'));
-  });
-  var guide = $('#guide'), guideBtn = $('#guideBtn');
-  function openGuide(open) {
-    guide.classList.toggle('open', open);
-    guideBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    document.body.style.overflow = open ? 'hidden' : '';
-    if (open) { var a = $('a', guide); if (a) a.focus(); } else guideBtn.focus();
-  }
-  guideBtn.addEventListener('click', function () { openGuide(true); });
-  $('#guideClose').addEventListener('click', function () { openGuide(false); });
-  guide.addEventListener('click', function (e) { if (e.target.closest('a')) { guide.classList.remove('open'); document.body.style.overflow = ''; guideBtn.setAttribute('aria-expanded', 'false'); } });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && guide.classList.contains('open')) openGuide(false); });
-
-  var roomNow = $('#roomNow');
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        var id = en.target.id;
-        $$('#railList a').forEach(function (a) { a.classList.toggle('active', a.getAttribute('data-id') === id); });
-        roomNow.textContent = id === 'top' ? '' : (en.target.getAttribute('data-short') || '');
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    rooms.forEach(function (s) { io.observe(s); });
-  }
-
   /* ---------- 스크롤 진행 표시 ---------- */
-  var progress = $('#progress'), topbar = $('#topbar'), ticking = false;
+  var progress = $("#progress"), ticking = false;
   function onScroll() {
     var h = document.documentElement.scrollHeight - window.innerHeight;
     var p = h > 0 ? window.scrollY / h : 0;
-    progress.style.transform = 'scaleX(' + p.toFixed(4) + ')';
-    topbar.classList.toggle('scrolled', window.scrollY > 8);
+    if (progress) progress.style.transform = "scaleX(" + p.toFixed(4) + ")";
     ticking = false;
   }
-  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   onScroll();
 
   /* ---------- 등장 애니메이션 ---------- */
@@ -232,6 +181,7 @@
     g.addEventListener('blur', function () { g.classList.remove('focus'); tip.hide(); });
   }
   function legend(box, items) {
+    if (!box) return;
     box.innerHTML = items.map(function (it) { return '<span class="sw">' + it[0] + esc(it[1]) + '</span>'; }).join('');
   }
   var swLineAI = '<svg viewBox="0 0 22 12" aria-hidden="true"><line x1="1" y1="6" x2="15" y2="6" stroke="var(--ai)" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="6" r="4.5" fill="var(--ai)"/></svg>';
