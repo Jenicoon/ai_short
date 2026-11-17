@@ -547,7 +547,7 @@
     var player = $('.clip-player', box);
     $$('.clip-btn', box).forEach(function (b) {
       var s0 = +b.getAttribute('data-s'), e0 = +b.getAttribute('data-e');
-      var vid = b.getAttribute('data-vid'), title = b.getAttribute('data-t'), work = b.getAttribute('data-work');
+      var vid = b.getAttribute('data-vid'), title = b.getAttribute('data-t'), work = b.getAttribute('data-work'), up = b.getAttribute('data-up') || 'KK爱看';
       var range = mmss(s0) + '–' + mmss(e0);
       b.setAttribute('aria-pressed', 'false');
       b.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>' + zh(title) + ' <span>' + (e0 - s0) + '초</span>';
@@ -559,7 +559,7 @@
         player.className = 'clip-player' + (b.getAttribute('data-wide') === '1' ? ' wide' : '');
         player.hidden = false;
         player.innerHTML = '<div class="cp-frame"><iframe src="https://www.youtube-nocookie.com/embed/' + vid + '?start=' + s0 + '&end=' + e0 + '&autoplay=1&playsinline=1&rel=0&modestbranding=1" title="' + esc(title) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>' +
-          '<p class="cp-cap"><b>' + zh(title) + '</b> · YouTube 합본 ' + range + '<br><span class="cr">출처: 红果短剧 / ' + zh(work) + ' · 영상: YouTube 합본(KK爱看) · <a href="https://www.youtube.com/watch?v=' + vid + '&t=' + s0 + 's" target="_blank" rel="noopener">YouTube에서 열기 ↗</a></span></p>';
+          '<p class="cp-cap"><b>' + zh(title) + '</b> · YouTube 합본 ' + range + '<br><span class="cr">출처: 红果短剧 / ' + zh(work) + ' · 영상: YouTube 합본(' + zh(up) + ') · <a href="https://www.youtube.com/watch?v=' + vid + '&t=' + s0 + 's" target="_blank" rel="noopener">YouTube에서 열기 ↗</a></span></p>';
       });
     });
   });
