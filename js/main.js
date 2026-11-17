@@ -339,6 +339,7 @@
 
   /* ---------- 상영관 ---------- */
   var YT = '3F80jCzxyj4';
+  var CX_NANO = '출처: 红果短剧 / 持械入宋 · 영상: YouTube 《持械入宋：第一季》 합본(Nano Review). 장면 캡처와 다른 업로드라 시간이 캡처와 다릅니다';
   var theater = {
     yishuangshou: {
       tab: '<span class="zh">一双手闯出一片天</span> · 영상', wide: false,
@@ -382,8 +383,8 @@
       clipCredit: '출처: 红果短剧 / 持械入宋 · 영상: YouTube 《持械入宋超长版：第一季》 합본(KK爱看). 장면 캡처와 다른 업로드라 시간이 캡처와 다릅니다',
       clips: [
         { type: 'yt', vid: 'OOpGiD7p_sk', start: 0, end: 40, thumbSrc: 'assets/frames/chixie/cx_00m01s.jpg', title: '도입: 장갑차 추락 직후', desc: '첫 장면부터 생존 위기' },
-        { type: 'yt', vid: 'OOpGiD7p_sk', start: 675, end: 720, thumbSrc: 'assets/frames/chixie/cx_08m00s.jpg', title: '첫 반격: 맹수 제압', desc: '표범과의 싸움, 실사로는 부담이 큰 장면' },
-        { type: 'yt', vid: 'OOpGiD7p_sk', start: 898, end: 958, thumbSrc: 'assets/frames/chixie/cx_13m00s.jpg', title: '현대 화기 반격과 기병', desc: '마을을 덮친 약탈자를 현대 무기로 압도한다' }
+        { type: 'yt', vid: '2m_ZaRnJxI8', start: 435, end: 480, thumbSrc: 'assets/frames/chixie/cx_08m00s.jpg', title: '첫 반격: 맹수 제압', desc: '맹수와의 싸움, 실사로는 부담이 큰 장면', credit: CX_NANO },
+        { type: 'yt', vid: '2m_ZaRnJxI8', start: 685, end: 735, thumbSrc: 'assets/frames/chixie/cx_13m00s.jpg', title: '현대 화기로 반격', desc: '마을을 덮친 약탈자를 현대 무기로 압도한다', credit: CX_NANO }
       ],
       credit: '출처: 红果短剧 / 持械入宋 第一季 · YouTube 합본 화면 캡처',
       url: 'https://hongguoduanju.com/detail?series_id=7671966197985856536',
@@ -422,7 +423,7 @@
       scr.appendChild(f);
     }
     cap.innerHTML = '<b>' + zh(it.title) + '</b> · ' + timeTxt + '<br>' + zh(it.desc) +
-      '<span class="cr">' + zh(cfg.clipCredit || cfg.credit) + (it.type === 'yt' ? ' · <a href="https://www.youtube.com/watch?v=' + vid + '&t=' + it.start + 's" target="_blank" rel="noopener">YouTube에서 열기 ↗</a>' : '') + '</span>';
+      '<span class="cr">' + zh(it.credit || cfg.clipCredit || cfg.credit) + (it.type === 'yt' ? ' · <a href="https://www.youtube.com/watch?v=' + vid + '&t=' + it.start + 's" target="_blank" rel="noopener">YouTube에서 열기 ↗</a>' : '') + '</span>';
     stage.innerHTML = ''; stage.appendChild(phone); stage.appendChild(cap);
   }
 
@@ -494,7 +495,7 @@
       note.innerHTML = '모든 시간은 <b>YouTube 합본 기준</b>입니다 (<span class="zh">红果</span> 공식 플레이어보다 10~20초 이릅니다). YouTube 클립은 업로더(KK爱看)의 합본에서 해당 구간만 재생하며, 영상이 내려가거나 지역에 따라 재생되지 않을 수 있습니다. <a href="https://hongguoduanju.com/detail?series_id=7696903115634658329" target="_blank" rel="noopener">红果에서 전편 보기 ↗</a>';
       playClip(cfg.items[0], false);
     } else {
-      note.innerHTML = '위의 영상 클립은 YouTube 합본(KK爱看)에서 해당 구간만 재생하고, 아래 “장면”은 팀이 확인한 화면 캡처입니다. 시간은 <b>YouTube 합본 기준</b>입니다.' + (key === 'chixie' ? ' 영상 클립은 캡처와 다른 업로드(超长版 第一季)라 시간이 캡처와 다릅니다.' : '') + ' <a href="' + cfg.url + '" target="_blank" rel="noopener">红果에서 보기 ↗</a>';
+      note.innerHTML = '위의 영상 클립은 YouTube 합본' + (key === 'chixie' ? '' : '(KK爱看)') + '에서 해당 구간만 재생하고, 아래 “장면”은 팀이 확인한 화면 캡처입니다. 시간은 <b>YouTube 합본 기준</b>입니다.' + (key === 'chixie' ? ' 영상 클립은 캡처와 다른 업로드(도입: KK爱看 超长版 第一季, 맹수 제압과 현대 화기: Nano Review 第一季)라 시간이 캡처와 다릅니다.' : '') + ' <a href="' + cfg.url + '" target="_blank" rel="noopener">红果에서 보기 ↗</a>';
       if (cfg.clips && cfg.clips.length) playClip(cfg.clips[0], false, cfg); else showStill(cfg, 0);
     }
     plWrap.appendChild(note);
