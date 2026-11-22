@@ -828,3 +828,22 @@ video:-webkit-full-screen { object-fit: contain !important; background: #000; wi
 .fs-btn:hover { border-color: var(--ink-2); }
 .fs-btn svg { width: 14px; height: 14px; flex: none; max-width: none; }
 .intro-video .phone-cap { margin-top: 8px; }
+
+/* ---------- 발표용 QR (상단바 왼쪽 고정) ---------- */
+.qr-dock { position: fixed; left: 18px; top: 12px; z-index: 65; display: none; flex-direction: column; align-items: center; gap: 4px;
+  appearance: none; font: inherit; cursor: zoom-in; width: 118px; padding: 9px 8px 8px; border-radius: 16px;
+  background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-nav); color: #111418; transition: transform .2s, box-shadow .2s; }
+.qr-dock:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.qr-dock img { width: 96px; height: 96px; image-rendering: pixelated; display: block; }
+.qr-dock span { font-size: 11.5px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.35; white-space: nowrap; }
+/* 본문과 겹치지 않을 만큼 넓은 화면(노트북, 프로젝터)에서만 고정 표시 */
+@media (min-width: 1260px) { .qr-dock { display: flex; } .nav-qr-btn { display: none; } }
+
+.qr-modal { border: 0; padding: 0; background: transparent; max-width: 96vw; }
+.qr-modal::backdrop { background: rgba(8, 10, 12, .78); }
+.qr-card { background: #fff; color: #111418; border-radius: 24px; padding: clamp(20px, 3vw, 32px); text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,.4); }
+.qr-card img { width: min(62vh, 78vw, 480px); height: auto; aspect-ratio: 1; image-rendering: pixelated; display: block; margin: 0 auto; }
+.qr-card .qr-k { margin: 16px 0 2px; font-size: clamp(20px, 2.6vw, 28px); font-weight: 750; letter-spacing: -0.02em; }
+.qr-card .qr-url { margin: 0; font-size: 14px; color: #6b7280; }
+.qr-close { margin-top: 16px; appearance: none; border: 1px solid #d9dde2; background: #fff; color: #111418; border-radius: 999px; padding: 8px 18px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+.qr-close:hover { border-color: #111418; }

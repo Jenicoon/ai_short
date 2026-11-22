@@ -22,6 +22,7 @@
   var moon = '<svg class="theme-ico-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
   var menu = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>';
 
+  var qrIco = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3M21 14v.01M14 21h7M21 17v4"/></svg>';
   var nav = document.getElementById('siteNav');
   if (nav) {
     nav.className = 'site-nav';
@@ -30,6 +31,7 @@
         '<a class="logo" href="index.html" aria-label="홈으로">' + logo + '<span class="lt">본 조는 AI로 생성되었습니다</span></a>' +
         '<ul class="nav-links">' + PAGES.map(function (p) { return '<li><a href="' + p[0] + '"' + cur(p[0]) + '>' + p[1] + '</a></li>'; }).join('') + '</ul>' +
         '<div class="nav-right">' +
+          '<button class="nav-btn nav-qr-btn" id="qrBtn" type="button" aria-label="사이트 접속 QR 코드 크게 보기">' + qrIco + '</button>' +
           '<button class="nav-btn" id="themeBtn" type="button" aria-label="밝은 화면, 어두운 화면 바꾸기">' + sun + moon + '</button>' +
           '<button class="nav-btn nav-menu-btn" id="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="navDrop">' + menu + '</button>' +
         '</div>' +
@@ -64,18 +66,53 @@
      - "약 18초", "누적 2:30", "2분 30초"처럼 수와 단위가 갈라지지 않게
      - 문단 마지막 단어가 혼자 다음 줄로 떨어지지 않게 */
   var NB = ' ';
-  var BLOCKS = 'p, li, h1, h2, h3, h4, figcaption, td, th, cite, dd, .l, .s, .et, .em, .txt, .tt, .dd, .stage-cap, .premise, .purpose, .metric, .opt span:last-child';
+  var BLOCKS = 'p, li, h1, h2, h3, h4, figcaption, td, th, cite, dd, summary, .l, .s, .et, .em, .txt, .tt, .dd, .stage-cap, .premise, .purpose, .metric, .opt span:last-child, .xs, .cr, .src, .src-foot, .table-note, .phone-cap, .rev-read, .cp-cap, .note, .theater-note, .rw, .promo-d, .ko';
+  var WJ = '⁠'; // 줄바꿈을 막는 보이지 않는 이음표
+  // 괄호 안: 쉼표 뒤에서는 줄이 바뀌어도 되고, 쉼표 사이의 짧은 덩어리(10자 이하)는 한 덩어리로
+  function glueParen(m, inner) {
+    return '(' + inner.split(/(,\s*)/).map(function (seg) {
+      if (/^,/.test(seg)) return seg;
+      // 짧으면 통째로, 길면 마지막 두 낱말만 붙여 ")" 앞에 낱말 하나가 홀로 떨어지지 않게
+      if (seg.length <= 8) return seg.replace(/ /g, NB);
+      // 첫 낱말이 한두 글자면("이 결혼은", "예: 新浪") 다음 낱말과 함께
+      return seg.replace(/ (\S+)$/, NB + '$1').replace(/^(\S{1,2}) /, '$1' + NB);
+    }).join('') + ')';
+  }
   function tidyNode(t) {
     var v = t.nodeValue, o = v;
-    v = v.replace(/(^|[\s(（])(약|누적|평균|총|각|최근|매) (?=[\d一-鿿《“‘])/g, '$1$2' + NB);
+    // "누적 약 8분", "첫 반격", "각 근거"처럼 앞에서 꾸미는 말은 뒤 낱말과 함께
+    // ("누적 약 8분"처럼 꾸밈말이 잇달아 오면 한 번에 다 잡히지 않아, 바뀌지 않을 때까지 되풀이)
+    for (var k = 0, pv; k < 3 && pv !== v; k++) { pv = v; v = v.replace(/(^|[\s(（“‘·])(약|누적|평균|총|각|최근|매|첫) (?=\S)/g, '$1$2' + NB); }
+    // "두 편", "다섯 가지"처럼 수와 세는 말은 함께
+    v = v.replace(/(^|[\s(])(한|두|세|네|다섯|여섯|일곱|여덟|아홉|열) (?=편|명|개|번|가지|화|곳|장|컷|갈래|문항)/g, '$1$2' + NB);
+    // 앞 태그에서 열린 괄호가 이 글에서 닫힐 때: "》 계열)", " 第一季)" → 마지막 짧은 낱말을 앞에 붙임
+    v = v.replace(/^([^()]*?) ([^\s()]{1,4})\)/, '$1' + NB + '$2)');
+    // 닫는 따옴표 바로 뒤의 여는 괄호 앞에서는 줄이 바뀌어도 되게: “…”(이 결혼은 …) 가 통째로 길어져 낱말 중간이 잘리는 것 방지
+    v = v.replace(/([”’])\(/g, '$1​(');
     v = v.replace(/(\d[\d.,:]*\s?(?:분|초|화|위|편|명|만|억|년|월|일|%|배)?) (?=\d[\d.,:]*\s?(?:분|초|화|위|편|명|만|억|%))/g, '$1' + NB);
-    v = v.replace(/([가-힣A-Za-z0-9]) (→|·|~) /g, '$1' + NB + '$2 ');
+    // 구분 기호(·, →)는 앞 낱말 쪽에 붙여 줄 맨 앞에 오지 않게
+    v = v.replace(/(\S) (→|·) /g, '$1' + NB + '$2 ');
+    // "30초~8분", "0:00–0:35"는 갈라지지 않게
+    v = v.replace(/(\S)([~–])(?=\S)/g, '$1' + WJ + '$2' + WJ);
     v = v.replace(/榜 (?=\d+위)/g, '榜' + NB);
-    // "(AI 비교작)"처럼 짧은 괄호 안은 한 덩어리로
-    v = v.replace(/\(([^()]{1,12})\)/g, function (m, inner) { return '(' + inner.replace(/ /g, NB) + ')'; });
+    // "Nano Review", "Sixth Tone"처럼 짧은 영어 이름 두 낱말은 함께
+    v = v.replace(/\b([A-Z][a-z]{1,7}) (?=[A-Z][a-z]{1,7}\b)/g, '$1' + NB);
+    // "~할 수 있다", "~기 때문에", "~는 것은"처럼 의존명사가 줄 맨 앞에 혼자 오지 않게
+    v = v.replace(/ (수|것|때문|때|등|중|뿐|만큼|줄|듯)(?=[\s.,)”’]|[이을를은는가에도의으]|$)/g, NB + '$1');
+    v = v.replace(/\(([^()]{1,60})\)/g, glueParen);
     // 닫는 따옴표·괄호와 뒤따르는 조사(’과, 》을, ”는)가 갈라지지 않게
-    v = v.replace(/([’”」』》〉)）\]])(?=[가-힣])/g, '$1⁠');
+    v = v.replace(/([’”」』》〉)）\]])(?=[가-힣])/g, '$1' + WJ);
     if (v !== o) t.nodeValue = v;
+  }
+  // 태그 경계를 넘는 경우: <b>“…”</b>로, <span>《…》</span>을, <span>…</span> · 영상
+  function tidyAcross(prev, t) {
+    if (!prev) return;
+    var a = prev.nodeValue, b = t.nodeValue, o = b;
+    if (/[’”」』》〉)）\]]$/.test(a) && /^[가-힣]/.test(b)) b = WJ + b;
+    if (/\S$/.test(a) && /^ (·|→) /.test(b)) b = NB + b.slice(1);
+    if (/\S$/.test(a) && /^ [^\s()]{1,4}\)/.test(b)) b = NB + b.slice(1);
+    if (/\S$/.test(a) && /^[~–]/.test(b)) b = WJ + b;
+    if (b !== o) t.nodeValue = b;
   }
   function lastText(el) {
     for (var n = el.lastChild; n; n = n.previousSibling) {
@@ -95,7 +132,7 @@
   function tidy(root) {
     if (!root || root.nodeType !== 1) return;
     var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: function (n) { return n.parentNode && /^(SCRIPT|STYLE|TEXTAREA)$/i.test(n.parentNode.nodeName) ? 2 : 1; } });
-    var n; while ((n = w.nextNode())) tidyNode(n);
+    var n, prev = null; while ((n = w.nextNode())) { tidyNode(n); tidyAcross(prev, n); prev = n; }
     var blocks = root.matches && root.matches(BLOCKS) ? [root] : [];
     blocks = blocks.concat(Array.prototype.slice.call(root.querySelectorAll(BLOCKS)));
     blocks.forEach(noOrphan);
@@ -130,7 +167,30 @@
     }
   }
 
+  /* ---------- 발표용 QR: 상단바 왼쪽에 고정, 누르면 크게 ---------- */
+  function qrDock() {
+    var dock = document.createElement('button');
+    dock.type = 'button';
+    dock.className = 'qr-dock';
+    dock.setAttribute('aria-label', '사이트 접속 QR 코드 크게 보기');
+    dock.innerHTML = '<img src="assets/qr.png" alt="이 사이트로 들어오는 QR 코드" width="96" height="96"><span>구경하고 싶다면 촬영!</span>';
+    document.body.appendChild(dock);
+
+    var modal = document.createElement('dialog');
+    modal.className = 'qr-modal';
+    modal.setAttribute('aria-label', '사이트 접속 QR 코드');
+    modal.innerHTML = '<div class="qr-card"><img src="assets/qr.png" alt="이 사이트로 들어오는 QR 코드"><p class="qr-k">구경하고 싶다면 촬영!</p><p class="qr-url">jenicoon.github.io/ai_short</p><button type="button" class="qr-close">닫기</button></div>';
+    document.body.appendChild(modal);
+    var open = function () { if (modal.showModal) modal.showModal(); else modal.setAttribute('open', ''); };
+    var close = function () { if (modal.close) modal.close(); else modal.removeAttribute('open'); };
+    dock.addEventListener('click', open);
+    var btn = document.getElementById('qrBtn'); if (btn) btn.addEventListener('click', open);
+    modal.querySelector('.qr-close').addEventListener('click', close);
+    modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+  }
+
   function ready() {
+    qrDock();
     footer();
     tidy(document.body);
     promoToast();
