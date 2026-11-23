@@ -358,18 +358,19 @@
 
   /* ---------- 상영관 ---------- */
   var YT = '3F80jCzxyj4';
+  var CL = 'assets/clips/';
   var theater = {
     yishuangshou: {
       tab: '<span class="zh">一双手</span> 영상',
-      credit: '출처: 红果短剧 / 一双手闯出一片天. 영상: YouTube 합본, KK爱看',
+      credit: '출처: 红果短剧 / 一双手闯出一片天. 영상: YouTube 합본, KK爱看에서 해당 구간만 잘라 실음',
       items: [
         { type: 'local', src: 'assets/video/yishuangshou_ep1_intro_30s.mp4', thumb: YS + 'ys_00m03s.jpg', t: '0:00–0:30', title: '1화 도입부 30초', desc: '끊어지기 직전의 와이어, 이름 자막, 하단 AI 표기' },
-        { type: 'yt', vid: YT, start: 30, end: 85, thumb: YS + 'ys_00m50s.jpg', title: '사고와 외면', desc: '와이어가 끊어지고, 아내는 남편보다 친구를 먼저 돌본다' },
-        { type: 'yt', vid: YT, start: 85, end: 112, thumb: YS + 'ys_01m30s.jpg', title: '회귀 “十五年前”', desc: '죽음 직후 15년 전 약혼 자리로 돌아간다' },
-        { type: 'yt', vid: YT, start: 115, end: 170, thumb: YS + 'ys_02m30s.jpg', title: '첫 반격, 양보 거부', desc: '“지금 내게 가장 필요한 건 기회야”' },
-        { type: 'yt', vid: YT, start: 1185, end: 1245, thumb: YS + 'ys_20m00s.jpg', title: '공장을 떠나다', desc: '조직을 떠나는 공장 문 앞' },
-        { type: 'yt', vid: YT, start: 2390, end: 2450, thumb: YS + 'ys_40m00s.jpg', title: '수리점의 왕톄주', desc: '자기 손으로 부품을 만드는 공간' },
-        { type: 'yt', vid: YT, start: 4790, end: 4850, thumb: YS + 'ys_1h20m00s.jpg', title: '도면 검토', desc: '기술과 품질을 다투는 장면' }
+        { type: 'local', src: CL + 'ys_accident.mp4', thumb: YS + 'ys_00m50s.jpg', t: '0:30–1:25', title: '사고와 외면', desc: '와이어가 끊어지고, 아내는 남편보다 친구를 먼저 돌본다' },
+        { type: 'local', src: CL + 'ys_return.mp4', thumb: YS + 'ys_01m30s.jpg', t: '1:25–1:52', title: '회귀 “十五年前”', desc: '죽음 직후 15년 전 약혼 자리로 돌아간다' },
+        { type: 'local', src: CL + 'ys_refuse.mp4', thumb: YS + 'ys_02m30s.jpg', t: '1:55–2:50', title: '첫 반격, 양보 거부', desc: '“지금 내게 가장 필요한 건 기회야”' },
+        { type: 'local', src: CL + 'ys_leave.mp4', thumb: YS + 'ys_20m00s.jpg', t: '19:45–20:45', title: '공장을 떠나다', desc: '조직을 떠나는 공장 문 앞' },
+        { type: 'local', src: CL + 'ys_shop.mp4', thumb: YS + 'ys_40m00s.jpg', t: '39:50–40:50', title: '수리점의 왕톄주', desc: '자기 손으로 부품을 만드는 공간' },
+        { type: 'local', src: CL + 'ys_drawing.mp4', thumb: YS + 'ys_1h20m00s.jpg', t: '1:19:50–1:20:50', title: '도면 검토', desc: '기술과 품질을 다투는 장면' }
       ]
     },
     guancheng: {
@@ -380,12 +381,11 @@
     },
     chixie: {
       tab: '<span class="zh">持械入宋</span> 영상',
-      credit: '출처: 红果短剧 / 持械入宋. 영상: YouTube 합본, KK爱看과 Nano Review',
-      wide: true,
+      credit: '출처: 红果短剧 / 持械入宋. 영상: YouTube 합본, KK爱看과 Nano Review에서 해당 구간만 잘라 실음',
       items: [
-        { type: 'yt', vid: 'OOpGiD7p_sk', start: 0, end: 40, thumb: CX + 'cx_00m01s.jpg', title: '도입, 장갑차 추락 직후', desc: '첫 장면부터 생존 위기' },
-        { type: 'yt', vid: '2m_ZaRnJxI8', start: 435, end: 480, thumb: CX + 'cx_08m00s.jpg', title: '첫 반격, 맹수 제압', desc: '실사로는 부담이 큰 맹수와의 싸움' },
-        { type: 'yt', vid: '2m_ZaRnJxI8', start: 685, end: 735, thumb: CX + 'cx_13m00s.jpg', title: '현대 화기로 반격', desc: '마을을 덮친 약탈자를 현대 무기로 압도한다' }
+        { type: 'local', wide: true, src: CL + 'cx_intro.mp4', thumb: CX + 'cx_00m01s.jpg', t: '0:00–0:40', title: '도입, 장갑차 추락 직후', desc: '첫 장면부터 생존 위기' },
+        { type: 'local', wide: true, src: CL + 'cx_beast.mp4', thumb: CX + 'cx_08m00s.jpg', t: '7:15–8:00', title: '첫 반격, 맹수 제압', desc: '실사로는 부담이 큰 맹수와의 싸움' },
+        { type: 'local', wide: true, src: CL + 'cx_guns.mp4', thumb: CX + 'cx_13m00s.jpg', t: '11:25–12:15', title: '현대 화기로 반격', desc: '마을을 덮친 약탈자를 현대 무기로 압도한다' }
       ],
       note: '영상 클립은 장면 캡처와 다른 업로드라 재생 시간이 캡처의 시간과 다릅니다.',
       url: 'https://hongguoduanju.com/detail?series_id=7671966197985856536'
@@ -396,7 +396,7 @@
 
   function ytSrc(vid, s0, e0) { return 'https://www.youtube-nocookie.com/embed/' + vid + '?start=' + s0 + '&end=' + e0 + '&autoplay=1&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3'; }
   function playClip(it, autoplay, cfg) {
-    var phone = el('div', { class: 'phone' + (cfg.wide && it.type === 'yt' && it.vid !== YT ? ' wide' : '') });
+    var phone = el('div', { class: 'phone' + (it.wide ? ' wide' : '') });
     var scr = el('div', { class: 'screen' }); phone.appendChild(scr);
     var timeTxt = it.type === 'yt' ? mmss(it.start) + '–' + mmss(it.end) : it.t;
     if (it.type === 'local') {
@@ -449,7 +449,7 @@
       li.appendChild(b); ul.appendChild(li);
     });
     plWrap.appendChild(ul);
-    plWrap.appendChild(el('p', { class: 'theater-note' }, '시간은 YouTube 합본 기준입니다. ' + (cfg.note ? zh(cfg.note) + ' ' : '') + '원본 영상이 내려가거나 지역에 따라 재생되지 않을 수 있습니다.'));
+    plWrap.appendChild(el('p', { class: 'theater-note' }, '시간은 YouTube 합본 기준입니다. 분석에 필요한 구간만 짧게 잘라 사이트에 직접 실었습니다. ' + (cfg.note ? zh(cfg.note) : '')));
     playClip(cfg.items[0], false, cfg);
   }
   if (tabsBox) {
@@ -517,8 +517,13 @@
         b.setAttribute('aria-pressed', 'true');
         player.className = 'clip-player' + (b.getAttribute('data-wide') === '1' ? ' wide' : '');
         player.hidden = false;
-        player.innerHTML = '<div class="cp-frame"><iframe src="' + ytSrc(vid, s0, e0) + '" title="' + esc(title) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>' +
-          '<p class="cp-cap"><b>' + zh(title) + '</b> ' + mmss(s0) + '–' + mmss(e0) + '<br><span class="cr">출처: 红果短剧 / ' + zh(work) + '. 영상: YouTube 합본, ' + esc(up) + '. <a href="https://www.youtube.com/watch?v=' + vid + '&t=' + s0 + 's" target="_blank" rel="noopener">YouTube에서 열기 ↗</a></span></p>';
+        var local = b.getAttribute('data-src');
+        // 사이트에 직접 실은 클립이 있으면 그 파일을, 없으면 YouTube 구간을 재생
+        var media = local
+          ? '<video class="clip-video" src="' + local + '" controls autoplay playsinline preload="metadata"></video>'
+          : '<iframe src="' + ytSrc(vid, s0, e0) + '" title="' + esc(title) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+        player.innerHTML = '<div class="cp-frame">' + media + '</div>' +
+          '<p class="cp-cap"><b>' + zh(title) + '</b> ' + mmss(s0) + '–' + mmss(e0) + '<br><span class="cr">출처: 红果短剧 / ' + zh(work) + '. 영상: YouTube 합본, ' + esc(up) + (local ? '에서 해당 구간만 잘라 실음' : '') + '.</span></p>';
       });
     });
   });
