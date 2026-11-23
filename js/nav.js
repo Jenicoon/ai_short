@@ -97,6 +97,9 @@
     v = v.replace(/榜 (?=\d+위)/g, '榜' + NB);
     // "Nano Review", "Sixth Tone"처럼 짧은 영어 이름 두 낱말은 함께
     v = v.replace(/\b([A-Z][a-z]{1,7}) (?=[A-Z][a-z]{1,7}\b)/g, '$1' + NB);
+    // 사진 저작권 표기와 영어 하이픈 낱말은 한 덩어리로: "Wikimedia Commons", "CC BY-SA 4.0", "Micro-Drama"
+    v = v.replace(/Wikimedia Commons/g, 'Wikimedia' + NB + 'Commons').replace(/CC BY-SA 4\.0/g, 'CC' + NB + 'BY‑SA' + NB + '4.0');
+    v = v.replace(/([A-Za-z])-([A-Za-z])/g, '$1‑$2');
     // "~할 수 있다", "~기 때문에", "~는 것은"처럼 의존명사가 줄 맨 앞에 혼자 오지 않게
     v = v.replace(/ (수|것|때문|때|등|중|뿐|만큼|줄|듯)(?=[\s.,)”’]|[이을를은는가에도의으]|$)/g, NB + '$1');
     v = v.replace(/\(([^()]{1,60})\)/g, glueParen);
@@ -104,6 +107,89 @@
     v = v.replace(/([’”」』》〉)）\]])(?=[가-힣])/g, '$1' + WJ);
     if (v !== o) t.nodeValue = v;
   }
+
+  /* 어절 묶기: 꾸미는 말과 꾸밈 받는 말, 본용언과 보조용언, 수와 단위, 짧은 서술어와 그 앞 낱말이
+     줄 끝과 줄 앞으로 갈리지 않게 한다. 묶음 길이는 글 상자 폭에 맞춰 제한해 좁은 칸에서도 넘치지 않게 */
+  // 꾸미는 말(관형어)은 뒤 낱말과 강하게, 부사는 약하게 묶는다
+  var ADN = /^(다른|같은|새로운|어떤|이런|그런|저런|모든|많은|적은|작은|큰|짧은|긴|높은|낮은|좋은|비슷한|익숙한|가까운|빠른|느린|여러|온갖|이번|지난|다음|해당|기존|신규|실제|전체)$/;
+  var ADV = /^(가장|매우|아주|더욱|다시|서로|함께|직접|바로|모두|아직|이미|훨씬|조금|크게|먼저|모두|오히려|곧|또는|및)$/;
+  var VADN = /(하는|되는|있는|없는|보는|주는|받는|라는|이라는|가는|오는|드는|내는|두는|하던|되던|한|된|운|던|할|될|적|인|른|의)$/;
+  var FIN = /(은|는|이|가|을|를|에|와|과|도|만|로|고|며|면|서|다|요|지|게|데|나|야|까|터|럼|께|든|랑|여|해|어|아|워|져|라|자|니|음|함|됨|임|듯|록|엔)$/;
+  var NOUNX = /(장면|화면|측면|방면|국면|전면|정면|순서|문서|보고서|최고|광고|참고|이미지|페이지|작가|평가|국가|전문가|자|하나|바다|사이다)$/;
+  var INVIS = /[⁠​]/g;
+  function vlen(s) { return s.replace(INVIS, '').length; }
+  // 두 낱말 사이를 얼마나 붙여야 하나: 0 끊어도 됨, 1 가급적, 2 되도록, 3 꼭 붙임
+  var POS = /^(뒤|전|후|때|중|앞|속|안|밖|위|사이|동안|직후|직전|이후|이전|가운데|이상|이하|미만|이내)([에는의도로서을를]{0,2})[,.]?$/;
+  function glueLevel(a, b) {
+    a = a.replace(INVIS, ''); b = b.replace(INVIS, '');
+    if (!a || !b) return 0;
+    if (/^\d[\d.]*,$/.test(a) && /^\d/.test(b)) return 3;                  // 10, 20, 30화
+    if (/[.,!?:;…\/→·”’」』》〉)\]]$/.test(a)) return 0;                    // 문장부호 뒤는 끊어도 된다
+    if (/^(이|그|저|늘|더|또|첫|약|각|내|새|못|잘|꼭|왜|총|매|본|한|두|세|네|몇|옛|온|좀|곧|참|꽤|딱|막)$/.test(a)) return 3; // 한 글자 꾸밈말: 이, 그, 늘, 더, 첫
+    if (/[어아여해워져떠써줘지고게]$/.test(a) && /^(있|없|않|못하|보|봤|본|볼|주|준|줄|줬|버리|버린|놓|놨|둔|두|싶|내|낸|낼|냈)/.test(b)) return 3; // 떠 있고, 보여 준, 찍어 낸다
+    if (/게$/.test(a) && /^(하|한|할|해|했|되|된|될|됐|만들|만든)/.test(b)) return 3; // 가능하게 하는, 쉽게 된
+    if (/^(아닌|아니라|아니다|아닙니다)/.test(b)) return 3;                 // 남편이 아닌
+    if (POS.test(b)) return 3;                                              // 죽음 뒤, 사고 때, 95% 이상
+    if (/[A-Za-z0-9%]$/.test(a) && /^[가-힣]/.test(b)) return 3;           // AI 작품
+    if (/\d[\d.,]*[가-힣]$/.test(a)) return 3;                             // 2026년 1분기, 3.57억 명
+    if (/의$/.test(a)) return 2;                                           // 숏폼의 정서적: 다른 꾸밈보다는 약하게
+    if (ADN.test(a) || /적$/.test(a)) return 3;                            // 새로운 시각적 경험
+    if (VADN.test(a)) return 2;                                            // 반영한 이야기: 관형절 뒤는 명사구보다 약하게
+    if (/^(되|하|있|없|이|보|오|가|주|받|두|놓|떠|해|돼|봐|와|줘|나|들)(고|며|면|서)[,]?$/.test(b)) return 2; // 재료가 되고
+    if (ADV.test(a)) return 2;                                             // 먼저 돌보고, 다시 일어선다
+    if (NOUNX.test(a) && !/(하자|보자|가자)$/.test(a)) return 2;           // 시청자, 장면, 이미지: 조사 없는 명사
+    if (FIN.test(a)) {
+      if (/^[가-힣]{1,4}(다|요)[.!?]?[”’]?$/.test(b)) return 1;            // 짧은 서술어는 앞 낱말과: 사람들은 봅니다.
+      return 0;                                                             // 조사, 어미로 끝난 어절 뒤
+    }
+    if (/[가-힣]$/.test(a)) return 2;                                      // 조사 없는 명사: 인기 장면, 실사 작품
+    return 0;
+  }
+  function canBreak(a, b) { return glueLevel(a, b) === 0; }
+  // 띄어쓰기로 나눈 조각은 그 안에서 줄이 바뀌지 않는다. 붙이고 싶은 낱말들이 cap보다 길면
+  // 가장 덜 어색한 곳(붙임 정도가 낮은 곳)에서 나눈다
+  var COST = [0, 3, 10, 100];
+  function phrase(v, cap) {
+    var parts = v.split(' ');
+    if (parts.length < 2) return v;
+    var n = parts.length, len = parts.map(vlen), lv = [0], seps = [];
+    for (var k = 1; k < n; k++) lv[k] = parts[k - 1] && parts[k] ? glueLevel(parts[k - 1].split(NB).pop(), parts[k].split(NB)[0]) : 0;
+    var i = 0;
+    while (i < n) {
+      var j = i; while (j + 1 < n && lv[j + 1] > 0) j++;
+      // parts[i..j]를 cap 안의 덩어리로 나누는 최소 비용
+      var best = [], from = []; best[i] = 0;
+      for (var e = i + 1; e <= j + 1; e++) {
+        best[e] = Infinity; var w = -1;
+        for (var st = e - 1; st >= i; st--) {
+          w += len[st] + 1;
+          if (w > cap && st < e - 1) break;
+          var c = best[st] + (st > i ? COST[lv[st]] + 0.5 : 0);
+          if (c <= best[e]) { best[e] = c; from[e] = st; } // 비용이 같으면 앞쪽에서 끊어 뒤의 명사구를 지킨다
+        }
+      }
+      var starts = {}; for (var e2 = j + 1; e2 > i; e2 = from[e2]) starts[from[e2]] = 1;
+      for (var m = i + 1; m <= j; m++) seps[m] = starts[m] ? ' ' : NB;
+      if (j + 1 < n) seps[j + 1] = ' ';
+      i = j + 1;
+    }
+    var out = parts[0];
+    for (var q = 1; q < n; q++) out += seps[q] + parts[q];
+    return out;
+  }
+  var capCache = typeof WeakMap === 'function' ? new WeakMap() : null;
+  function boxOf(t) { var e = t.parentNode; while (e && e.nodeType === 1 && e !== document.body && getComputedStyle(e).display === 'inline') e = e.parentNode; return e; }
+  function capFor(t) {
+    var e = boxOf(t), box = e;
+    if (capCache && e && capCache.has(e)) return capCache.get(e);
+    while (box && box.nodeType === 1 && !box.clientWidth) box = box.parentElement;
+    var fs = parseFloat(getComputedStyle(e && e.nodeType === 1 ? e : document.body).fontSize) || 16;
+    var cpl = box && box.clientWidth ? box.clientWidth / fs : 20;
+    var cap = Math.max(4, Math.min(12, Math.floor(cpl * 0.75)));
+    if (capCache && e) capCache.set(e, cap);
+    return cap;
+  }
+  function inFlow(t) { var p = t.parentNode; return p && p.closest && p.closest('main, footer') && !p.closest('script, style, svg, .nav'); }
   // 태그 경계를 넘는 경우: <b>“…”</b>로, <span>《…》</span>을, <span>…</span> · 영상
   function tidyAcross(prev, t) {
     if (!prev) return;
@@ -128,14 +214,30 @@
     if (i < 0) return;
     var tail = v.slice(i + 1);
     // 앞 낱말이 길면(“AI制作，无真实动物受伤”처럼) 붙였을 때 칸을 넘쳐 낱말 중간이 잘리므로 붙이지 않는다
-    var before = v.slice(0, i), j = Math.max(before.lastIndexOf(' '), before.lastIndexOf(NB));
-    var prevWord = before.slice(j + 1);
-    if (tail.length <= 6 && prevWord.length <= 8) t.nodeValue = before + NB + tail + t.nodeValue.slice(v.length);
+    var before = v.slice(0, i), runBefore = before.slice(before.lastIndexOf(' ') + 1);
+    if (tail.length <= 6 && vlen(runBefore) + 1 + vlen(tail) <= Math.max(capFor(t) + 3, 10)) t.nodeValue = before + NB + tail + t.nodeValue.slice(v.length);
   }
   function tidy(root) {
     if (!root || root.nodeType !== 1) return;
     var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: function (n) { return n.parentNode && /^(SCRIPT|STYLE|TEXTAREA)$/i.test(n.parentNode.nodeName) ? 2 : 1; } });
-    var n, prev = null; while ((n = w.nextNode())) { tidyNode(n); tidyAcross(prev, n); prev = n; }
+    var n, prev = null, all = []; while ((n = w.nextNode())) { tidyNode(n); tidyAcross(prev, n); prev = n; all.push(n); }
+    // 같은 글 상자 안에서 이어지는 텍스트 노드를 한 줄의 글처럼 이어 붙여 어절을 묶고, 다시 노드별로 나눠 넣는다
+    // (띄어쓰기를 NBSP로 바꿀 뿐이라 글자 수가 그대로여서 위치가 어긋나지 않는다)
+    var group = [], gbox = null;
+    var flush = function () {
+      if (group.length) {
+        var full = group.map(function (x) { return x.nodeValue; }).join(''), out = phrase(full, capFor(group[0])), pos = 0;
+        if (out !== full) group.forEach(function (x) { var L = x.nodeValue.length, nv = out.substr(pos, L); pos += L; if (nv !== x.nodeValue) x.nodeValue = nv; });
+      }
+      group = [];
+    };
+    all.forEach(function (x) {
+      if (!inFlow(x)) { flush(); gbox = null; return; }
+      var b = boxOf(x), ps = x.previousSibling;
+      if (b !== gbox || (ps && ps.nodeName === 'BR')) { flush(); gbox = b; }
+      group.push(x);
+    });
+    flush();
     var blocks = root.matches && root.matches(BLOCKS) ? [root] : [];
     blocks = blocks.concat(Array.prototype.slice.call(root.querySelectorAll(BLOCKS)));
     blocks.forEach(noOrphan);
