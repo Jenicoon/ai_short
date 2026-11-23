@@ -264,45 +264,23 @@
   }
   legend($('#legendReversal'), [[swLineAI, 'AI 작품'], [swLineReal, '실사 작품, 점선은 관찰한 범위 안에 반격 없음'], [swHollow, '첫 갈등'], [swFilled, '첫 반격']]);
 
-  /* 차트 2: 1~5화 회차 길이 */
-  function drawLength() {
-    var box = $('#chartLength'); if (!box) return;
-    box.innerHTML = '';
-    var tip = tooltipFor(box);
-    var order = ['yishuangshou', 'guancheng', 'chixie', 'xiaozhen', 'tainainai'];
-    var W = Math.max(280, box.clientWidth), rowH = 58, top = 4, axisH = 30, H = top + order.length * rowH + axisH, padL = 10, padR = 14, max = 200;
-    var x = function (sec) { return padL + (sec / max) * (W - padL - padR); };
-    var svg = s('svg', { viewBox: '0 0 ' + W + ' ' + H, width: W, height: H });
-    [0, 60, 120, 180].forEach(function (t) {
-      var gx = x(t);
-      svg.appendChild(s('line', { class: 'gridline', x1: gx, x2: gx, y1: top + 26, y2: H - axisH + 4 }));
-      svg.appendChild(s('text', { class: 'axis', x: gx, y: H - 8, 'text-anchor': t === 0 ? 'start' : 'middle' }, t === 0 ? '0초' : (t / 60) + '분'));
-    });
-    order.forEach(function (id, i) {
-      var w = byId[id]; if (!w) return;
-      var y0 = top + i * rowH, ty = y0 + 42, isAI = w.production === 'AI', col = isAI ? 'var(--ai)' : 'var(--real)';
-      var g = s('g', { class: 'row' });
-      g.appendChild(s('rect', { class: 'row-hover', x: 0, y: y0 + 2, width: W, height: rowH - 4, rx: 10 }));
-      g.appendChild(s('text', { class: 'zh', x: padL, y: y0 + 21 }, SHORT[id]));
-      g.appendChild(s('text', { class: 'val', x: W - padR, y: y0 + 21, 'text-anchor': 'end' }, '평균 ' + Math.round(w.ep_len_avg_sec) + '초'));
-      var lens = w.ep_len_sec_ep1_5, mn = Math.min.apply(null, lens), mx = Math.max.apply(null, lens);
-      g.appendChild(s('line', { x1: x(mn), x2: x(mx), y1: ty, y2: ty, stroke: 'var(--line-strong)', 'stroke-width': 2, 'stroke-linecap': 'round' }));
-      var ax = x(w.ep_len_avg_sec);
-      g.appendChild(s('line', { x1: ax, x2: ax, y1: ty - 11, y2: ty + 11, stroke: 'var(--ink)', 'stroke-width': 2.5, 'stroke-linecap': 'round' }));
-      svg.appendChild(g);
-      lens.forEach(function (len, k) {
-        var dg = s('g', { tabindex: '0', class: 'row', 'aria-label': w.title + ' ' + (k + 1) + '화 ' + Math.round(len) + '초' });
-        dg.appendChild(s('circle', { cx: x(len), cy: ty, r: 5.5, fill: col, stroke: 'var(--surface)', 'stroke-width': 2 }));
-        dg.appendChild(s('circle', { class: 'hit', cx: x(len), cy: ty, r: 12 }));
-        bindHover(dg, box, tip, '<b class="zh">' + esc(SHORT[id]) + '</b> ' + (k + 1) + '화<span class="m">' + Math.round(len) + '초, ' + mmss(len) + '</span>');
-        svg.appendChild(dg);
-      });
-    });
-    box.appendChild(svg);
+  /* 차트 2: 1~5화 평균 회차 길이, 단순 막대 */
+  var lenBox = $('#lenBars');
+  if (lenBox) {
+    var LMAX = 150;
+    lenBox.innerHTML = ['yishuangshou', 'guancheng', 'chixie', 'xiaozhen', 'tainainai'].map(function (id) {
+      var w = byId[id]; if (!w) return '';
+      var isAI = w.production === 'AI', avg = Math.round(w.ep_len_avg_sec);
+      var eps = w.ep_len_sec_ep1_5.map(function (v) { return Math.round(v); }).join(', ');
+      return '<div class="lb-row" title="1~5화 ' + eps + '초">' +
+        '<span class="lb-n"><span class="zh">' + esc(SHORT[id]) + '</span><span class="badge ' + (isAI ? 'ai' : 'real') + '">' + (isAI ? 'AI' : '실사') + '</span></span>' +
+        '<span class="lb-bar"><i class="' + (isAI ? '' : 'real') + '" data-w="' + (avg / LMAX * 100).toFixed(1) + '"></i></span>' +
+        '<span class="lb-v">' + avg + '<small>초</small></span></div>';
+    }).join('');
+    setTimeout(function () { $$('[data-w]', lenBox).forEach(function (i) { i.style.width = i.getAttribute('data-w') + '%'; }); }, 60);
   }
-  legend($('#legendLength'), [[swDot('--ai'), 'AI 작품의 한 회차'], [swDot('--real'), '실사 작품의 한 회차'], [swTick, '1~5화 평균']]);
 
-  function drawCharts() { drawReversal(); drawLength(); }
+  function drawCharts() { drawReversal(); }
   drawCharts();
   var lastW = 0, rT;
   window.addEventListener('resize', function () { clearTimeout(rT); rT = setTimeout(function () { var w = ($('#chartReversal') || {}).clientWidth; if (w && w !== lastW) { lastW = w; drawCharts(); } }, 150); });
@@ -320,51 +298,14 @@
     hooksBox.appendChild(el('div', { class: 'row' }, '<div class="name">' + esc(SHORT[id]) + '<span class="badge ' + (w.production === 'AI' ? 'ai' : 'real') + '">' + (w.production === 'AI' ? 'AI' : '실사') + '</span></div><div class="chips">' + chips + '</div>'));
   });
 
-  /* ---------- 비교 기록표: 넓은 화면은 표, 모바일은 항목별 카드 ---------- */
-  var tbl = $('#compareTable'), cards = $('#compareCards');
-  if (tbl || cards) {
-    var cols = ['yishuangshou', 'guancheng', 'xiaozhen', 'chixie'].filter(function (id) { return byId[id]; });
-    var sub = function (t) { return t ? '<span class="sub">' + zh(t) + '</span>' : ''; };
-    var ROWS = [
-      ['1화 첫 갈등까지', '', function (id) { return zh(T[id].conflict) + sub(T[id].conflictN); }],
-      ['첫 반격까지', '', function (id) { return zh(T[id].rev) + sub(T[id].revN); }],
-      ['1~5화 반전 횟수', '관찰', function (id) { return zh(T[id].cnt) + sub(T[id].cntN); }],
-      ['회차 끝 갈고리 钩子', '관찰', function (id) { return esc(byId[id].ending_hooks_ep1_5.map(function (h) { return h.replace(/\(.*\)/, ''); }).join(' / ')) + sub(T[id].hooksN); }],
-      ['억압의 가해자', '', function (id) { return zh(T[id].opp) + sub(T[id].oppN); }],
-      ['전환 장치', '', function (id) { return zh(T[id].dev) + sub(T[id].devN); }],
-      ['보상의 종류', '', function (id) { return zh(T[id].rew) + sub(T[id].rewN); }],
-      ['한 화 길이, 1~5화', '', function (id) { var w = byId[id]; return w.ep_len_sec_ep1_5.map(function (v) { return Math.round(v); }).join(', ') + '초' + sub('평균 ' + Math.round(w.ep_len_avg_sec) + '초'); }],
-      ['얼굴 유사도', '관찰', function (id) { return '<b>' + esc(T[id].face) + '</b>' + sub(T[id].faceN); }],
-      ['실사로 찍기 어려운 장면', '관찰', function (id) { return esc(T[id].hard) + sub(T[id].hardN); }]
-    ];
-    var badge = function (b) { return b ? ' <span class="badge obs">' + b + '</span>' : ''; };
-    if (tbl) {
-      tbl.innerHTML = '<caption style="position:absolute;left:-9999px">작품 비교 기록표, 1~5화, 红果 공식 플레이어, 2026.11.9</caption><thead><tr><th>항목</th>' + cols.map(function (id) {
-        var isAI = byId[id].production === 'AI';
-        return '<th' + (id === 'yishuangshou' ? ' class="base"' : '') + '><span class="zh">' + esc(SHORT[id]) + '</span> <span class="badge ' + (isAI ? 'ai' : 'real') + '">' + (isAI ? 'AI' : '실사') + (id === 'yishuangshou' ? ' 기준' : '') + '</span></th>';
-      }).join('') + '</tr></thead><tbody>' + ROWS.map(function (r) {
-        return '<tr><th>' + zh(r[0]) + badge(r[1]) + '</th>' + cols.map(function (id) { return '<td' + (id === 'yishuangshou' ? ' class="base"' : '') + '>' + r[2](id) + '</td>'; }).join('') + '</tr>';
-      }).join('') + '</tbody>';
-    }
-    if (cards) {
-      cards.innerHTML = ROWS.map(function (r) {
-        return '<div class="cmp-card"><h4>' + zh(r[0]) + badge(r[1]) + '</h4><dl>' + cols.map(function (id) {
-          var isAI = byId[id].production === 'AI';
-          return '<dt class="' + (isAI ? '' : 'real') + '">' + esc(SHORT[id]) + (id === 'yishuangshou' ? ' <span class="badge base">기준</span>' : '') + '</dt><dd>' + r[2](id) + '</dd>';
-        }).join('') + '</dl></div>';
-      }).join('');
-    }
-  }
-
   /* ---------- 상영관 ---------- */
   var YT = '3F80jCzxyj4';
   var CL = 'assets/clips/';
   var theater = {
     yishuangshou: {
       tab: '<span class="zh">一双手</span> 영상',
-      credit: '출처: 红果短剧 / 一双手闯出一片天. 영상: YouTube 합본, KK爱看에서 해당 구간만 잘라 실음',
+      credit: '출처: 红果短剧 / 一双手闯出一片天<br>시간은 YouTube 합본 기준',
       items: [
-        { type: 'local', src: 'assets/video/yishuangshou_ep1_intro_30s.mp4', thumb: YS + 'ys_00m03s.jpg', t: '0:00–0:30', title: '1화 도입부 30초', desc: '끊어지기 직전의 와이어, 이름 자막, 하단 AI 표기' },
         { type: 'local', src: CL + 'ys_accident.mp4', thumb: YS + 'ys_00m50s.jpg', t: '0:30–1:25', title: '사고와 외면', desc: '와이어가 끊어지고, 아내는 남편보다 친구를 먼저 돌본다' },
         { type: 'local', src: CL + 'ys_return.mp4', thumb: YS + 'ys_01m30s.jpg', t: '1:25–1:52', title: '회귀 “十五年前”', desc: '죽음 직후 15년 전 약혼 자리로 돌아간다' },
         { type: 'local', src: CL + 'ys_refuse.mp4', thumb: YS + 'ys_02m30s.jpg', t: '1:55–2:50', title: '첫 반격, 양보 거부', desc: '“지금 내게 가장 필요한 건 기회야”' },
@@ -381,13 +322,12 @@
     },
     chixie: {
       tab: '<span class="zh">持械入宋</span> 영상',
-      credit: '출처: 红果短剧 / 持械入宋. 영상: YouTube 합본, KK爱看과 Nano Review에서 해당 구간만 잘라 실음',
+      credit: '출처: 红果短剧 / 持械入宋<br>시간은 YouTube 합본 기준',
       items: [
         { type: 'local', wide: true, src: CL + 'cx_intro.mp4', thumb: CX + 'cx_00m01s.jpg', t: '0:00–0:40', title: '도입, 장갑차 추락 직후', desc: '첫 장면부터 생존 위기' },
         { type: 'local', wide: true, src: CL + 'cx_beast.mp4', thumb: CX + 'cx_08m00s.jpg', t: '7:15–8:00', title: '첫 반격, 맹수 제압', desc: '실사로는 부담이 큰 맹수와의 싸움' },
         { type: 'local', wide: true, src: CL + 'cx_guns.mp4', thumb: CX + 'cx_13m00s.jpg', t: '11:25–12:15', title: '현대 화기로 반격', desc: '마을을 덮친 약탈자를 현대 무기로 압도한다' }
       ],
-      note: '영상 클립은 장면 캡처와 다른 업로드라 재생 시간이 캡처의 시간과 다릅니다.',
       url: 'https://hongguoduanju.com/detail?series_id=7671966197985856536'
     },
     real: { tab: '실사 2편', real: true }
@@ -406,8 +346,7 @@
       f.addEventListener('click', function () { scr.innerHTML = '<iframe src="' + ytSrc(it.vid, it.start, it.end) + '" title="' + esc(it.title) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>'; });
       scr.appendChild(f);
     }
-    var cap = el('div', { class: 'stage-cap' }, '<b>' + zh(it.title) + '</b> ' + timeTxt + '<br>' + zh(it.desc) +
-      '<span class="cr">' + zh(cfg.credit) + (it.type === 'yt' ? '<br><a href="https://www.youtube.com/watch?v=' + it.vid + '&t=' + it.start + 's" target="_blank" rel="noopener">YouTube에서 열기 ↗</a>' : '') + '</span>');
+    var cap = el('div', { class: 'stage-cap min' }, '<span class="cr">' + cfg.credit.split('<br>').map(zh).join('<br>') + '</span>');
     stage.innerHTML = ''; stage.appendChild(phone); stage.appendChild(cap);
   }
   function openTab(key) {
@@ -415,7 +354,7 @@
     var cfg = theater[key];
     plWrap.innerHTML = '';
     if (cfg.real) {
-      stage.innerHTML = '<div class="real-box"><span class="badge real">실사</span><h3 class="sub" style="margin-top:12px">실사 작품은 포스터와 기록으로</h3><p class="small">두 실사 작품은 장면 캡처와 영상 클립 없이, 공식 포스터와 비교 기록표의 관찰 결과로 비교합니다.</p></div>';
+      stage.innerHTML = '<div class="real-box"><span class="badge real">실사</span><h3 class="sub" style="margin-top:12px">실사 작품은 포스터와 기록으로</h3><p class="small">두 실사 작품은 장면 캡처와 영상 클립 없이, 공식 포스터와 관찰 결과로 비교합니다.</p></div>';
       plWrap.innerHTML = [byId.xiaozhen, byId.tainainai].filter(Boolean).map(function (w) {
         var m = w.metrics_2026_11_09;
         return '<div class="card real-card"><img class="real-poster" src="assets/posters/' + w.id + '.jpg" alt="' + esc(w.title) + ' 공식 포스터" loading="lazy" data-zoom data-cap="' + esc('출처: 红果短剧 / ' + w.title + ' 공식 포스터') + '"><div><span class="k">' + esc(w.role) + '</span><h3 class="zh">' + esc(w.title) + '</h3><p>' + zh(w.premise) + '</p>' +
@@ -433,7 +372,7 @@
       stage.innerHTML = ''; stage.appendChild(ss);
       stage.appendChild(el('div', { class: 'stage-cap' }, '<span class="cr">' + zh(sc.credit) + '</span>'));
       initSlideshow(ss);
-      plWrap.innerHTML = '<p class="theater-note">' + zh(cfg.note) + ' <a href="' + cfg.url + '" target="_blank" rel="noopener">红果에서 보기 ↗</a></p>';
+      plWrap.innerHTML = '<p class="theater-note"><a href="' + cfg.url + '" target="_blank" rel="noopener">红果에서 보기 ↗</a></p>';
       return;
     }
     var ul = el('ul', { class: 'playlist' });
@@ -449,7 +388,6 @@
       li.appendChild(b); ul.appendChild(li);
     });
     plWrap.appendChild(ul);
-    plWrap.appendChild(el('p', { class: 'theater-note' }, '시간은 YouTube 합본 기준입니다. 분석에 필요한 구간만 짧게 잘라 사이트에 직접 실었습니다. ' + (cfg.note ? zh(cfg.note) : '')));
     playClip(cfg.items[0], false, cfg);
   }
   if (tabsBox) {

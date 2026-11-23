@@ -1228,3 +1228,71 @@ h3.sub.block-sm, h4.mini.block-sm, h3.sub.block { margin-top: 32px; }
 @media (min-width: 960px) { .vs-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .donuts { max-width: 720px; } }
 /* 좁은 칸의 긴 중국어 제목은 글자 단위로 고르게 넘기기 */
 .tgrid figcaption .zh, .slide-scene figcaption .zh, .rev-frame figcaption .zh { word-break: normal; }
+
+/* ===== 간결화 개편: 소제목 강조, 단계 번호, 왜 이 주제 ===== */
+h3.sub { font-size: clamp(20px, 2.3vw, 24px); color: var(--accent); font-weight: 800; letter-spacing: -0.025em; }
+.chart-card h3 { font-size: clamp(19px, 2.2vw, 23px); color: var(--accent); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 6px; }
+.interp .k { font-size: 14px; font-weight: 700; }
+.interp.link2 .k { font-size: 18px; letter-spacing: -0.01em; margin-bottom: 6px; }
+
+/* 연구 문제 라벨 */
+.qstep .k { font-size: clamp(18px, 2vw, 21px); font-weight: 800; letter-spacing: -0.02em; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.qstep .k i { font-style: normal; background: var(--accent); color: #fff; font-size: 13.5px; font-weight: 700; padding: 3px 11px; border-radius: 999px; letter-spacing: 0; }
+.qstep h3 { font-size: 18.5px; }
+
+/* 왜 이 주제를 선택했나 */
+.why-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.why-card { border-top: 2px solid var(--ink); padding-top: 16px; display: flex; flex-direction: column; }
+.why-card .wn { font-size: 15px; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; }
+.why-card b { display: block; font-size: clamp(20px, 2.2vw, 23px); line-height: 1.4; letter-spacing: -0.025em; margin: 6px 0 10px; }
+.why-card p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.75; color: var(--ink-2); }
+.why-card .src-line { margin-top: auto; }
+@media (max-width: 859px) { .why-cards { grid-template-columns: 1fr; gap: 26px; } }
+
+/* 작품의 특징: 제목만 */
+.feat-list { display: flex; flex-direction: column; gap: 10px; }
+.feat { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--bg-soft); }
+.feat .ii { flex: none; width: 38px; height: 38px; border-radius: 11px; background: var(--surface); color: var(--accent); display: grid; place-items: center; }
+.feat .ii svg { width: 20px; height: 20px; }
+.feat b { font-size: 17px; letter-spacing: -0.015em; }
+
+.stage-cap.min { margin-top: 10px; }
+
+/* 분석 로드맵과 단계 머리 */
+.roadmap { margin: 8px 0 0; }
+.roadmap ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.roadmap a { display: flex; flex-direction: column; gap: 8px; height: 100%; padding: 12px 12px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink); text-decoration: none; transition: border-color .2s, background .2s; }
+.roadmap a:hover { border-color: var(--accent); background: var(--accent-soft); }
+.roadmap .rn { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-size: 14px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.roadmap .rt { font-size: 14px; font-weight: 700; line-height: 1.4; letter-spacing: -0.01em; }
+.road-axes { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 12px; font-size: 12.5px; color: var(--muted); }
+@media (min-width: 960px) { .roadmap ol { grid-template-columns: repeat(9, minmax(0, 1fr)); } }
+
+.room.step { padding-top: clamp(56px, 7vw, 88px); }
+.step-head { display: flex; align-items: center; gap: 14px; max-width: 820px; }
+.step-n { flex: none; width: 48px; height: 48px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-size: 22px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.step-k { display: block; font-size: 12.5px; font-weight: 600; letter-spacing: .04em; color: var(--muted); }
+.step-head h2 { font-size: clamp(26px, 3.6vw, 36px); line-height: 1.25; letter-spacing: -0.035em; font-weight: 800; margin: 2px 0 0; }
+.see { margin: 16px 0 28px; padding: 13px 16px; background: var(--accent-soft); border-radius: 12px; font-size: 15.5px; line-height: 1.65; max-width: var(--col); color: var(--ink); }
+.see b { display: block; font-size: 12.5px; font-weight: 700; letter-spacing: .04em; color: var(--accent); margin-bottom: 2px; }
+.lead-sm { font-size: 16.5px; line-height: 1.7; margin: 0 0 22px; max-width: var(--col); }
+
+/* 회차 길이 평균 막대 */
+.lenbars { margin-top: 8px; border-top: 1px solid var(--line-strong); }
+.lb-row { display: grid; grid-template-columns: 150px minmax(0, 1fr) 64px; gap: 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.lb-n { display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: 15px; }
+.lb-bar { height: 16px; background: var(--bg-tint); border-radius: 0 8px 8px 0; overflow: hidden; }
+.lb-bar i { display: block; height: 100%; width: 0; background: var(--ai); border-radius: 0 8px 8px 0; transition: width .9s cubic-bezier(.2,.7,.2,1); }
+.lb-bar i.real { background: var(--real); }
+.lb-v { text-align: right; font-weight: 800; font-size: 18px; font-variant-numeric: tabular-nums; }
+.lb-v small { font-size: 12.5px; font-weight: 600; color: var(--muted); margin-left: 1px; }
+.lb-sw { display: inline-block; width: 16px; height: 10px; border-radius: 3px; background: var(--ai); }
+.lb-sw.real { background: var(--real); }
+@media (max-width: 619px) {
+  .lb-row { grid-template-columns: minmax(0, 1fr) 60px; gap: 6px 12px; }
+  .lb-bar { grid-column: 1 / -1; grid-row: 2; }
+}
+@media (prefers-reduced-motion: reduce) { .lb-bar i { transition: none; } }
+@media (min-width: 620px) { .rev-bars { max-width: 720px; } .rev-bars li { grid-template-columns: 200px minmax(80px, 1fr) 44px; } }
+.lb-n .zh { white-space: nowrap; }
+@media (min-width: 620px) { .lb-row { grid-template-columns: 220px minmax(0, 1fr) 64px; } }
