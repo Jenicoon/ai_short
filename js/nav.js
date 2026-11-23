@@ -16,7 +16,7 @@
 
   var logo =
     '<svg viewBox="0 0 40 40" aria-hidden="true"><defs><path id="ring" d="M20,20 m-14,0 a14,14 0 1,1 28,0 a14,14 0 1,1 -28,0"/></defs>' +
-    '<text><textPath href="#ring" textLength="86">作品由AI生成 · 3조 · </textPath></text>' +
+    '<text><textPath href="#ring" textLength="86">作品由AI生成  3조  </textPath></text>' +
     '<circle cx="20" cy="20" r="2.4" fill="currentColor"/></svg>';
   var sun = '<svg class="theme-ico-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
   var moon = '<svg class="theme-ico-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
@@ -59,14 +59,14 @@
     f.innerHTML = '<div class="in"><nav aria-label="바닥글 메뉴">' +
       '<a href="about.html#credits">만든 사람들</a><a href="about.html#credits">출처</a><a href="about.html#archive">발표 아카이브</a>' +
       '<a href="https://github.com/Jenicoon/ai_short" target="_blank" rel="noopener">GitHub</a></nav>' +
-      '<span>3조 「본 조는 AI로 생성되었습니다」 · 한양대학교 중국미디어문화의이해 · 2026</span></div>';
+      '<span>3조 「본 조는 AI로 생성되었습니다」<br>한양대학교 중국미디어문화의이해 2026</span></div>';
   }
   /* ---------- 자연스러운 줄바꿈 ----------
      CSS(keep-all, balance)에 더해, 끊기면 어색한 곳을 줄바꿈 없는 공백으로 묶는다.
      - "약 18초", "누적 2:30", "2분 30초"처럼 수와 단위가 갈라지지 않게
      - 문단 마지막 단어가 혼자 다음 줄로 떨어지지 않게 */
   var NB = ' ';
-  var BLOCKS = 'p, li, h1, h2, h3, h4, figcaption, td, th, cite, dd, summary, .l, .s, .et, .em, .txt, .tt, .dd, .stage-cap, .premise, .purpose, .metric, .opt span:last-child, .xs, .cr, .src, .src-foot, .table-note, .phone-cap, .rev-read, .cp-cap, .note, .theater-note, .rw, .promo-d, .ko';
+  var BLOCKS = 'p, li, h1, h2, h3, h4, figcaption, td, th, cite, dd, summary, .l, .s, .et, .em, .txt, .tt, .dd, .stage-cap, .premise, .purpose, .metric, .opt span:last-child, .xs, .cr, .src, .src-foot, .table-note, .phone-cap, .rev-read, .cp-cap, .note, .theater-note, .rw, .promo-d, .ko, .kl, .ks, .space3 span, .flow4 span, .icard p, .dcard p, .obs-card p, .ctl-chips span, .ds';
   var WJ = '⁠'; // 줄바꿈을 막는 보이지 않는 이음표
   // 괄호 안: 쉼표 뒤에서는 줄이 바뀌어도 되고, 쉼표 사이의 짧은 덩어리(10자 이하)는 한 덩어리로
   function glueParen(m, inner) {
@@ -122,12 +122,15 @@
     return null;
   }
   function noOrphan(el) {
-    if ((el.textContent || '').length < 24) return;
+    if ((el.textContent || '').length < 10) return;
     var t = lastText(el); if (!t) return;
     var v = t.nodeValue.replace(/\s+$/, ''), i = v.lastIndexOf(' ');
     if (i < 0) return;
     var tail = v.slice(i + 1);
-    if (tail.length <= 6) t.nodeValue = v.slice(0, i) + NB + tail + t.nodeValue.slice(v.length);
+    // 앞 낱말이 길면(“AI制作，无真实动物受伤”처럼) 붙였을 때 칸을 넘쳐 낱말 중간이 잘리므로 붙이지 않는다
+    var before = v.slice(0, i), j = Math.max(before.lastIndexOf(' '), before.lastIndexOf(NB));
+    var prevWord = before.slice(j + 1);
+    if (tail.length <= 6 && prevWord.length <= 8) t.nodeValue = before + NB + tail + t.nodeValue.slice(v.length);
   }
   function tidy(root) {
     if (!root || root.nodeType !== 1) return;
